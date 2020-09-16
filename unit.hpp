@@ -11,7 +11,7 @@ class Unit {
 
 public:
   Unit(const std::string& n, const float& h, const float& d) : name(n), health(h), damage(d) {}
-  ~Unit() {}
+  //~Unit() {}
 
   //operator overload
   friend std::ostream& operator<<(std::ostream& os, const Unit& unit);

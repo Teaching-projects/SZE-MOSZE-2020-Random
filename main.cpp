@@ -13,8 +13,6 @@ int main(int argc, char** argv) {
   float dmg1 = (float)strtod(argv[3], NULL);
   float dmg2 = (float)strtod(argv[6], NULL);
 
-  std::cout << dmg2 << std::endl;
-
   if ((hp1 <= 0) || (hp2 <= 0) || (dmg1 <= 0) || (dmg2 <= 0)) {
     std::cerr << "Invalid arguments!" << std::endl;
     return 1;

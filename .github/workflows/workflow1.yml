@@ -1,0 +1,14 @@
+name: Project workflow
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compiling the code
+        run: g++ -Wall -std=c++17 *.cpp -o a.out
+      - name: Running attack test
+        run: ./attack_test.sh output.txt attack_test_target.txt

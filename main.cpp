@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
   }
 
   if (m1.get_health() <= 0) {
-    std::cout << m2.get_name() << " wins! Remaining HP:" << m2.get_health() << std::endl;
+    std::cout << m2.get_name() << " wins! Remaining HP: " << m2.get_health() << std::endl;
   }
   else {
     std::cout << m1.get_name() << " wins! Remaining HP: " << m1.get_health() << std::endl;

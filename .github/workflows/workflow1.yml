@@ -11,4 +11,4 @@ jobs:
       - name: Compiling the code
         run: g++ -Wall -std=c++17 *.cpp -o a.out
       - name: Running attack test
-        run: ./attack_test.sh output.txt attack_test_target.txt
+        run: ./attack_test.sh a.out attack_test_target.txt

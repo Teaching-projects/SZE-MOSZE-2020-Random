@@ -4,12 +4,21 @@
 #include <iostream>
 #include <string>
 
+class UnitException : public std::exception {
+  std::string s;
+public:
+  UnitException(const std::string& ss) : s(ss) {}
+  ~UnitException() throw() {}
+  const char* what() const throw() { return s.c_str(); }
+};
+
 class Unit {
   std::string name = "";
   float health = 0;
   float damage = 0;
 
 public:
+  Unit() : name(""), health(0), damage(0) {}
   Unit(const std::string& n, const float& h, const float& d) : name(n), health(h), damage(d) {}
   //~Unit() {}
 
@@ -17,6 +26,7 @@ public:
   friend std::ostream& operator<<(std::ostream& os, const Unit& unit);
 
   //functions
+  static Unit parse_unit(const std::string& filename);
   void attack(Unit& other) const;
   void suffer_damage(const float& damage);
 

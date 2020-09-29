@@ -6,8 +6,10 @@ std::ostream& operator<<(std::ostream& os, const Unit& unit) {
   return os;
 }
 
-void Unit::parse_unit(const std::string& filename) {
+Unit Unit::parse_unit(const std::string& filename) const {
+  Unit ret;
   std::ifstream file(filename);
+
   if (file.is_open()) {
     char c;
     std::string sep = "{,}";
@@ -58,13 +60,13 @@ void Unit::parse_unit(const std::string& filename) {
 
         if (value.size() <= 0) { throw UnitException("Invalid syntax!"); }
 
-        name = value;
+        ret.name = value;
       }
       else if (tag == "hp") {
-        health = std::stoi(value);
+        ret.health = std::stoi(value);
       }
       else if (tag == "dmg") {
-        damage = std::stoi(value);
+        ret.damage = std::stoi(value);
       }
     }
 
@@ -74,6 +76,7 @@ void Unit::parse_unit(const std::string& filename) {
     //throw exception
     throw UnitException("Failed to open file!");
   }
+  return ret;
 }
 
 void Unit::attack(Unit& other) const {

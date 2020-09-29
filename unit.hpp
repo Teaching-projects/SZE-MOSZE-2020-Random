@@ -26,7 +26,7 @@ public:
   friend std::ostream& operator<<(std::ostream& os, const Unit& unit);
 
   //functions
-  void parse_unit(const std::string& filename);
+  static Unit parse_unit(const std::string& filename) const;
   void attack(Unit& other) const;
   void suffer_damage(const float& damage);
 

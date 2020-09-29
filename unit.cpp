@@ -6,7 +6,7 @@ std::ostream& operator<<(std::ostream& os, const Unit& unit) {
   return os;
 }
 
-Unit Unit::parse_unit(const std::string& filename) const {
+Unit Unit::parse_unit(const std::string& filename) {
   Unit ret;
   std::ifstream file(filename);
 
@@ -14,8 +14,12 @@ Unit Unit::parse_unit(const std::string& filename) const {
     char c;
     std::string sep = "{,}";
     std::string data = "";
+    bool in_quotes = false;
     while(file.get(c)) {
-      if (!isspace(c)) { data += c; }
+      if (c == '\"') {
+        in_quotes = !in_quotes;
+      }
+      if (!isspace(c) || in_quotes) { data += c; }
     }
 
     if (data.front() != '{') { throw UnitException("Invalid syntax!"); }

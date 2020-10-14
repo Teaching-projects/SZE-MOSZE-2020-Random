@@ -1,5 +1,6 @@
 #include <iostream>
 #include "unit.hpp"
+#include "json.hpp"
 
 int main(int argc, char** argv) {
 
@@ -14,7 +15,7 @@ int main(int argc, char** argv) {
     m1 = Unit::parse_unit(argv[1]);
     m2 = Unit::parse_unit(argv[2]);
   }
-  catch(const UnitException& e) {
+  catch(const JsonException& e) {
     std::cerr << e.what() << std::endl;
     return 2;
   }

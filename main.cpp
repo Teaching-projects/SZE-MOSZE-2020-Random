@@ -1,9 +1,11 @@
 #include <iostream>
 #include "unit.hpp"
+#include "player.hpp"
 
 int main(int argc, char** argv) {
 
-  Unit m1, m2;
+  Unit m1;
+  Player m2;
 
   if (argc != 3) {
     std::cerr << "Application needs 2 parameters!" << std::endl;

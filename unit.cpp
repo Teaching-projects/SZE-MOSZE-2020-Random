@@ -83,7 +83,7 @@ Unit Unit::parse_unit(const std::string& filename) {
   return ret;
 }
 
-void Unit::attack(Unit& other) const {
+void Unit::attack(Unit& other) {
   if (health > 0) {
     //std::cout << std::endl << name << " attacks " << other.get_name() << std::endl;
     other.suffer_damage(damage);

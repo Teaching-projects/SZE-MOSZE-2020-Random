@@ -13,6 +13,7 @@ public:
 };
 
 class Unit {
+protected:
   std::string name = "";
   float health = 0;
   float damage = 0;
@@ -27,7 +28,7 @@ public:
 
   //functions
   static Unit parse_unit(const std::string& filename);
-  void attack(Unit& other) const;
+  void attack(Unit& other);
   void suffer_damage(const float& damage);
 
   //getters

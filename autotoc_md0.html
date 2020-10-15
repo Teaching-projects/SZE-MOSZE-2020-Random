@@ -63,13 +63,7 @@ $(function() {
 <div class="title">About the components </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><ul>
-<li><b><a class="el" href="classUnit.html" title="Main class for units. ">Unit</a></b> - this class contains the properties of monsters, and also has an overload of the operator "&lt;&lt;" for easier display</li>
-<li><b><a class="el" href="classUnit.html#abdf05599794cf5d17dc8337f0a634d33" title="Attack function. ">Unit::attack</a></b> - this function is used to execute an attack between the monsters, with the help of <b><a class="el" href="classUnit.html#acbada5ea7245fab30825a5640c31ff2c" title="Function for dealing damage. ">Unit::suffer_damage</a></b></li>
-<li><b><a class="el" href="classUnit.html#a56bf15f736e48049ec60cd39d5563a02" title="JSON parser. ">Unit::parse_unit</a></b> - reads the parameters of monster units into the object for use</li>
-<li>getters are used for read only operations</li>
-</ul>
-<p>The main program reads the properties of monsters (name, health, damage) from .json files given as commandline arguments, and plays the battle between them until one of them loses its health points.</p>
+<div class="textblock"><p>The main program reads the properties of monsters (name, health, damage, etc.) from .json files given as commandline arguments, and plays the battle between them until one of them loses its health points.</p>
 <p>The various .json files are the parseable monster unit files which can be loaded into <b><a class="el" href="classUnit.html" title="Main class for units. ">Unit</a></b> objects.</p>
 <p>The <b>attack_test.sh</b> script is used for the testing of application outputs, the <b>units</b> folder contains some monster units used for testing. The desired output which the script compares to can be found in <b>attack_test_target.txt</b>. </p>
 </div></div><!-- contents -->

@@ -16,7 +16,6 @@ void Player::attack(Unit& other) {
     while (xp >= max_xp) {
       level += 1;
       xp -= max_xp;
-      max_hp *= 1.1;
       max_hp = floor(max_hp * 1.1);
       damage = floor(damage * 1.1);
       health = max_hp;

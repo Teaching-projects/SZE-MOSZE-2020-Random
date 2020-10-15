@@ -21,7 +21,7 @@
  * This is an exception class used by the Unit class.
  */
 class UnitException : public std::exception {
-  std::string s; ///<
+  std::string s;
 public:
   UnitException(const std::string& ss) : s(ss) {}
   ~UnitException() throw() {}
@@ -62,9 +62,9 @@ public:
 
   /**
    * \brief Overload of << operator.
-   * \param os
-   * \param unit
-   * \return Returns an std::ostream.
+   * \param os an std::ostream that the text is put into
+   * \param unit a Unit object that is written into the stream
+   * \return std::ostream
    *
    * Writes the contents of the Unit class variables with overloading the << operator.
    */
@@ -74,8 +74,8 @@ public:
 
   /**
    * \brief JSON parser.
-   * \param filename
-   * \return Returns an Unit class.
+   * \param filename string that describes the file to be opened
+   * \return Unit class
    *
    * Parses a simple JSON file and puts its values into an Unit object.
    */
@@ -83,7 +83,7 @@ public:
 
   /**
    * \brief Attack function.
-   * \param other
+   * \param other a Unit object
    *
    * Performs an attack on the Unit given as a parameter.
    */
@@ -91,7 +91,7 @@ public:
 
   /**
    * \brief Elapse time.
-   * \param t
+   * \param t the time to be elapsed
    *
    * Modifies the class variables depending on the value of the t parameter.
    */

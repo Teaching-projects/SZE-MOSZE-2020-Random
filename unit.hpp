@@ -1,13 +1,3 @@
-/**
- * \author LengyHELL
- *
- * \version 1.0
- *
- * \date 2020/10/15 10:33
- *
- * Created on: 2020/10/15 10:33
- */
-
 #ifndef UNIT_H
 #define UNIT_H
 
@@ -19,6 +9,10 @@
  * \brief An exception class.
  *
  * This is an exception class used by the Unit class.
+ *
+ * \author LengyHELL
+ * \version 1.0
+ * \date 2020/10/15 10:33
  */
 class UnitException : public std::exception {
   std::string s;
@@ -33,6 +27,10 @@ public:
  * \brief Main class for units.
  *
  * Defines the parameters and actions of the fighters.
+ *
+ * \author LengyHELL
+ * \version 1.0
+ * \date 2020/10/15 10:33
  */
 class Unit {
   std::string name = "";  ///< Name of the unit.
@@ -76,6 +74,7 @@ public:
    * \brief JSON parser.
    * \param filename string that describes the file to be opened
    * \return Unit class
+   * \exception UnitException is thrown on syntax and reading errors
    *
    * Parses a simple JSON file and puts its values into an Unit object.
    */

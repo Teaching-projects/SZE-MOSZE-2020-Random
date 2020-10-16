@@ -8,7 +8,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Getting dependencies
+        run: |
+          sudo apt-get install libgtest-dev cmake
+          cd /usr/src/gtest
+          sudo cmake CMakeLists.txt
+          sudo make
+          cd
+
+      - name: Running unit tests
+        run: |
+          cd unit_test
+          cmake CMakeLists.txt
+          make
+          ./runTests
+          cd
+
       - name: Compiling the code
         run: g++ -Wall -std=c++17 *.cpp -o a.out
+
       - name: Running attack test
         run: ./attack_test.sh a.out attack_test_target.txt

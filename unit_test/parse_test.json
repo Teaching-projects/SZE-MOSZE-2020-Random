@@ -1,0 +1,10 @@
+{
+  "key1" : "this is a string",
+  "key2" : .333,
+  "key3" : 345,
+  "key4" : -.425,
+  "key5" : -129,
+  "key6" : "value",
+  "key7" : -0.5,
+  "key8" : 3.14
+}

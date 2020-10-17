@@ -1,5 +1,5 @@
 #include "player.hpp"
-#include "math.h"
+#include <cmath>
 
 Player& Player::operator=(const Unit& unit) {
   name = unit.get_name();
@@ -11,13 +11,18 @@ Player& Player::operator=(const Unit& unit) {
 
 void Player::attack(Unit& other) {
   if (health > 0) {
+    if (other.get_health() >= damage) {
+      xp += damage;
+    }
+    else {
+      xp += other.get_health();
+    }
     other.suffer_damage(damage);
-    xp += damage;
     while (xp >= max_xp) {
       level += 1;
       xp -= max_xp;
-      max_hp = floor(max_hp * 1.1);
-      damage = floor(damage * 1.1);
+      max_hp = round(max_hp * 1.1);
+      damage = round(damage * 1.1);
       health = max_hp;
     }
   }

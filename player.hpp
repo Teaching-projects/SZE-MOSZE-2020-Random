@@ -10,7 +10,7 @@ class Player : public Unit {
   float level = 0;
 
 public:
-  Player() : Unit("", 0, 0), max_hp(0), max_xp(100), xp(0), level(0) {}
+  Player() : max_hp(0), max_xp(100), xp(0), level(0) {}
   Player(const std::string& n, const float& h, const float& d) : Unit(n, h, d), max_hp(h), max_xp(100), xp(0), level(0) {}
 
   Player& operator=(const Unit& unit);

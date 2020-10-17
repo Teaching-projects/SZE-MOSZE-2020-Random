@@ -1,6 +1,6 @@
-Ke 2 wins! Remaining HP: 165
-Ki 3 wins! Remaining HP: 30
-Ke 2 wins! Remaining HP: 110
-Ke 2 wins! Remaining HP: 170
-Ki 3 wins! Remaining HP: 35
-Ke 2 wins! Remaining HP: 80
+Ka 1 wins! Remaining HP: 250
+Ka 1 wins! Remaining HP: 610
+Ke 2 wins! Remaining HP: 230
+Ka 1 wins! Remaining HP: 250
+Ka 1 wins! Remaining HP: 610
+Ke 2 wins! Remaining HP: 230

@@ -72,6 +72,10 @@ Unit Unit::parse_unit(const std::string& filename) {
       else if (tag == "dmg") {
         ret.damage = std::stoi(value);
       }
+      else if (tag == "cd") {
+        ret.cd = 0;
+        ret.max_cd = std::stof(value);
+      }
     }
 
     file.close();
@@ -83,12 +87,15 @@ Unit Unit::parse_unit(const std::string& filename) {
   return ret;
 }
 
-void Unit::attack(Unit& other) const {
-  if (health > 0) {
-    //std::cout << std::endl << name << " attacks " << other.get_name() << std::endl;
+void Unit::attack(Unit& other) {
+  if ((health > 0) && (cd <= 0)) {
+    cd += max_cd;
     other.suffer_damage(damage);
-    //std::cout << *this << std::endl << other << std::endl;
   }
+}
+
+void Unit::elapse_time(const float& t) {
+  cd -= t;
 }
 
 void Unit::suffer_damage(const float& damage) {

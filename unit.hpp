@@ -28,7 +28,7 @@ public:
 
   //functions
   static Unit parse_unit(const std::string& filename);
-  void attack(Unit& other);
+  virtual void attack(Unit& other);
   void suffer_damage(const float& damage);
 
   //getters

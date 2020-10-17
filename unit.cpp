@@ -93,4 +93,5 @@ void Unit::attack(Unit& other) {
 
 void Unit::suffer_damage(const float& damage) {
   health -= damage;
+  if (health < 0) { health = 0; }
 }

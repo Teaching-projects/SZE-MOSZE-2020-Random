@@ -1,6 +1,6 @@
-Ke 2 wins! Remaining HP: 1292
-Ki 3 wins! Remaining HP: 514
-Ki 3 wins! Remaining HP: 321
+Ke 2 wins! Remaining HP: 1299
+Ki 3 wins! Remaining HP: 518
+Ki 3 wins! Remaining HP: 322
 Ka 1 wins! Remaining HP: 1610
 Ka 1 wins! Remaining HP: 1210
 Ke 2 wins! Remaining HP: 605

@@ -24,6 +24,8 @@ int main(int argc, char** argv) {
   while ((m1.get_health() > 0) && (m2.get_health() > 0)) {
     m1.attack(m2);
     m2.attack(m1);
+    m1.elapse_time(0.1);
+    m2.elapse_time(0.1);
   }
 
   if (m1.get_health() <= 0) {

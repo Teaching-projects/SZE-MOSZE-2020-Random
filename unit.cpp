@@ -8,19 +8,23 @@ std::ostream& operator<<(std::ostream& os, const Unit& unit) {
 }
 
 Unit Unit::parse_unit(const std::string& filename) {
-  Json test;
-  test.parse_file(filename);
-  return Unit(test.get_string("name"), test.get_int("hp"), test.get_int("dmg"));
+  Json file;
+  file.parse_file(filename);
+  return Unit(file.get_string("name"), file.get_int("hp"), file.get_int("dmg"), file.get_float("cd"));
 }
 
-void Unit::attack(Unit& other) const {
-  if (health > 0) {
-    //std::cout << std::endl << name << " attacks " << other.get_name() << std::endl;
-    other.suffer_damage(damage);
-    //std::cout << *this << std::endl << other << std::endl;
+void Unit::attack(Unit& other) {
+  if ((health > 0) && (cd <= 0)) {
+    cd += max_cd;
+    suffer_damage(other, damage);
   }
 }
 
-void Unit::suffer_damage(const float& damage) {
-  health -= damage;
+void Unit::elapse_time(const float& t) {
+  cd -= t;
+}
+
+void Unit::suffer_damage(Unit& unit, const float& damage) {
+  unit.health -= damage;
+  if (unit.health < 0) { unit.health = 0; }
 }

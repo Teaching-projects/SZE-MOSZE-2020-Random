@@ -10,25 +10,24 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Getting dependencies
-        run: |
-          sudo apt-get install libgtest-dev cmake
-          cd /usr/src/gtest
-          sudo cmake CMakeLists.txt
-          sudo make
-          sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
-          sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
-          cd
+        run: sudo apt-get install cppcheck valgrind
 
-      - name: Running unit tests
+      - name: Running static code analysis
         run: |
-          cd unit_test
-          cmake CMakeLists.txt
-          make
-          ./runTests
-          cd
+          cppcheck --enable=warning --error-exitcode=1 *.cpp
+          cppcheck --enable=performance,style --output-file=cppcheck_report.txt *.cpp
+
+      - name: Creating cppcheck artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: cppcheck_report
+          path: cppcheck_report.txt
 
       - name: Compiling the code
-        run: g++ -Wall -std=c++17 *.cpp -o a.out
+        run: g++ -Wall -std=c++17 *.cpp -o a.out -g
+
+      - name: Checking for memory leaks
+        run: valgrind --leak-check=full --error-exitcode=1 ./a.out david.json goliath.json
 
       - name: Running attack test
         run: ./attack_test.sh a.out attack_test_target.txt

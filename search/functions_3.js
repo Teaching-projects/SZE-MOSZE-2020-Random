@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parse_5funit',['parse_unit',['../classUnit.html#a56bf15f736e48049ec60cd39d5563a02',1,'Unit']]]
+  ['operator_3d',['operator=',['../classPlayer.html#af3462dd6d21fd4924bb66688b44ce8b7',1,'Player']]]
 ];

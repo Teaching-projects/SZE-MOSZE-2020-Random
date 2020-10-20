@@ -33,6 +33,7 @@ public:
  * \date 2020/10/15 10:33
  */
 class Unit {
+protected:
   std::string name = "";  ///< Name of the unit.
   float health = 0;       ///< Health of the unit.
   float damage = 0;       ///< Damage, that the unit deals to its opponents.
@@ -41,11 +42,12 @@ class Unit {
 
   /**
    * \brief Function for dealing damage.
-   * \param damage
+   * \param unit the reference of the unit, that the damage is dealt to
+   * \param damage the amount of the damage
    *
    * Lowers the amount of hp with the amount of the damage parameter.
    */
-  void suffer_damage(const float& damage);
+  void suffer_damage(Unit& unit, const float& damage);
 
 public:
   /// Default constructor without parameters, gives default values to the class variables.
@@ -86,7 +88,7 @@ public:
    *
    * Performs an attack on the Unit given as a parameter.
    */
-  void attack(Unit& other);
+  virtual void attack(Unit& other);
 
   /**
    * \brief Elapse time.
@@ -106,6 +108,12 @@ public:
 
   /// Getter for the damage variable.
   float get_damage() const { return damage; }
+
+  /// Getter for the cd variable.
+  float get_cd() const { return cd; }
+
+  /// Getter for the max_cd variable.
+  float get_max_cd() const { return max_cd; }
 };
 
 #endif

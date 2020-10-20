@@ -90,7 +90,7 @@ Unit Unit::parse_unit(const std::string& filename) {
 void Unit::attack(Unit& other) {
   if ((health > 0) && (cd <= 0)) {
     cd += max_cd;
-    other.suffer_damage(damage);
+    suffer_damage(other, damage);
   }
 }
 
@@ -98,6 +98,7 @@ void Unit::elapse_time(const float& t) {
   cd -= t;
 }
 
-void Unit::suffer_damage(const float& damage) {
-  health -= damage;
+void Unit::suffer_damage(Unit& unit, const float& damage) {
+  unit.health -= damage;
+  if (unit.health < 0) { unit.health = 0; }
 }

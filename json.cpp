@@ -93,13 +93,11 @@ void Json::parse_raw(const std::string& data) {
   }
 }
 
-void Json::parse_file(const std::string& filename) {
-  std::ifstream file(filename);
-
+std::string clear_file(std::ifstream& file) {
+  std::string data = "";
   if (file.is_open()) {
     char c;
     std::string sep = "{,}";
-    std::string data = "";
     bool in_quotes = false;
     while(file.get(c)) {
       if (c == '\"') {
@@ -107,8 +105,16 @@ void Json::parse_file(const std::string& filename) {
       }
       if (!isspace(c) || in_quotes) { data += c; }
     }
+  }
+  return data;
+}
 
-    parse_raw(data);
+void Json::parse_file(const std::string& filename) {
+  std::ifstream file(filename);
+
+  if (file.is_open()) {
+    std::string raw = clear_file(file);
+    parse_raw(raw);
 
     file.close();
   }
@@ -119,18 +125,8 @@ void Json::parse_file(const std::string& filename) {
 
 void Json::parse_stream(std::ifstream& file) {
   if (file.is_open()) {
-    char c;
-    std::string sep = "{,}";
-    std::string data = "";
-    bool in_quotes = false;
-    while(file.get(c)) {
-      if (c == '\"') {
-        in_quotes = !in_quotes;
-      }
-      if (!isspace(c) || in_quotes) { data += c; }
-    }
-
-    parse_raw(data);
+    std::string raw = clear_file(file);
+    parse_raw(raw);
 
     file.close();
   }

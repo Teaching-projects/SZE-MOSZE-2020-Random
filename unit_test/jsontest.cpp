@@ -43,6 +43,25 @@ TEST(JsonTest, stream_parse) {
   ASSERT_EQ(test.get_float("key8"), (float)3.14);
 }
 
+TEST(JsonTest, exceptions) {
+  std::ifstream file;
+  Json test;
+
+  ASSERT_THROW(test.parse_string(""), JsonException);
+  ASSERT_THROW(test.parse_file(""), JsonException);
+  ASSERT_THROW(test.parse_stream(file), JsonException);
+
+  test.parse_file("parse_test.json");
+
+  ASSERT_THROW(test.get_string("key2"), JsonException);
+  ASSERT_THROW(test.get_float("key1"), JsonException);
+  ASSERT_THROW(test.get_int("key1"), JsonException);
+
+  ASSERT_THROW(test.parse_string("{\"key1\":\"string value\", \"key2\":.125, \"key3\":1998"), JsonException);
+  ASSERT_THROW(test.parse_string("{\"key1\":\"string value\", \"key1\":.125, \"key1\":1998}"), JsonException);
+
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

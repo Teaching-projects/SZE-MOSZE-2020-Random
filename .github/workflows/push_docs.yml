@@ -3,7 +3,8 @@ name: push_docs.yml
 on:
   push:
     branches:
-      - attackspeed
+      - jsonparser
+      - master
       - gh-pages
 
 jobs:

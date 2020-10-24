@@ -2,4 +2,8 @@ a.out
 output.txt
 /DOCS
 
-/unit_test
+CMakeFiles/
+cmake_install.cmake
+CMakeCache.txt
+Makefile
+runTests

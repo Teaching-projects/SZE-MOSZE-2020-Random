@@ -5,24 +5,6 @@
 #include <string>
 
 /**
- * \class UnitException
- * \brief An exception class.
- *
- * This is an exception class used by the Unit class.
- *
- * \author LengyHELL
- * \version 1.0
- * \date 2020/10/15 10:33
- */
-class UnitException : public std::exception {
-  std::string s;
-public:
-  UnitException(const std::string& ss) : s(ss) {}
-  ~UnitException() throw() {}
-  const char* what() const throw() { return s.c_str(); }
-};
-
-/**
  * \class Unit
  * \brief Main class for units.
  *

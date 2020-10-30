@@ -1,4 +1,4 @@
-#include "player.hpp"
+#include "Hero.h"
 #include <cmath>
 
 Player& Player::operator=(const Unit& unit) {

@@ -1,7 +1,7 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef HERO_H
+#define HERO_H
 
-#include "unit.hpp"
+#include "Monster.h"
 
 /**
  * \class Player

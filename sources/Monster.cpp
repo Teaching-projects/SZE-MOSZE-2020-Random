@@ -1,5 +1,5 @@
-#include "unit.hpp"
-#include "json.hpp"
+#include "Monster.h"
+#include "JSON.h"
 #include <fstream>
 
 std::ostream& operator<<(std::ostream& os, const Unit& unit) {

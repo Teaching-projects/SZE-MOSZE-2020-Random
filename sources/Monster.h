@@ -1,5 +1,5 @@
-#ifndef UNIT_H
-#define UNIT_H
+#ifndef MONSTER_H
+#define MONSTER_H
 
 #include <iostream>
 #include <string>

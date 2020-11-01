@@ -1,34 +1,47 @@
 #include "Hero.h"
+#include "JSON.h"
 #include <cmath>
 
-Player& Player::operator=(const Unit& unit) {
-  name = unit.get_name();
-  health = unit.get_health();
-  damage = unit.get_damage();
-  cd = unit.get_cd();
-
-  max_hp = unit.get_health();
-  max_cd = unit.get_max_cd();
-  return *this;
+Hero Hero::parse(const std::string& filename) {
+  JSON file = JSON::parseFromFile(filename);
+  return Hero(
+    file.get<std::string>("name"),
+    file.get<int>("base_health_points"),
+    file.get<int>("base_damage"),
+    file.get<float>("base_attack_cooldown"),
+    file.get<int>("experience_per_level"),
+    file.get<int>("health_point_bonus_per_level"),
+    file.get<int>("damage_bonus_per_level"),
+    file.get<float>("cooldown_multiplier_per_level")
+  );
 }
 
-void Player::attack(Unit& other) {
-  if ((health > 0) && (cd <= 0)) {
-    if (other.get_health() >= damage) {
-      xp += damage;
+void Hero::attack(Monster& other) {
+  if (isAlive() && canHit()) {
+    if (other.getHealthPoints() >= damage) {
+      experienceState += damage;
     }
     else {
-      xp += other.get_health();
+      experienceState += other.getHealthPoints();
     }
-    suffer_damage(other, damage);
-    while (xp >= max_xp) {
+    sufferDamage(other, damage);
+    while (experienceState >= experiencePerLevel) {
       level += 1;
-      xp -= max_xp;
-      max_hp = round(max_hp * 1.1);
-      damage = round(damage * 1.1);
-      max_cd = max_cd * 0.9;
-      health = max_hp;
+      experienceState -= experiencePerLevel;
+      baseHealthPoints += healthPointBonusPerLevel;
+      healthPoints = baseHealthPoints;
+      damage += damageBonusPerLevel;
+      attackCooldown *= cooldownMultiplierPerLevel;
     }
-    cd += max_cd;
+    resetCooldown();
+  }
+}
+
+void Hero::fightTilDeath(Monster& other) {
+  while (isAlive() && other.isAlive()) {
+    attack(other);
+    other.attack(*this);
+    elapseTime(*this, 0.1);
+    elapseTime(other, 0.1);
   }
 }

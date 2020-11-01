@@ -13,27 +13,31 @@
  * \version 1.0
  * \date 2020/10/19 20:17
  */
-class Player : public Unit {
-  float max_hp = 0;   ///< Maximum health that the player can have.
-  float max_xp = 100; ///< The amount of experience needed for reaching the next level.
-  float xp = 0;       ///< The current amount of experience the player has.
+class Hero : public Monster {
+  float baseHealthPoints = 0;   ///< Maximum health that the player can have.
+
+  float experiencePerLevel = 0; ///< The amount of experience needed for reaching the next level.
+  float experienceState = 0;       ///< The current amount of experience the player has.
+  float healthPointBonusPerLevel = 0;
+  float damageBonusPerLevel = 0;
+  float cooldownMultiplierPerLevel = 0;
   float level = 0;    ///< The actual level of the player.
 
 public:
-  /// Default constructor.
-  Player() : max_hp(0), max_xp(100), xp(0), level(0) {}
+  //constructor, destructor
 
-  /// Player constructor, gives the parameter values to the class variables.
-  Player(const std::string& n, const float& h, const float& d, const float& cd) : Unit(n, h, d, cd), max_hp(h), max_xp(100), xp(0), level(0) {}
+  Hero() {}
 
-  /**
-   * \brief Overload of == operator.
-   * \param unit a Unit object that is copied into the Player object
-   * \return Player
-   *
-   * Copies the variable data from a Unit base object to the corresponding Player object.
-   */
-  Player& operator=(const Unit& unit);
+  Hero(const std::string& name, const float& healthPoints, const float& damage, const float& attackCooldown, const float& experiencePerLevel,
+    const float& healthPointBonusPerLevel, const float& damageBonusPerLevel, const float& cooldownMultiplierPerLevel) :
+    Monster(name, healthPoints, damage, attackCooldown), baseHealthPoints(healthPoints), experiencePerLevel(experiencePerLevel),
+    experienceState(0), healthPointBonusPerLevel(healthPointBonusPerLevel), damageBonusPerLevel(damageBonusPerLevel),
+    cooldownMultiplierPerLevel(cooldownMultiplierPerLevel), level(1) {}
+
+
+  //functions
+
+  static Hero parse(const std::string& filename);
 
   /**
    * \brief Attack function.
@@ -41,20 +45,15 @@ public:
    *
    * Performs an attack on the Unit given as a parameter, overloads the base class's attack function.
    */
-  void attack(Unit& other);
+  void attack(Monster& other);
+
+  void fightTilDeath(Monster& other);
 
   /// Getter for the max_hp variable.
-  float get_max_health() const { return max_hp; }
-
-  /// Getter for the max_xp variable.
-  float get_max_xp() const { return max_xp; }
-
-  /// Getter for the xp variable.
-  float get_xp() const { return xp; }
+  float getMaxHealthPoints() const { return baseHealthPoints; }
 
   /// Getter for the level variable.
-  float get_level() const { return level; }
-
+  float getLevel() const { return level; }
 };
 
 #endif

@@ -33,6 +33,9 @@ bool isInt(const std::string& str) {
 }
 
 void JSON::append(const std::string& key, const std::string& value) {
+  if (stringMap.count(key) || floatMap.count(key) || intMap.count(key)) {
+    throw ParseException("Key \"" + key + "\" already exists!");
+  }
   if (isString(value)) {
     stringMap[key] = (std::string)value.substr(1, value.size() - 2);
   }
@@ -66,8 +69,6 @@ void JSON::parseRaw(std::string data) {
   std::string tag = "";
   std::string value = "";
 
-  std::list<std::string> tags;
-
   bool isTag = true;
   bool inQuotes = false;
   for (unsigned i = 0; i < data.size(); ++i) {
@@ -85,10 +86,9 @@ void JSON::parseRaw(std::string data) {
 
         if (value.size() <= 0) { throw ParseException("Invalid value!"); }
 
-        if (std::find(tags.begin(), tags.end(), tag) != tags.end()) {
+        if (stringMap.count(key) || floatMap.count(key) || intMap.count(key)) {
           throw ParseException("Multiple definition of \"" + tag + "\"!");
         }
-        else { tags.push_back(tag); }
 
         append(tag, value);
 

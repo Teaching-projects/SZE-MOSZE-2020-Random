@@ -16,9 +16,9 @@
  * \date 2020/10/20 21:36
  */
 class JSON {
-  std::map<std::string, std::string> string_map;  ///< An std::map that stores the loaded string values.
-  std::map<std::string, float> float_map;         ///< An std::map that stores the loaded float values.
-  std::map<std::string, int> int_map;             ///< An std::map that stores the loaded int values.
+  std::map<std::string, std::string> stringMap;  ///< An std::map that stores the loaded string values.
+  std::map<std::string, float> floatMap;         ///< An std::map that stores the loaded float values.
+  std::map<std::string, int> intMap;             ///< An std::map that stores the loaded int values.
 
   /**
    * \brief Function for loading raw data.
@@ -27,7 +27,7 @@ class JSON {
    *
    * This function loads cleaned JSON strings to the maps.
    */
-  static JSON parse_raw(std::string data);
+  void parseRaw(std::string data);
 
 public:
   /**
@@ -50,9 +50,7 @@ public:
 
   void append(const std::string& key, const std::string& value);
 
-  unsigned count(const std::string& key) const {
-    return string_map.count(key) + float_map.count(key) + int_map.count(key);
-  }
+  unsigned count(const std::string& key) const;
 
   /**
    * \brief Parsing via filename.
@@ -70,7 +68,7 @@ public:
    *
    * Reads from the std::ifstream specified by the file parameter.
    */
-  void parse_stream(std::ifstream& file);
+  static JSON parseFromStream(std::ifstream& file);
 
   /**
    * \brief Parsing via string.
@@ -79,28 +77,7 @@ public:
    *
    * Reads from string given as the text parameter.
    */
-  void parse_string(const std::string& text);
-
-  /**
-   * \brief Gets a loaded string value.
-   * \param tag the gat of the value
-   * \exception JsonException is thrown on reading failure
-   */
-  //std::string get_string(const std::string& tag) const;
-
-  /**
-   * \brief Gets a loaded float value.
-   * \param tag the gat of the value
-   * \exception JsonException is thrown on reading failure
-   */
-  //float get_float(const std::string& tag) const;
-
-  /**
-   * \brief Gets a loaded int value.
-   * \param tag the gat of the value
-   * \exception JsonException is thrown on reading failure
-   */
-  //int get_int(const std::string& tag) const;
+  static JSON parseFromString(const std::string& text);
 
   template<typename T>
   T get(const std::string& tag) const;

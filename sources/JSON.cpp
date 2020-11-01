@@ -2,15 +2,16 @@
 #include <list>
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 
-bool is_string(const std::string& str) {
+bool isString(const std::string& str) {
   if ((str.back() == '\"') && (str.front() == '\"')) {
     return true;
   }
   return false;
 }
 
-bool is_float(const std::string& str) {
+bool isFloat(const std::string& str) {
   bool ok = true;
   bool decimal = false;
   for (unsigned i = 0; (i < str.size()) && ok; ++i) {
@@ -22,7 +23,7 @@ bool is_float(const std::string& str) {
   return ok && decimal;
 }
 
-bool is_int(const std::string& str) {
+bool isInt(const std::string& str) {
   bool ok = true;
   for (unsigned i = 0; (i < str.size()) && ok; ++i) {
     if ((i == 0) && (str[i] != '-') && !std::isdigit(str[i])) { ok = false; }
@@ -32,23 +33,25 @@ bool is_int(const std::string& str) {
 }
 
 void JSON::append(const std::string& key, const std::string& value) {
-  if (is_string(value)) {
-    string_map[key] = (std::string)value.substr(1, value.size() - 2);
+  if (isString(value)) {
+    stringMap[key] = (std::string)value.substr(1, value.size() - 2);
   }
-  else if (is_float(value)) {
-    float_map[key] = (float)std::stof(value);
+  else if (isFloat(value)) {
+    floatMap[key] = (float)std::stof(value);
   }
-  else if (is_int(value)) {
-    int_map[key] = (int)std::stoi(value);
+  else if (isInt(value)) {
+    intMap[key] = (int)std::stoi(value);
   }
   else {
     throw ParseException("Unknown value type! \"" + value + "\"");
   }
 }
 
-JSON JSON::parse_raw(std::string data) {
-  JSON ret;
+unsigned JSON::count(const std::string& key) const {
+  return stringMap.count(key) + floatMap.count(key) + intMap.count(key);
+}
 
+void JSON::parseRaw(std::string data) {
   std::string ws = " \t\n\v\f\r";
   data.erase(0, data.find_first_not_of(ws));
   data.erase(data.find_last_not_of(ws) + 1);
@@ -65,16 +68,16 @@ JSON JSON::parse_raw(std::string data) {
 
   std::list<std::string> tags;
 
-  bool is_tag = true;
-  bool in_quotes = false;
+  bool isTag = true;
+  bool inQuotes = false;
   for (unsigned i = 0; i < data.size(); ++i) {
-    if (data[i] == '"') { in_quotes = !in_quotes; }
-    if (in_quotes) {
-      if (is_tag) { tag += data[i]; }
+    if (data[i] == '"') { inQuotes = !inQuotes; }
+    if (inQuotes) {
+      if (isTag) { tag += data[i]; }
       else { value += data[i]; }
     }
     else {
-      if (data[i] == ':') { is_tag = false; }
+      if (data[i] == ':') { isTag = false; }
       else if (data[i] == ',' || data[i] == '}') {
         tag = tag.substr(1, tag.size() - 2);
 
@@ -87,36 +90,19 @@ JSON JSON::parse_raw(std::string data) {
         }
         else { tags.push_back(tag); }
 
-        ret.append(tag, value);
+        append(tag, value);
 
-        is_tag = true;
+        isTag = true;
         tag = "";
         value = "";
       }
       else if (!isspace(data[i])) {
-        if (is_tag) { tag += data[i]; }
+        if (isTag) { tag += data[i]; }
         else { value += data[i]; }
       }
     }
   }
-  if (!is_tag || in_quotes) { throw ParseException("Invalid end of file!"); }
-  return ret;
-}
-
-std::string clear_file(std::ifstream& file) {
-  std::string data = "";
-  if (file.is_open()) {
-    char c;
-    std::string sep = "{,}";
-    bool in_quotes = false;
-    while(file.get(c)) {
-      if (c == '\"') {
-        in_quotes = !in_quotes;
-      }
-      if (!isspace(c) || in_quotes) { data += c; }
-    }
-  }
-  return data;
+  if (!isTag || inQuotes) { throw ParseException("Invalid end of file!"); }
 }
 
 JSON JSON::parseFromFile(const std::string& filename) {
@@ -124,8 +110,9 @@ JSON JSON::parseFromFile(const std::string& filename) {
   std::ifstream file(filename);
 
   if (file.is_open()) {
-    std::string raw = clear_file(file);
-    ret = parse_raw(raw);
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    ret.parseRaw(buffer.str());
 
     file.close();
   }
@@ -135,38 +122,33 @@ JSON JSON::parseFromFile(const std::string& filename) {
   return ret;
 }
 
-void JSON::parse_stream(std::ifstream& file) {
+JSON JSON::parseFromStream(std::ifstream& file) {
+  JSON ret;
+
   if (file.is_open()) {
-    std::string raw = clear_file(file);
-    parse_raw(raw);
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    ret.parseRaw(buffer.str());
 
     file.close();
   }
   else {
     throw ParseException("Invalid stream!");
   }
+  return ret;
 }
 
-void JSON::parse_string(const std::string& text) {
-  if (text.size() <= 0) { throw ParseException("Parsed string is empty!"); }
-
-  std::string sep = "{,}";
-  std::string data = "";
-  bool in_quotes = false;
-  for (const auto& c : text) {
-    if (c == '\"') {
-      in_quotes = !in_quotes;
-    }
-    if (!isspace(c) || in_quotes) { data += c; }
-  }
-
-  parse_raw(data);
+JSON JSON::parseFromString(const std::string& text) {
+  if (text.size() <= 0) { throw ParseException("Input string is empty!"); }
+  JSON ret;
+  ret.parseRaw(text);
+  return ret;
 }
 
 template<>
 std::string JSON::get<std::string>(const std::string& tag) const {
   try {
-    return string_map.at(tag);
+    return stringMap.at(tag);
   }
   catch (const std::out_of_range& e) {
     throw ParseException("Tag \"" + tag + "\" not found!");
@@ -176,7 +158,7 @@ std::string JSON::get<std::string>(const std::string& tag) const {
 template<>
 float JSON::get<float>(const std::string& tag) const {
   try {
-    return float_map.at(tag);
+    return floatMap.at(tag);
   }
   catch (const std::out_of_range& e) {
     throw ParseException("Tag \"" + tag + "\" not found!");
@@ -186,7 +168,7 @@ float JSON::get<float>(const std::string& tag) const {
 template<>
 int JSON::get<int>(const std::string& tag) const {
   try {
-    return int_map.at(tag);
+    return intMap.at(tag);
   }
   catch (const std::out_of_range& e) {
     throw ParseException("Tag \"" + tag + "\" not found!");

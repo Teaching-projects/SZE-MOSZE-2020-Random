@@ -25,7 +25,9 @@ jobs:
           path: cppcheck_report.txt
 
       - name: Compiling the code
-        run: g++ -Wall -std=c++17 sources/*.cpp -o a.out -g
+        run: |
+          g++ --version
+          g++ -Wall -std=c++17 sources/*.cpp -o a.out -g -lstdc++fs
 
       - name: Checking for memory leaks
         run: valgrind --leak-check=full --error-exitcode=1 ./a.out json_files/scenario1.json

@@ -10,8 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Getting dependencies
+        run: sudo apt-get install g++-9
+
       - name: Compiling the code
-        run: g++ -Wall -std=c++17 sources/*.cpp -o a.out
+        run: |
+          g++ --version
+          g++ -Wall -std=c++17 sources/*.cpp -o a.out
 
       - name: Running i/o tests
         run: |

@@ -86,7 +86,7 @@ void JSON::parseRaw(std::string data) {
 
         if (value.size() <= 0) { throw ParseException("Invalid value!"); }
 
-        if (stringMap.count(key) || floatMap.count(key) || intMap.count(key)) {
+        if (stringMap.count(tag) || floatMap.count(tag) || intMap.count(tag)) {
           throw ParseException("Multiple definition of \"" + tag + "\"!");
         }
 

@@ -22,7 +22,7 @@ const std::map<int,std::string> error_messages = {
 };
 
 void bad_exit(int exitcode){
-    std::cerr 
+    std::cerr
         << (error_messages.count(exitcode) ? error_messages.at(exitcode) : "Unknown error")
         << std::endl;
     exit(exitcode);
@@ -35,7 +35,7 @@ int main(int argc, char** argv){
     std::string hero_file;
     std::list<std::string> monster_files;
     try {
-        JSON scenario = JSON::parseFromFile(argv[1]); 
+        JSON scenario = JSON::parseFromFile(argv[1]);
         if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
         else {
             hero_file=scenario.get<std::string>("hero");
@@ -46,14 +46,14 @@ int main(int argc, char** argv){
         }
     } catch (const JSON::ParseException& e) {bad_exit(4);}
 
-    try { 
+    try {
         Hero hero{Hero::parse(hero_file)};
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
-            monsters.push_back(Monster::parse(monster_file));        
+            monsters.push_back(Monster::parse(monster_file));
 
         while (hero.isAlive() && !monsters.empty()) {
-            std::cout 
+            std::cout
                 << hero.getName() << "(" << hero.getLevel()<<")"
                 << " vs "
                 << monsters.front().getName()
@@ -65,7 +65,7 @@ int main(int argc, char** argv){
         std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
                   << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
                   << "  DMG: "<<hero.getDamage()<<std::endl
-                  << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
+                  << "  ACD: "<<hero.getAttackCooldown()<<std::endl
                   ;
     } catch (const JSON::ParseException& e) {bad_exit(4);}
     return 0;

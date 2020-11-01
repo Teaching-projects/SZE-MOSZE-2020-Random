@@ -1,30 +1,35 @@
 #include "Monster.h"
 #include "JSON.h"
-#include <fstream>
 
-std::ostream& operator<<(std::ostream& os, const Unit& unit) {
-  os << unit.get_name() << "(HP:" << unit.get_health() << ", DMG:" << unit.get_damage() << ")";
-  return os;
+void Monster::sufferDamage(Monster& monster, const float& damage) {
+  monster.healthPoints -= damage;
+  if (monster.healthPoints < 0) { monster.healthPoints = 0; }
 }
 
-Unit Unit::parse_unit(const std::string& filename) {
-  Json file;
-  file.parse_file(filename);
-  return Unit(file.get_string("name"), file.get_int("hp"), file.get_int("dmg"), file.get_float("cd"));
+void Monster::elapseTime(Monster& monster, const float& t) {
+  monster.cooldownState -= t;
 }
 
-void Unit::attack(Unit& other) {
-  if ((health > 0) && (cd <= 0)) {
-    cd += max_cd;
-    suffer_damage(other, damage);
+void Monster::resetCooldown() {
+  cooldownState += attackCooldown;
+  if (cooldownState > attackCooldown) {
+    cooldownState = attackCooldown;
   }
 }
 
-void Unit::elapse_time(const float& t) {
-  cd -= t;
+void Monster::attack(Monster& other) {
+  if (isAlive() && canHit()) {
+    resetCooldown();
+    sufferDamage(other, damage);
+  }
 }
 
-void Unit::suffer_damage(Unit& unit, const float& damage) {
-  unit.health -= damage;
-  if (unit.health < 0) { unit.health = 0; }
+Monster Monster::parse(const std::string& filename) {
+  JSON file = JSON::parseFromFile(filename);
+  return Monster(
+    file.get<std::string>("name"),
+    file.get<int>("health_points"),
+    file.get<int>("damage"),
+    file.get<float>("attack_cooldown")
+  );
 }

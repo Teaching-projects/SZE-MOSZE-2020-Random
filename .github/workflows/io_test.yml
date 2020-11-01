@@ -14,5 +14,7 @@ jobs:
         run: g++ -Wall -std=c++17 sources/*.cpp -o a.out
 
       - name: Running i/o tests
-        run: ./io_test/attack_test.sh a.out json_files/scenario1.json target_output1.txt io_test/output1.txt
-        run: ./io_test/attack_test.sh a.out json_files/scenario2.json target_output2.txt io_test/output2.txt
+        run: |
+          cd json_files
+          ./../io_test/attack_test.sh ../a.out scenario1.json target_output1.txt ../io_test/output1.txt
+          ./../io_test/attack_test.sh ../a.out scenario2.json target_output2.txt ../io_test/output2.txt

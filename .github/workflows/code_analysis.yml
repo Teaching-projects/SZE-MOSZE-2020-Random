@@ -28,4 +28,6 @@ jobs:
         run: g++-9 -Wall -std=c++17 sources/*.cpp -o a.out -g
 
       - name: Checking for memory leaks
-        run: valgrind --leak-check=full --error-exitcode=1 ./a.out json_files/scenario1.json
+        run: |
+          cd json_files
+          valgrind --leak-check=full --error-exitcode=1 ./../a.out scenario1.json

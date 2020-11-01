@@ -1,6 +1,7 @@
 #include "JSON.h"
-#include <vector>
+#include <list>
 #include <algorithm>
+#include <iostream>
 
 bool is_string(const std::string& str) {
   if ((str.back() == '\"') && (str.front() == '\"')) {
@@ -30,67 +31,76 @@ bool is_int(const std::string& str) {
   return ok;
 }
 
-void Json::parse_raw(const std::string& data) {
-  string_map.clear();
-  float_map.clear();
-  int_map.clear();
+void JSON::append(const std::string& key, const std::string& value) {
+  if (is_string(value)) {
+    string_map[key] = (std::string)value.substr(1, value.size() - 2);
+  }
+  else if (is_float(value)) {
+    float_map[key] = (float)std::stof(value);
+  }
+  else if (is_int(value)) {
+    int_map[key] = (int)std::stoi(value);
+  }
+  else {
+    throw ParseException("Unknown value type! \"" + value + "\"");
+  }
+}
 
-  std::vector<std::string> tags;
-  std::string sep = "{,}";
+JSON JSON::parse_raw(std::string data) {
+  JSON ret;
 
-  if (data.front() != '{') { throw JsonException("Invalid syntax!"); }
+  std::string ws = " \t\n\v\f\r";
+  data.erase(0, data.find_first_not_of(ws));
+  data.erase(data.find_last_not_of(ws) + 1);
 
-  int begin = data.find_first_of(sep) + 1;
-  int end = 0;
-  bool close = false;
-  while (end < (int)data.size() - 1) {
-    if (close) { throw JsonException("Invalid syntax!"); }
+  if (data[0] != '{') { throw ParseException("Missing \"{\" bracket!"); }
+  if (data[data.size() - 1] != '}') { throw ParseException("Missing \"}\" bracket!"); }
 
-    end = data.find_first_of(sep, begin);
+  data.erase(0, 1);
 
-    if (end == -1) { throw JsonException("Invalid syntax!"); }
+  if (data.size() == 0) { throw ParseException("Empty JSON file!"); }
 
-    std::string line = data.substr(begin, end - begin);
+  std::string tag = "";
+  std::string value = "";
 
-    if (data[end] == '}') { close = true; }
-    else { begin = end + 1; }
+  std::list<std::string> tags;
 
-    //processing line
-    int count = 0;
-    for (unsigned i = 0; i < line.size(); ++i) {
-      if (line[i] == ':') { count++; }
-    }
-    if (count != 1) { throw JsonException("Invalid syntax!"); }
-
-    std::string tag = line.substr(0, line.find(":"));
-    std::string value = line.substr(line.find(":") + 1);
-
-    if ((tag.front() != '\"') || (tag.back() != '\"')) { throw JsonException("Invalid syntax!"); }
-
-    tag = tag.substr(1, tag.size() - 2);
-
-    if (tag.size() <= 0) { throw JsonException("Invalid syntax!"); }
-
-    if (value.size() <= 0) { throw JsonException("Invalid syntax!"); }
-
-    if (std::find(tags.begin(), tags.end(), tag) != tags.end()) {
-      throw JsonException("Multiple definition of \"" + tag + "\"!");
+  bool is_tag = true;
+  bool in_quotes = false;
+  for (unsigned i = 0; i < data.size(); ++i) {
+    if (data[i] == '"') { in_quotes = !in_quotes; }
+    if (in_quotes) {
+      if (is_tag) { tag += data[i]; }
+      else { value += data[i]; }
     }
     else {
-      tags.push_back(tag);
-    }
+      if (data[i] == ':') { is_tag = false; }
+      else if (data[i] == ',' || data[i] == '}') {
+        tag = tag.substr(1, tag.size() - 2);
 
-    //read tags
-    if (is_string(value)) {
-      string_map[tag] = (std::string)value.substr(1, value.size() - 2);
-    }
-    else if (is_float(value)) {
-      float_map[tag] = (float)std::stof(value);
-    }
-    else if (is_int(value)) {
-      int_map[tag] = (int)std::stoi(value);
+        if (tag.size() <= 0) { throw ParseException("Invalid tag!"); }
+
+        if (value.size() <= 0) { throw ParseException("Invalid value!"); }
+
+        if (std::find(tags.begin(), tags.end(), tag) != tags.end()) {
+          throw ParseException("Multiple definition of \"" + tag + "\"!");
+        }
+        else { tags.push_back(tag); }
+
+        ret.append(tag, value);
+
+        is_tag = true;
+        tag = "";
+        value = "";
+      }
+      else if (!isspace(data[i])) {
+        if (is_tag) { tag += data[i]; }
+        else { value += data[i]; }
+      }
     }
   }
+  if (!is_tag || in_quotes) { throw ParseException("Invalid end of file!"); }
+  return ret;
 }
 
 std::string clear_file(std::ifstream& file) {
@@ -109,21 +119,23 @@ std::string clear_file(std::ifstream& file) {
   return data;
 }
 
-void Json::parse_file(const std::string& filename) {
+JSON JSON::parseFromFile(const std::string& filename) {
+  JSON ret;
   std::ifstream file(filename);
 
   if (file.is_open()) {
     std::string raw = clear_file(file);
-    parse_raw(raw);
+    ret = parse_raw(raw);
 
     file.close();
   }
   else {
-    throw JsonException("Failed to open file!");
+    throw ParseException("Failed to open file!");
   }
+  return ret;
 }
 
-void Json::parse_stream(std::ifstream& file) {
+void JSON::parse_stream(std::ifstream& file) {
   if (file.is_open()) {
     std::string raw = clear_file(file);
     parse_raw(raw);
@@ -131,12 +143,12 @@ void Json::parse_stream(std::ifstream& file) {
     file.close();
   }
   else {
-    throw JsonException("Invalid stream!");
+    throw ParseException("Invalid stream!");
   }
 }
 
-void Json::parse_string(const std::string& text) {
-  if (text.size() <= 0) { throw JsonException("Parsed string is empty!"); }
+void JSON::parse_string(const std::string& text) {
+  if (text.size() <= 0) { throw ParseException("Parsed string is empty!"); }
 
   std::string sep = "{,}";
   std::string data = "";
@@ -151,29 +163,32 @@ void Json::parse_string(const std::string& text) {
   parse_raw(data);
 }
 
-std::string Json::get_string(const std::string& tag) const {
+template<>
+std::string JSON::get<std::string>(const std::string& tag) const {
   try {
     return string_map.at(tag);
   }
   catch (const std::out_of_range& e) {
-    throw JsonException("Tag \"" + tag + "\" not found!");
+    throw ParseException("Tag \"" + tag + "\" not found!");
   }
 }
 
-float Json::get_float(const std::string& tag) const {
+template<>
+float JSON::get<float>(const std::string& tag) const {
   try {
     return float_map.at(tag);
   }
   catch (const std::out_of_range& e) {
-    throw JsonException("Tag \"" + tag + "\" not found!");
+    throw ParseException("Tag \"" + tag + "\" not found!");
   }
 }
 
-int Json::get_int(const std::string& tag) const {
+template<>
+int JSON::get<int>(const std::string& tag) const {
   try {
     return int_map.at(tag);
   }
   catch (const std::out_of_range& e) {
-    throw JsonException("Tag \"" + tag + "\" not found!");
+    throw ParseException("Tag \"" + tag + "\" not found!");
   }
 }

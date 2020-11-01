@@ -6,24 +6,6 @@
 #include <fstream>
 
 /**
- * \class JsonException
- * \brief An exception class.
- *
- * This is an exception class used by the Json class.
- *
- * \author LengyHELL
- * \version 1.0
- * \date 2020/10/20 21:36
- */
-class JsonException : public std::exception {
-  std::string s;
-public:
-  JsonException(const std::string& ss) : s(ss) {}
-  ~JsonException() throw() {}
-  const char* what() const throw() { return s.c_str(); }
-};
-
-/**
  * \class Json
  * \brief Class for JSON files.
  *
@@ -33,7 +15,7 @@ public:
  * \version 1.0
  * \date 2020/10/20 21:36
  */
-class Json {
+class JSON {
   std::map<std::string, std::string> string_map;  ///< An std::map that stores the loaded string values.
   std::map<std::string, float> float_map;         ///< An std::map that stores the loaded float values.
   std::map<std::string, int> int_map;             ///< An std::map that stores the loaded int values.
@@ -45,9 +27,32 @@ class Json {
    *
    * This function loads cleaned JSON strings to the maps.
    */
-  void parse_raw(const std::string& data);
+  static JSON parse_raw(std::string data);
 
 public:
+  /**
+   * \class JsonException
+   * \brief An exception class.
+   *
+   * This is an exception class used by the Json class.
+   *
+   * \author LengyHELL
+   * \version 1.0
+   * \date 2020/10/20 21:36
+   */
+  class ParseException : public std::exception {
+    std::string s;
+  public:
+    ParseException(const std::string& ss) : s(ss) {}
+    ~ParseException() throw() {}
+    const char* what() const throw() { return s.c_str(); }
+  };
+
+  void append(const std::string& key, const std::string& value);
+
+  unsigned count(const std::string& key) const {
+    return string_map.count(key) + float_map.count(key) + int_map.count(key);
+  }
 
   /**
    * \brief Parsing via filename.
@@ -56,7 +61,7 @@ public:
    *
    * Opens the file specified by the filename parameter and reads the JSON values.
    */
-  void parse_file(const std::string& filename);
+  static JSON parseFromFile(const std::string& filename);
 
   /**
    * \brief Parsing via std::ifstream.
@@ -81,21 +86,24 @@ public:
    * \param tag the gat of the value
    * \exception JsonException is thrown on reading failure
    */
-  std::string get_string(const std::string& tag) const;
+  //std::string get_string(const std::string& tag) const;
 
   /**
    * \brief Gets a loaded float value.
    * \param tag the gat of the value
    * \exception JsonException is thrown on reading failure
    */
-  float get_float(const std::string& tag) const;
+  //float get_float(const std::string& tag) const;
 
   /**
    * \brief Gets a loaded int value.
    * \param tag the gat of the value
    * \exception JsonException is thrown on reading failure
    */
-  int get_int(const std::string& tag) const;
+  //int get_int(const std::string& tag) const;
+
+  template<typename T>
+  T get(const std::string& tag) const;
 };
 
 #endif

@@ -1,10 +1,11 @@
-name: Project workflow
+name: Code analysis
 
 on:
   push
 
 jobs:
-  build-and-test:
+  code-analysis:
+    name: Check code and memory leaks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,8 +15,8 @@ jobs:
 
       - name: Running static code analysis
         run: |
-          cppcheck --enable=warning --error-exitcode=1 *.cpp
-          cppcheck --enable=performance,style --output-file=cppcheck_report.txt *.cpp
+          cppcheck --enable=warning --error-exitcode=1 sources/*.cpp
+          cppcheck --enable=performance,style --output-file=cppcheck_report.txt sources/*.cpp
 
       - name: Creating cppcheck artifacts
         uses: actions/upload-artifact@v2
@@ -24,10 +25,9 @@ jobs:
           path: cppcheck_report.txt
 
       - name: Compiling the code
-        run: g++ -Wall -std=c++17 *.cpp -o a.out -g
+        run: g++-9 -Wall -std=c++17 sources/*.cpp -o a.out -g
 
       - name: Checking for memory leaks
-        run: valgrind --leak-check=full --error-exitcode=1 ./a.out david.json goliath.json
-
-      - name: Running attack test
-        run: ./attack_test.sh a.out attack_test_target.txt
+        run: |
+          cd json_files
+          valgrind --leak-check=full --error-exitcode=1 ./../a.out scenario1.json

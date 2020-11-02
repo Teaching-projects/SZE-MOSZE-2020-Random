@@ -1,0 +1,20 @@
+name: I/O tests
+
+on:
+  push
+
+jobs:
+  io-tests:
+    name: Run i/o tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Compiling the code
+        run: g++-9 -Wall -std=c++17 sources/*.cpp -o a.out
+
+      - name: Running i/o tests
+        run: |
+          cd json_files
+          ./../io_test/attack_test.sh ../a.out scenario1.json target_output1.txt ../io_test/output1.txt
+          ./../io_test/attack_test.sh ../a.out scenario2.json target_output2.txt ../io_test/output2.txt

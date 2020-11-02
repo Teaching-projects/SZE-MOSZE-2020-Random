@@ -1,15 +1,14 @@
-name: push_docs.yml
+name: GitHub pages deploy
 
 on:
   push:
     branches:
-      - jsonparser
       - master
       - gh-pages
 
 jobs:
   deploy:
-    name: Deploy to GitHub Pages
+    name: Deploy to GitHub pages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['unit',['Unit',['../classUnit.html',1,'Unit'],['../classUnit.html#a8e46f663a95736c8002d85ab271a7581',1,'Unit::Unit()'],['../classUnit.html#a0a269b2b347621332d61063c5c1a0a5e',1,'Unit::Unit(const std::string &amp;n, const float &amp;h, const float &amp;d, const float &amp;cd)']]]
+  ['stringmap',['stringMap',['../classJSON.html#aebdfb0b070a1975e09b21e1dc43f74cd',1,'JSON']]],
+  ['sufferdamage',['sufferDamage',['../classMonster.html#a185d21b467af5d70c1cbc5ab79c74fec',1,'Monster']]]
 ];

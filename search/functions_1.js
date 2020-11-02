@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['elapse_5ftime',['elapse_time',['../classUnit.html#a6689c148814b1b375d9ef2e5b57bb429',1,'Unit']]]
+  ['canhit',['canHit',['../classMonster.html#af22f7198f2b84e66de63b052f1da33db',1,'Monster']]],
+  ['count',['count',['../classJSON.html#ab80f66b2e32683ad2b835d2df6fe25a7',1,'JSON']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cd',['cd',['../classUnit.html#ac5e7012f4b0cbc1622fc96e9302c5c11',1,'Unit']]]
+  ['attackcooldown',['attackCooldown',['../classMonster.html#a13d03816ab9e0d0c849a3e8da38f39eb',1,'Monster']]]
 ];

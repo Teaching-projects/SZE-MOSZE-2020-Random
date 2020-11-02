@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['level',['level',['../classPlayer.html#abbbcbbe37c37035ccf18bf89e6d4b3d1',1,'Player']]]
+  ['floatmap',['floatMap',['../classJSON.html#af010439c76a04cbc992cc721f0f67b7e',1,'JSON']]]
 ];

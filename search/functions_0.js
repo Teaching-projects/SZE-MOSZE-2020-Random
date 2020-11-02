@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['attack',['attack',['../classPlayer.html#ad25ea822e33f88ef2088419c3e5c52a0',1,'Player::attack()'],['../classUnit.html#abdf05599794cf5d17dc8337f0a634d33',1,'Unit::attack()']]]
+  ['append',['append',['../classJSON.html#a62ff570ca5dd14608b67dc80fecf9f19',1,'JSON']]],
+  ['attack',['attack',['../classHero.html#ab8c397a986361aec4b024f566c6c76d3',1,'Hero::attack()'],['../classMonster.html#a048f6d741f408efb36706ee1ffdbed9e',1,'Monster::attack()']]]
 ];

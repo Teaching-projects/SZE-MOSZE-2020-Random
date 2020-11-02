@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['string_5fmap',['string_map',['../classJson.html#ae1daa8b955fc64d96e3f92b0d8acfd90',1,'Json']]]
+  ['level',['level',['../classHero.html#a522419694ae71f91a499db6b02c05db3',1,'Hero']]]
 ];

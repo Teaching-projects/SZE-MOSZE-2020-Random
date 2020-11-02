@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['parse_5ffile',['parse_file',['../classJson.html#a79e44cc6ee6195c869efbc5275081411',1,'Json']]],
-  ['parse_5fraw',['parse_raw',['../classJson.html#ac0f5e3918b1bb35ae10cd330ad9682ea',1,'Json']]],
-  ['parse_5fstream',['parse_stream',['../classJson.html#aed7c039ab54db785c6c9d47c4693e83e',1,'Json']]],
-  ['parse_5fstring',['parse_string',['../classJson.html#a31588b46274baa58a01a98d6b7cb93d1',1,'Json']]],
-  ['parse_5funit',['parse_unit',['../classUnit.html#a56bf15f736e48049ec60cd39d5563a02',1,'Unit']]],
-  ['player',['Player',['../classPlayer.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8',1,'Player::Player()'],['../classPlayer.html#aa6cd174eebea510f492c57f8cd0caf90',1,'Player::Player(const std::string &amp;n, const float &amp;h, const float &amp;d, const float &amp;cd)']]]
+  ['get',['get',['../classJSON.html#ac742af6699122fa0d471570fb999c625',1,'JSON']]],
+  ['getattackcooldown',['getAttackCooldown',['../classMonster.html#a2ebe9fe1ba92d2c371227905b238564f',1,'Monster']]],
+  ['getdamage',['getDamage',['../classMonster.html#a87f462af986f54451487c526f6ee44b9',1,'Monster']]],
+  ['gethealthpoints',['getHealthPoints',['../classMonster.html#ab897eb9a4fc929bd1c9eaa14fb6e7cba',1,'Monster']]],
+  ['getlevel',['getLevel',['../classHero.html#ad1998324218180f3c644ab90b2fa89d6',1,'Hero']]],
+  ['getmaxhealthpoints',['getMaxHealthPoints',['../classHero.html#a85bbf53b654cdca19ea6f63d768a0a3e',1,'Hero']]],
+  ['getname',['getName',['../classMonster.html#a28ae1112e37262ce150e3c02465b3dd5',1,'Monster']]]
 ];

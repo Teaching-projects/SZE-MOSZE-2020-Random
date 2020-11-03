@@ -12,9 +12,10 @@ IO_TEST_DIR		:= io_test
 UNIT_TEST_DIR	:= unit_test
 JSON_FILE_DIR	:= json_files
 
+CPPFLAGS := -MMD -MP
 CXXFLAGS := -std=c++17 -Wall -g
 
-.PHONY: all clean
+.PHONY: all clean documentation io-test unit-test static-code-analysis memory-leak-test
 
 all: $(EXE)
 
@@ -22,10 +23,12 @@ $(EXE): $(OBJ)
 	$(CXX) $^ -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $@
+
+-include $(OBJ:.o=.d)
 
 clean:
 	$(RM) -rv $(OBJ_DIR)

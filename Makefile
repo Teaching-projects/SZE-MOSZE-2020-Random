@@ -6,6 +6,7 @@ CXX := g++-9
 EXE := a.out
 SRC := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+DEP := $(OBJ:.o=.d)
 DOX := doxconf
 
 IO_TEST_DIR		:= io_test
@@ -19,16 +20,19 @@ CXXFLAGS := -std=c++17 -Wall -g
 
 all: $(EXE)
 
-$(EXE): $(OBJ)
-	$(CXX) $^ -o $@
+$(EXE): $(OBJ) $(DEP)
+	$(CXX) $(OBJ) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
+$(OBJ_DIR)/%.d: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $(subst .d,.o, $@)
+
 $(OBJ_DIR):
 	mkdir -p $@
 
--include $(OBJ:.o=.d)
+-include $(DEP)
 
 clean:
 	$(RM) -rv $(OBJ_DIR)

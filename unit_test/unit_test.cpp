@@ -1,8 +1,14 @@
+#include "../sources/Monster.h"
+#include "../sources/Hero.h"
 #include "../sources/JSON.h"
 #include <gtest/gtest.h>
 
 #include <fstream>
 #include <string>
+
+TEST(MonsterTest, ) {
+  
+}
 
 TEST(JsonTest, string_parse) {
   JSON test = JSON::parseFromString("{\"key1\":\"string value\", \"key2\":.125, \"key3\":1998, \"key4\":-1.1, \"key5\":-100}");

@@ -1,0 +1,6 @@
+{
+    "name" : "Monster1",
+    "health_points" : 20,
+    "damage" : 5,
+    "attack_cooldown" : 3.5
+}

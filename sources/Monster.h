@@ -31,15 +31,6 @@ protected:
   void sufferDamage(Monster& monster, const float& damage);
 
   /**
-   * \brief Elapse time.
-   * \param monster the Monster type that the elapsed time is applied to
-   * \param t the time to be elapsed
-   *
-   * Modifies the class variables depending on the value of the t parameter.
-   */
-  void elapseTime(Monster& monster, const float& t);
-
-  /**
    * \brief Cooldown reset.
    *
    * Resets the state of the cooldown.
@@ -57,6 +48,14 @@ public:
     name(name), healthPoints(healthPoints), damage(damage), attackCooldown(attackCooldown), cooldownState(attackCooldown) {}
 
   //functions
+
+  /**
+   * \brief Elapse time.
+   * \param t the time to be elapsed
+   *
+   * Modifies the class variables depending on the value of the t parameter.
+   */
+  void elapseTime(const float& t);
 
   /**
    * \brief Check if is alive.

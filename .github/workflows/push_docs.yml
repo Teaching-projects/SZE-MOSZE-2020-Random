@@ -3,7 +3,6 @@ name: GitHub pages deploy
 on:
   push:
     branches:
-      - makefile
       - master
       - gh-pages
 

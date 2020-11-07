@@ -43,7 +43,7 @@ public:
   class ParseException : public std::exception {
     std::string s;
   public:
-    ParseException(const std::string& ss) : s(ss) {}
+    explicit ParseException(const std::string& ss) : s(ss) {}
     ~ParseException() throw() {}
     const char* what() const throw() { return s.c_str(); }
   };

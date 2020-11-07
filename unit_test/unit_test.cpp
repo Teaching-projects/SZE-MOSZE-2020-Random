@@ -7,7 +7,7 @@
 #include <string>
 
 TEST(JsonTest, string_parse) {
-  JSON test = JSON::parseFromString("{\"key1\":\"string value\", \"key2\":.125, \"key3\":1998, \"key4\":-1.1, \"key5\":-100}");
+  JSON test = JSON::parseFromString("{key1:\"string value\", \"key2\":.125, \"key3\":1998, \"key4\":-1.1, \"key5\":-100}");
 
   ASSERT_EQ(test.get<std::string>("key1"), (std::string)"string value");
   ASSERT_EQ(test.get<float>("key2"), (float)0.125);

@@ -1,0 +1,17 @@
+
+    {"base_attack_cooldown" : 1.5,
+    "base_damage" : 10,
+
+                        "base_health_points" : 50,
+                        "cooldown_multiplier_per_level": 0.1,
+
+
+
+
+    "health_point_bonus_per_level" : 5000,                        "name" : "Hero2",
+
+"experience_per_level" : 50,
+
+
+          "damage_bonus_per_level" : 5000
+}

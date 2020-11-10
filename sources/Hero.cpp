@@ -41,7 +41,7 @@ void Hero::fightTilDeath(Monster& other) {
   while (isAlive() && other.isAlive()) {
     attack(other);
     other.attack(*this);
-    elapseTime(*this, 0.1);
-    elapseTime(other, 0.1);
+    elapseTime(0.1);
+    other.elapseTime(0.1);
   }
 }

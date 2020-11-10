@@ -6,15 +6,15 @@ void Monster::sufferDamage(Monster& monster, const float& damage) {
   if (monster.healthPoints < 0) { monster.healthPoints = 0; }
 }
 
-void Monster::elapseTime(Monster& monster, const float& t) {
-  monster.cooldownState -= t;
-}
-
 void Monster::resetCooldown() {
   cooldownState += attackCooldown;
   if (cooldownState > attackCooldown) {
     cooldownState = attackCooldown;
   }
+}
+
+void Monster::elapseTime(const float& t) {
+  cooldownState -= t;
 }
 
 void Monster::attack(Monster& other) {

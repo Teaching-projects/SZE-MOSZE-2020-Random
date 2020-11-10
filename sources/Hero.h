@@ -55,7 +55,7 @@ public:
    *
    * Performs an attack on the Monster type given as a parameter, overloads the base class's attack function.
    */
-  void attack(Monster& other);
+  void attack(Monster& other) override;
 
   /**
    * \brief Fight with another Monster type.

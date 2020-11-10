@@ -32,8 +32,13 @@ bool isInt(const std::string& str) {
   return ok;
 }
 
+void strip(std::string& str, const std::string& strip) {
+  str.erase(0, str.find_first_not_of(strip));
+  str.erase(str.find_last_not_of(strip) + 1);
+}
+
 void JSON::append(const std::string& key, const std::string& value) {
-  if (stringMap.count(key) || floatMap.count(key) || intMap.count(key)) {
+  if (count(key)) {
     throw ParseException("Key \"" + key + "\" already exists!");
   }
   if (isString(value)) {
@@ -56,8 +61,7 @@ unsigned JSON::count(const std::string& key) const {
 
 void JSON::parseRaw(std::string data) {
   std::string ws = " \t\n\v\f\r";
-  data.erase(0, data.find_first_not_of(ws));
-  data.erase(data.find_last_not_of(ws) + 1);
+  strip(data, ws);
 
   if (data[0] != '{') { throw ParseException("Missing \"{\" bracket!"); }
   if (data[data.size() - 1] != '}') { throw ParseException("Missing \"}\" bracket!"); }
@@ -73,20 +77,30 @@ void JSON::parseRaw(std::string data) {
   bool inQuotes = false;
   for (unsigned i = 0; i < data.size(); ++i) {
     if (data[i] == '"') { inQuotes = !inQuotes; }
-    if (inQuotes) {
-      if (isTag) { tag += data[i]; }
-      else { value += data[i]; }
-    }
-    else {
+
+    if (!inQuotes) {
       if (data[i] == ':') { isTag = false; }
       else if (data[i] == ',' || data[i] == '}') {
-        tag = tag.substr(1, tag.size() - 2);
+        strip(tag, ws);
+        strip(value, ws);
 
-        if (tag.size() <= 0) { throw ParseException("Invalid tag!"); }
+        if (isString(tag)) {
+          tag = tag.substr(1, tag.size() - 2);
+        }
+        else {
+          std::cout << "'" << tag << "'" << std::endl;
+          for (const auto& t : tag) {
+            if (isspace(t)) {
+              throw ParseException("Invalid tag!");
+            }
+          }
+        }
 
-        if (value.size() <= 0) { throw ParseException("Invalid value!"); }
+        if (tag.size() == 0) { throw ParseException("Invalid tag!"); }
 
-        if (stringMap.count(tag) || floatMap.count(tag) || intMap.count(tag)) {
+        if (value.size() == 0) { throw ParseException("Invalid value!"); }
+
+        if (count(tag)) {
           throw ParseException("Multiple definition of \"" + tag + "\"!");
         }
 
@@ -96,10 +110,14 @@ void JSON::parseRaw(std::string data) {
         tag = "";
         value = "";
       }
-      else if (!isspace(data[i])) {
+      else {
         if (isTag) { tag += data[i]; }
         else { value += data[i]; }
       }
+    }
+    else {
+      if (isTag) { tag += data[i]; }
+      else { value += data[i]; }
     }
   }
   if (!isTag || inQuotes) { throw ParseException("Invalid end of file!"); }
@@ -139,7 +157,7 @@ JSON JSON::parseFromStream(std::ifstream& file) {
 }
 
 JSON JSON::parseFromString(const std::string& text) {
-  if (text.size() <= 0) { throw ParseException("Input string is empty!"); }
+  if (text.size() == 0) { throw ParseException("Input string is empty!"); }
   JSON ret;
   ret.parseRaw(text);
   return ret;

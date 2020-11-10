@@ -1,5 +1,5 @@
 {
-  "key1" : "this is a string",
+  "key1" : "this, is, a, string",
   "key2" : .333,
   "key3" : 345,
   "key4" : -.425,

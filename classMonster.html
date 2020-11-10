@@ -93,6 +93,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#aa035201c87c807ee552af1f432938a37">Monster</a> (const std::string &amp;<a class="el" href="classMonster.html#ad32633c349f44cfc07b868ed4c27acde">name</a>, const float &amp;<a class="el" href="classMonster.html#a10c396e17ffe148350b70be1078cdc13">healthPoints</a>, const float &amp;<a class="el" href="classMonster.html#a04a3818d48e570bca2021e4bd698bb53">damage</a>, const float &amp;<a class="el" href="classMonster.html#a13d03816ab9e0d0c849a3e8da38f39eb">attackCooldown</a>)</td></tr>
 <tr class="memdesc:aa035201c87c807ee552af1f432938a37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with parameters for the class. <br /></td></tr>
 <tr class="separator:aa035201c87c807ee552af1f432938a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa46778127bf9d2fe4ea6353c7d399f2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#aa46778127bf9d2fe4ea6353c7d399f2a">elapseTime</a> (const float &amp;t)</td></tr>
+<tr class="memdesc:aa46778127bf9d2fe4ea6353c7d399f2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elapse time.  <a href="#aa46778127bf9d2fe4ea6353c7d399f2a">More...</a><br /></td></tr>
+<tr class="separator:aa46778127bf9d2fe4ea6353c7d399f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77ad18c44b3fb2df92b30ece4dc7847b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a77ad18c44b3fb2df92b30ece4dc7847b">isAlive</a> () const</td></tr>
 <tr class="memdesc:a77ad18c44b3fb2df92b30ece4dc7847b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if is alive.  <a href="#a77ad18c44b3fb2df92b30ece4dc7847b">More...</a><br /></td></tr>
 <tr class="separator:a77ad18c44b3fb2df92b30ece4dc7847b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,9 +133,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a185d21b467af5d70c1cbc5ab79c74fec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a185d21b467af5d70c1cbc5ab79c74fec">sufferDamage</a> (<a class="el" href="classMonster.html">Monster</a> &amp;monster, const float &amp;<a class="el" href="classMonster.html#a04a3818d48e570bca2021e4bd698bb53">damage</a>)</td></tr>
 <tr class="memdesc:a185d21b467af5d70c1cbc5ab79c74fec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for dealing damage.  <a href="#a185d21b467af5d70c1cbc5ab79c74fec">More...</a><br /></td></tr>
 <tr class="separator:a185d21b467af5d70c1cbc5ab79c74fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a017ffd49cf442b408a8af9860c5fb4d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a017ffd49cf442b408a8af9860c5fb4d1">elapseTime</a> (<a class="el" href="classMonster.html">Monster</a> &amp;monster, const float &amp;t)</td></tr>
-<tr class="memdesc:a017ffd49cf442b408a8af9860c5fb4d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elapse time.  <a href="#a017ffd49cf442b408a8af9860c5fb4d1">More...</a><br /></td></tr>
-<tr class="separator:a017ffd49cf442b408a8af9860c5fb4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25ce188a4b9c3fa05f43e7fdfddc4b47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a25ce188a4b9c3fa05f43e7fdfddc4b47">resetCooldown</a> ()</td></tr>
 <tr class="memdesc:a25ce188a4b9c3fa05f43e7fdfddc4b47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cooldown reset.  <a href="#a25ce188a4b9c3fa05f43e7fdfddc4b47">More...</a><br /></td></tr>
 <tr class="separator:a25ce188a4b9c3fa05f43e7fdfddc4b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,7 +200,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 </dl>
 <p>Performs an attack on the <a class="el" href="classMonster.html" title="Main class for monsters. ">Monster</a> type given as a parameter. </p>
 
-<p>Reimplemented in <a class="el" href="classHero.html#ab8c397a986361aec4b024f566c6c76d3">Hero</a>.</p>
+<p>Reimplemented in <a class="el" href="classHero.html#a6fab51af9cff28e1063fb64238347ee4">Hero</a>.</p>
 
 </div>
 </div>
@@ -233,44 +233,25 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 
 </div>
 </div>
-<a id="a017ffd49cf442b408a8af9860c5fb4d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a017ffd49cf442b408a8af9860c5fb4d1">&#9670;&nbsp;</a></span>elapseTime()</h2>
+<a id="aa46778127bf9d2fe4ea6353c7d399f2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa46778127bf9d2fe4ea6353c7d399f2a">&#9670;&nbsp;</a></span>elapseTime()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Monster::elapseTime </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classMonster.html">Monster</a> &amp;&#160;</td>
-          <td class="paramname"><em>monster</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const float &amp;&#160;</td>
-          <td class="paramname"><em>t</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Elapse time. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">monster</td><td>the <a class="el" href="classMonster.html" title="Main class for monsters. ">Monster</a> type that the elapsed time is applied to </td></tr>
     <tr><td class="paramname">t</td><td>the time to be elapsed</td></tr>
   </table>
   </dd>

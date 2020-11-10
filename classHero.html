@@ -100,9 +100,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a075873e379a8110174ebc2c767b0ad4e">Hero</a> (const std::string &amp;<a class="el" href="classMonster.html#ad32633c349f44cfc07b868ed4c27acde">name</a>, const float &amp;<a class="el" href="classMonster.html#a10c396e17ffe148350b70be1078cdc13">healthPoints</a>, const float &amp;<a class="el" href="classMonster.html#a04a3818d48e570bca2021e4bd698bb53">damage</a>, const float &amp;<a class="el" href="classMonster.html#a13d03816ab9e0d0c849a3e8da38f39eb">attackCooldown</a>, const float &amp;<a class="el" href="classHero.html#aa9a710826d7fef607da3930a1fb499ca">experiencePerLevel</a>, const float &amp;<a class="el" href="classHero.html#ad7f35b86f7be2752abc2170f1688c08b">healthPointBonusPerLevel</a>, const float &amp;<a class="el" href="classHero.html#a4c27aeb9008236968fd2039ceae61987">damageBonusPerLevel</a>, const float &amp;<a class="el" href="classHero.html#a118b1c64237a48baa6f997d7a7c563df">cooldownMultiplierPerLevel</a>)</td></tr>
 <tr class="memdesc:a075873e379a8110174ebc2c767b0ad4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with parameters for the class. <br /></td></tr>
 <tr class="separator:a075873e379a8110174ebc2c767b0ad4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8c397a986361aec4b024f566c6c76d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#ab8c397a986361aec4b024f566c6c76d3">attack</a> (<a class="el" href="classMonster.html">Monster</a> &amp;other)</td></tr>
-<tr class="memdesc:ab8c397a986361aec4b024f566c6c76d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attack function.  <a href="#ab8c397a986361aec4b024f566c6c76d3">More...</a><br /></td></tr>
-<tr class="separator:ab8c397a986361aec4b024f566c6c76d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fab51af9cff28e1063fb64238347ee4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a6fab51af9cff28e1063fb64238347ee4">attack</a> (<a class="el" href="classMonster.html">Monster</a> &amp;other) override</td></tr>
+<tr class="memdesc:a6fab51af9cff28e1063fb64238347ee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attack function.  <a href="#a6fab51af9cff28e1063fb64238347ee4">More...</a><br /></td></tr>
+<tr class="separator:a6fab51af9cff28e1063fb64238347ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa58a5aa8a12110ebda6b93249a5a355c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#aa58a5aa8a12110ebda6b93249a5a355c">fightTilDeath</a> (<a class="el" href="classMonster.html">Monster</a> &amp;other)</td></tr>
 <tr class="memdesc:aa58a5aa8a12110ebda6b93249a5a355c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fight with another <a class="el" href="classMonster.html" title="Main class for monsters. ">Monster</a> type.  <a href="#aa58a5aa8a12110ebda6b93249a5a355c">More...</a><br /></td></tr>
 <tr class="separator:aa58a5aa8a12110ebda6b93249a5a355c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,6 +123,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#aa035201c87c807ee552af1f432938a37">Monster</a> (const std::string &amp;<a class="el" href="classMonster.html#ad32633c349f44cfc07b868ed4c27acde">name</a>, const float &amp;<a class="el" href="classMonster.html#a10c396e17ffe148350b70be1078cdc13">healthPoints</a>, const float &amp;<a class="el" href="classMonster.html#a04a3818d48e570bca2021e4bd698bb53">damage</a>, const float &amp;<a class="el" href="classMonster.html#a13d03816ab9e0d0c849a3e8da38f39eb">attackCooldown</a>)</td></tr>
 <tr class="memdesc:aa035201c87c807ee552af1f432938a37 inherit pub_methods_classMonster"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with parameters for the class. <br /></td></tr>
 <tr class="separator:aa035201c87c807ee552af1f432938a37 inherit pub_methods_classMonster"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa46778127bf9d2fe4ea6353c7d399f2a inherit pub_methods_classMonster"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#aa46778127bf9d2fe4ea6353c7d399f2a">elapseTime</a> (const float &amp;t)</td></tr>
+<tr class="memdesc:aa46778127bf9d2fe4ea6353c7d399f2a inherit pub_methods_classMonster"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elapse time.  <a href="classMonster.html#aa46778127bf9d2fe4ea6353c7d399f2a">More...</a><br /></td></tr>
+<tr class="separator:aa46778127bf9d2fe4ea6353c7d399f2a inherit pub_methods_classMonster"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77ad18c44b3fb2df92b30ece4dc7847b inherit pub_methods_classMonster"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a77ad18c44b3fb2df92b30ece4dc7847b">isAlive</a> () const</td></tr>
 <tr class="memdesc:a77ad18c44b3fb2df92b30ece4dc7847b inherit pub_methods_classMonster"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if is alive.  <a href="classMonster.html#a77ad18c44b3fb2df92b30ece4dc7847b">More...</a><br /></td></tr>
 <tr class="separator:a77ad18c44b3fb2df92b30ece4dc7847b inherit pub_methods_classMonster"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,9 +196,6 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a185d21b467af5d70c1cbc5ab79c74fec inherit pro_methods_classMonster"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a185d21b467af5d70c1cbc5ab79c74fec">sufferDamage</a> (<a class="el" href="classMonster.html">Monster</a> &amp;monster, const float &amp;<a class="el" href="classMonster.html#a04a3818d48e570bca2021e4bd698bb53">damage</a>)</td></tr>
 <tr class="memdesc:a185d21b467af5d70c1cbc5ab79c74fec inherit pro_methods_classMonster"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for dealing damage.  <a href="classMonster.html#a185d21b467af5d70c1cbc5ab79c74fec">More...</a><br /></td></tr>
 <tr class="separator:a185d21b467af5d70c1cbc5ab79c74fec inherit pro_methods_classMonster"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a017ffd49cf442b408a8af9860c5fb4d1 inherit pro_methods_classMonster"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a017ffd49cf442b408a8af9860c5fb4d1">elapseTime</a> (<a class="el" href="classMonster.html">Monster</a> &amp;monster, const float &amp;t)</td></tr>
-<tr class="memdesc:a017ffd49cf442b408a8af9860c5fb4d1 inherit pro_methods_classMonster"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elapse time.  <a href="classMonster.html#a017ffd49cf442b408a8af9860c5fb4d1">More...</a><br /></td></tr>
-<tr class="separator:a017ffd49cf442b408a8af9860c5fb4d1 inherit pro_methods_classMonster"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25ce188a4b9c3fa05f43e7fdfddc4b47 inherit pro_methods_classMonster"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a25ce188a4b9c3fa05f43e7fdfddc4b47">resetCooldown</a> ()</td></tr>
 <tr class="memdesc:a25ce188a4b9c3fa05f43e7fdfddc4b47 inherit pro_methods_classMonster"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cooldown reset.  <a href="classMonster.html#a25ce188a4b9c3fa05f43e7fdfddc4b47">More...</a><br /></td></tr>
 <tr class="separator:a25ce188a4b9c3fa05f43e7fdfddc4b47 inherit pro_methods_classMonster"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,8 +228,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 <dl class="section version"><dt>Version</dt><dd>1.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020/11/01 17:26 </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab8c397a986361aec4b024f566c6c76d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8c397a986361aec4b024f566c6c76d3">&#9670;&nbsp;</a></span>attack()</h2>
+<a id="a6fab51af9cff28e1063fb64238347ee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fab51af9cff28e1063fb64238347ee4">&#9670;&nbsp;</a></span>attack()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -247,7 +247,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

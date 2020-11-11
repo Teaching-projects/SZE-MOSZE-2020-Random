@@ -14,5 +14,3 @@ runTests
 
 /io_test/current_output*.txt
 cppcheck_report.txt
-
-Dockerfile

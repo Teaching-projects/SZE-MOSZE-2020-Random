@@ -1,0 +1,62 @@
+name: Checking code, running test and deplolying documentation
+
+on:
+  push
+
+jobs:
+  code-analysis:
+    name: Check code and memory leaks
+    runs-on: ubuntu-latest
+    container: lengyhell/mosze:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Running static code analysis
+        run: make static-code-analysis
+
+      - name: Creating cppcheck artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: cppcheck_report
+          path: cppcheck_report.txt
+
+      - name: Checking for memory leaks
+        run: make memory-leak-test
+
+  io-tests:
+    name: Run i/o tests
+    runs-on: ubuntu-latest
+    container: lengyhell/mosze:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Running i/o tests
+        run: make io-test
+
+  deploy:
+    name: Deploy to GitHub pages
+    runs-on: ubuntu-latest
+    container: lengyhell/mosze:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Creating documentation page
+        run: make documentation
+
+      - name: Pushing git subdirectory as branch
+        uses: s0/git-publish-subdir-action@v2.4.0
+        env:
+          REPO: self
+          BRANCH: gh-pages
+          FOLDER: DOCS/html
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  unit-tests:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    container: lengyhell/mosze:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Running unit tests
+        run: make unit-test

@@ -41,18 +41,18 @@ public:
 
   class List {
     struct Node {
-      Node(const std::variant<std::string, float, int>& data) : data(data), prev(nullptr), next(nullptr) {}
+      explicit Node(const std::variant<std::string, float, int>& data) : data(data), prev(nullptr), next(nullptr) {}
       ~Node() {}
 
       std::variant<std::string, float, int> data;
-      Node* prev;
-      Node* next;
+      Node* prev = nullptr;
+      Node* next = nullptr;
     };
 
-    Node* front;
-    Node* back;
+    Node* front = nullptr;
+    Node* back = nullptr;
 
-    unsigned nodes;
+    unsigned nodes = 0;
 
   public:
     List(const List& other);
@@ -69,7 +69,7 @@ public:
     class Iterator {
       Node* act;
     public:
-      Iterator(Node* const act) : act(act) {}
+      explicit Iterator(Node* const act) : act(act) {}
       bool operator!=(const Iterator& other) const;
       const Iterator& operator++();
       const std::variant<std::string, float, int>& operator*() const;

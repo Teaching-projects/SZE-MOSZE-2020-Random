@@ -3,7 +3,10 @@
 
 #include <string>
 #include <map>
+#include <variant>
 #include <fstream>
+
+#include <iostream>
 
 /**
  * \class JSON
@@ -16,19 +19,6 @@
  * \date 2020/11/01 17:36
  */
 class JSON {
-  std::map<std::string, std::string> stringMap;  ///< An std::map that stores the loaded string values.
-  std::map<std::string, float> floatMap;         ///< An std::map that stores the loaded float values.
-  std::map<std::string, int> intMap;             ///< An std::map that stores the loaded int values.
-
-  /**
-   * \brief Function for loading raw data.
-   * \param data an std::string that stores the raw JSON data
-   * \exception JSON::ParseException is thrown on syntax errors
-   *
-   * This function loads a JSON string values to the corresponding maps.
-   */
-  void parseRaw(std::string data);
-
 public:
   /**
    * \class JSON::ParseException
@@ -48,24 +38,84 @@ public:
     const char* what() const throw() { return s.c_str(); }
   };
 
-  /**
-   * \brief Append the maps.
-   * \param key the key of the to be added value
-   * \param value the value that belongs to the key
-   * \exception JSON::ParseException is thrown on unknown value type
-   *
-   * Appends the class maps with the specified key value pair.
-   */
-  void append(const std::string& key, const std::string& value);
+
+  class List {
+    struct Node {
+      Node(const std::variant<std::string, float, int>& data) : data(data), prev(nullptr), next(nullptr) {}
+      ~Node() {}
+
+      std::variant<std::string, float, int> data;
+      Node* prev;
+      Node* next;
+    };
+
+    Node* front;
+    Node* back;
+
+    unsigned nodes;
+
+  public:
+    List(const List& other);
+    List() : front(nullptr), back(nullptr), nodes(0) {}
+    ~List() { clear(); }
+
+    List& operator=(const List& other);
+
+    void pushBack(const std::variant<std::string, float, int>& data);
+    bool popBack();
+    void clear();
+    const unsigned& size() const { return nodes; }
+
+    class Iterator {
+      Node* act;
+    public:
+      Iterator(Node* const act) : act(act) {}
+      bool operator!=(const Iterator& other) const;
+      const Iterator& operator++();
+      const std::variant<std::string, float, int>& operator*() const;
+    };
+
+    Iterator begin() const;
+    Iterator end() const;
+  };
+
+private:
+
+  std::map<std::string, std::string> stringMap;  ///< An std::map that stores the loaded string values.
+  std::map<std::string, float> floatMap;         ///< An std::map that stores the loaded float values.
+  std::map<std::string, int> intMap;             ///< An std::map that stores the loaded int values.
+  std::map<std::string, List> listMap;
 
   /**
-   * \brief Check for existing key.
-   * \param key the key to look for
+   * \brief Function for loading raw data.
+   * \param data an std::string that stores the raw JSON data
+   * \exception JSON::ParseException is thrown on syntax errors
+   *
+   * This function loads a JSON string values to the corresponding maps.
+   */
+  void parseRaw(std::string data);
+
+public:
+
+  /**
+   * \brief Append the maps.
+   * \param tag the tag of the to be added value
+   * \param value the value that belongs to the tag
+   * \exception JSON::ParseException is thrown on unknown value type
+   *
+   * Appends the class maps with the specified tag value pair.
+   */
+  template<typename T>
+  void append(const std::string& tag, const T& value);
+
+  /**
+   * \brief Check for existing tag.
+   * \param tag the tag to look for
    * \return unsigned
    *
-   * Checks for a key and returns 0 if not and 1 if the key is existing.
+   * Checks for a tag and returns 0 if not and 1 if the tag is existing.
    */
-  unsigned count(const std::string& key) const;
+  unsigned count(const std::string& tag) const;
 
   /**
    * \brief Parsing via filename.
@@ -99,13 +149,13 @@ public:
 
   /**
    * \brief Geting value.
-   * \param tag the key of the JSON value
+   * \param tag the tag of the JSON value
    * \tparam T describes the type to get
    * \arg int
    * \arg std::string
    * \arg float
    * \return T specified type
-   * \exception JSON::ParseException is thrown if the specified key value is not found
+   * \exception JSON::ParseException is thrown if the specified tag value is not found
    *
    * Gets the specified type defined by the function call from the JSON object maps and returns its value.
    */

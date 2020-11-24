@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['monster_65',['Monster',['../classMonster.html#a3dfc253fbec8331d42ac13c20bf9425f',1,'Monster::Monster()'],['../classMonster.html#aa035201c87c807ee552af1f432938a37',1,'Monster::Monster(const std::string &amp;name, const float &amp;healthPoints, const float &amp;damage, const float &amp;attackCooldown)']]]
+  ['isalive_79',['isAlive',['../classMonster.html#a77ad18c44b3fb2df92b30ece4dc7847b',1,'Monster']]],
+  ['iterator_80',['Iterator',['../classJSON_1_1List_1_1Iterator.html#aed5fba3c17a32d2ce279bbca7dd09ad9',1,'JSON::List::Iterator']]]
 ];

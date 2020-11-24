@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['stringmap_41',['stringMap',['../classJSON.html#aebdfb0b070a1975e09b21e1dc43f74cd',1,'JSON']]],
-  ['sufferdamage_42',['sufferDamage',['../classMonster.html#a185d21b467af5d70c1cbc5ab79c74fec',1,'Monster']]]
+  ['resetcooldown_50',['resetCooldown',['../classMonster.html#a25ce188a4b9c3fa05f43e7fdfddc4b47',1,'Monster']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['attackcooldown_73',['attackCooldown',['../classMonster.html#a13d03816ab9e0d0c849a3e8da38f39eb',1,'Monster']]]
+  ['attackcooldown_98',['attackCooldown',['../classMonster.html#a13d03816ab9e0d0c849a3e8da38f39eb',1,'Monster']]]
 ];

@@ -42,12 +42,13 @@ documentation:
 	doxygen $(DOX)
 
 io-test: all
-	cd $(JSON_FILE_DIR) && \
+	@cd $(JSON_FILE_DIR) && \
 	../$(EXE) scenario1.json > ../$(IO_TEST_DIR)/current_output1.txt && \
 	../$(EXE) scenario2.json > ../$(IO_TEST_DIR)/current_output2.txt
-	cd $(IO_TEST_DIR) && \
+	@cd $(IO_TEST_DIR) && \
 	diff output1.txt current_output1.txt && \
-	diff output2.txt current_output2.txt
+	diff output2.txt current_output2.txt && \
+	echo "I/O test succesful!"
 
 unit-test:
 	cd $(UNIT_TEST_DIR) && \
@@ -61,5 +62,5 @@ static-code-analysis:
 
 memory-leak-test: all
 	cd $(JSON_FILE_DIR) && \
-	valgrind --leak-check=full --error-exitcode=1 ./../$(EXE) scenario1.json && \
-	valgrind --leak-check=full --error-exitcode=1 ./../$(EXE) scenario2.json
+	valgrind --leak-check=full --track-origins=yes --error-exitcode=1 ./../$(EXE) scenario1.json && \
+	valgrind --leak-check=full --track-origins=yes --error-exitcode=1 ./../$(EXE) scenario2.json

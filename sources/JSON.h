@@ -3,7 +3,10 @@
 
 #include <string>
 #include <map>
+#include <variant>
 #include <fstream>
+
+#include <iostream>
 
 /**
  * \class JSON
@@ -12,23 +15,10 @@
  * Parses a JSON file from different sources, and uses functions to read its values.
  *
  * \author LengyHELL
- * \version 1.1
- * \date 2020/11/01 17:36
+ * \version 1.2
+ * \date 2020/11/24 15:47
  */
 class JSON {
-  std::map<std::string, std::string> stringMap;  ///< An std::map that stores the loaded string values.
-  std::map<std::string, float> floatMap;         ///< An std::map that stores the loaded float values.
-  std::map<std::string, int> intMap;             ///< An std::map that stores the loaded int values.
-
-  /**
-   * \brief Function for loading raw data.
-   * \param data an std::string that stores the raw JSON data
-   * \exception JSON::ParseException is thrown on syntax errors
-   *
-   * This function loads a JSON string values to the corresponding maps.
-   */
-  void parseRaw(std::string data);
-
 public:
   /**
    * \class JSON::ParseException
@@ -49,23 +39,130 @@ public:
   };
 
   /**
-   * \brief Append the maps.
-   * \param key the key of the to be added value
-   * \param value the value that belongs to the key
-   * \exception JSON::ParseException is thrown on unknown value type
+   * \class JSON::List
+   * \brief Used for reading lists.
    *
-   * Appends the class maps with the specified key value pair.
+   * This is a list class used by the JSON class. Implements an iterable linked list, that is used to read list datatype from JSON files.
+   *
+   * \author LengyHELL
+   * \version 1.0
+   * \date 2020/11/24 15:52
    */
-  void append(const std::string& key, const std::string& value);
+  class List {
+    struct Node {
+      explicit Node(const std::variant<std::string, float, int>& data) : data(data), prev(nullptr), next(nullptr) {}
+      ~Node() {}
+
+      std::variant<std::string, float, int> data;
+      Node* prev = nullptr;
+      Node* next = nullptr;
+    };
+
+    Node* front = nullptr;
+    Node* back = nullptr;
+
+    unsigned nodes = 0;
+
+  public:
+    /// Copy constructor.
+    List(const List& other);
+
+    /// Default constructor.
+    List() : front(nullptr), back(nullptr), nodes(0) {}
+
+    /// Destructor.
+    ~List() { clear(); }
+
+    /// Overloaded assignment operator.
+    List& operator=(const List& other);
+
+    /**
+     * \brief Appending function.
+     * \param data an std::variant that describes the given type to be added
+     *
+     * This function adds the given data parameter to the back of the list.
+     */
+    void pushBack(const std::variant<std::string, float, int>& data);
+
+    /// Removes the last element of the list.
+    bool popBack();
+
+    /// Clears the list of its elements.
+    void clear();
+
+    /// Gives the size of the list.
+    const unsigned& size() const { return nodes; }
+
+    /**
+     * \class JSON::List::Iterator
+     * \brief Iterator class.
+     *
+     * An iterator class used for foreach type for cycle.
+     *
+     * \author LengyHELL
+     * \version 1.0
+     * \date 2020/11/24 15:55
+     */
+    class Iterator {
+      Node* act;
+    public:
+
+      /// Constructs an Iterator.
+      explicit Iterator(Node* const act) : act(act) {}
+
+      /// Overload of not equal operator.
+      bool operator!=(const Iterator& other) const;
+
+      /// Moves the iterator to the next element.
+      const Iterator& operator++();
+
+      /// Dereferences the value on the iterator's position.
+      const std::variant<std::string, float, int>& operator*() const;
+    };
+
+    /// Returns the beginning iterator of the list.
+    Iterator begin() const;
+
+    /// Returns the ending iterator of the list.
+    Iterator end() const;
+  };
+
+private:
+
+  std::map<std::string, std::string> stringMap;  ///< An std::map that stores the loaded string values.
+  std::map<std::string, float> floatMap;         ///< An std::map that stores the loaded float values.
+  std::map<std::string, int> intMap;             ///< An std::map that stores the loaded int values.
+  std::map<std::string, List> listMap;           ///< An std::map that stores the loaded lists.
 
   /**
-   * \brief Check for existing key.
-   * \param key the key to look for
+   * \brief Function for loading raw data.
+   * \param data an std::string that stores the raw JSON data
+   * \exception JSON::ParseException is thrown on syntax errors
+   *
+   * This function loads a JSON string values to the corresponding maps.
+   */
+  void parseRaw(std::string data);
+
+public:
+
+  /**
+   * \brief Append the maps.
+   * \param tag the tag of the to be added value
+   * \param value the value that belongs to the tag
+   *
+   * Appends the class maps with the specified tag value pair.
+   */
+  template<typename T>
+  void append(const std::string& tag, const T& value);
+
+  /**
+   * \brief Check for existing tag.
+   * \param tag the tag to look for
    * \return unsigned
    *
-   * Checks for a key and returns 0 if not and 1 if the key is existing.
+   * Checks for a tag and returns 0 if not and 1 if the tag is existing.
    */
-  unsigned count(const std::string& key) const;
+  unsigned count(const std::string& tag) const;
 
   /**
    * \brief Parsing via filename.
@@ -99,13 +196,14 @@ public:
 
   /**
    * \brief Geting value.
-   * \param tag the key of the JSON value
+   * \param tag the tag of the JSON value
    * \tparam T describes the type to get
    * \arg int
    * \arg std::string
    * \arg float
+   * \arg JSON::List
    * \return T specified type
-   * \exception JSON::ParseException is thrown if the specified key value is not found
+   * \exception JSON::ParseException is thrown if the specified tag value is not found
    *
    * Gets the specified type defined by the function call from the JSON object maps and returns its value.
    */

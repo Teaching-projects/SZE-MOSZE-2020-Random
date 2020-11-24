@@ -1,7 +1,6 @@
 #include "JSON.h"
 #include <list>
 #include <algorithm>
-#include <iostream>
 #include <sstream>
 
 bool isString(const std::string& str) {
@@ -37,26 +36,40 @@ void strip(std::string& str, const std::string& strip) {
   str.erase(str.find_last_not_of(strip) + 1);
 }
 
-void JSON::append(const std::string& key, const std::string& value) {
-  if (count(key)) {
-    throw ParseException("Key \"" + key + "\" already exists!");
+template<>
+void JSON::append<std::string>(const std::string& tag, const std::string& value) {
+  if (count(tag)) {
+    throw ParseException("Tag \"" + tag + "\" already exists!");
   }
-  if (isString(value)) {
-    stringMap[key] = (std::string)value.substr(1, value.size() - 2);
-  }
-  else if (isFloat(value)) {
-    floatMap[key] = (float)std::stof(value);
-  }
-  else if (isInt(value)) {
-    intMap[key] = (int)std::stoi(value);
-  }
-  else {
-    throw ParseException("Unknown value type! \"" + value + "\"");
-  }
+  stringMap[tag] = value;
 }
 
-unsigned JSON::count(const std::string& key) const {
-  return stringMap.count(key) + floatMap.count(key) + intMap.count(key);
+template<>
+void JSON::append<float>(const std::string& tag, const float& value) {
+  if (count(tag)) {
+    throw ParseException("Tag \"" + tag + "\" already exists!");
+  }
+  floatMap[tag] = value;
+}
+
+template<>
+void JSON::append<int>(const std::string& tag, const int& value) {
+  if (count(tag)) {
+    throw ParseException("Tag \"" + tag + "\" already exists!");
+  }
+  intMap[tag] = value;
+}
+
+template<>
+void JSON::append<JSON::List>(const std::string& tag, const JSON::List& value) {
+  if (count(tag)) {
+    throw ParseException("Tag \"" + tag + "\" already exists!");
+  }
+  listMap[tag] = JSON::List(value);
+}
+
+unsigned JSON::count(const std::string& tag) const {
+  return stringMap.count(tag) + floatMap.count(tag) + intMap.count(tag) + listMap.count(tag);
 }
 
 void JSON::parseRaw(std::string data) {
@@ -75,40 +88,71 @@ void JSON::parseRaw(std::string data) {
 
   bool isTag = true;
   bool inQuotes = false;
+  bool inList = false;
+  JSON::List current_list;
   for (unsigned i = 0; i < data.size(); ++i) {
     if (data[i] == '"') { inQuotes = !inQuotes; }
 
     if (!inQuotes) {
       if (data[i] == ':') { isTag = false; }
-      else if (data[i] == ',' || data[i] == '}') {
-        strip(tag, ws);
+      else if (data[i] == '[') { inList = true; }
+      else if (data[i] == ',' || data[i] == '}' || data[i] == ']') {
         strip(value, ws);
 
-        if (isString(tag)) {
-          tag = tag.substr(1, tag.size() - 2);
+        if (inList) {
+          if (value.size() == 0) { throw ParseException("Invalid value!"); }
+
+          if (data[i] == '}') { throw ParseException("Invalid end of file!"); }
+          if (data[i] == ']') { inList = false; }
+
+
+          if (isString(value)) {
+            value = value.substr(1, value.size() - 2);
+            current_list.pushBack(value);
+          }
+          else if (isFloat(value)) {
+            current_list.pushBack(std::stof(value));
+          }
+          else if (isInt(value)) {
+            current_list.pushBack(std::stoi(value));
+          }
+          else { throw ParseException("Unknown value type! \"" + value + "\""); }
+
+          value = "";
         }
         else {
-          std::cout << "'" << tag << "'" << std::endl;
-          for (const auto& t : tag) {
-            if (isspace(t)) {
-              throw ParseException("Invalid tag!");
+          if ((value.size() == 0) && (current_list.size() == 0)) { throw ParseException("Invalid value!"); }
+
+          if (data[i] == ']') { throw ParseException("Invalid end of list!"); }
+
+          strip(tag, ws);
+          if (isString(tag)) {
+            tag = tag.substr(1, tag.size() - 2);
+          }
+          else {
+            for (const auto& t : tag) {
+              if (isspace(t)) {
+                throw ParseException("Invalid tag!");
+              }
             }
           }
+          if (tag.size() == 0) { throw ParseException("Invalid tag!"); }
+
+          if (count(tag)) {
+            throw ParseException("Multiple definition of \"" + tag + "\"!");
+          }
+
+          if (current_list.size() > 0) { append<JSON::List>(tag, current_list); }
+          else if (isString(value)) { append<std::string>(tag, value.substr(1, value.size() - 2)); }
+          else if (isFloat(value)) { append<float>(tag, std::stof(value)); }
+          else if (isInt(value)) { append<int>(tag, std::stoi(value)); }
+          else { throw ParseException("Unknown value type! \"" + value + "\""); }
+
+          isTag = true;
+          tag = "";
+          value = "";
+          current_list.clear();
         }
-
-        if (tag.size() == 0) { throw ParseException("Invalid tag!"); }
-
-        if (value.size() == 0) { throw ParseException("Invalid value!"); }
-
-        if (count(tag)) {
-          throw ParseException("Multiple definition of \"" + tag + "\"!");
-        }
-
-        append(tag, value);
-
-        isTag = true;
-        tag = "";
-        value = "";
       }
       else {
         if (isTag) { tag += data[i]; }
@@ -187,6 +231,16 @@ template<>
 int JSON::get<int>(const std::string& tag) const {
   try {
     return intMap.at(tag);
+  }
+  catch (const std::out_of_range& e) {
+    throw ParseException("Tag \"" + tag + "\" not found!");
+  }
+}
+
+template<>
+JSON::List JSON::get<JSON::List>(const std::string& tag) const {
+  try {
+    return listMap.at(tag);
   }
   catch (const std::out_of_range& e) {
     throw ParseException("Tag \"" + tag + "\" not found!");

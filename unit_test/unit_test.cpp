@@ -7,13 +7,20 @@
 #include <string>
 
 TEST(JsonTest, string_parse) {
-  JSON test = JSON::parseFromString("{key1:\"string value\", \"key2\":.125, \"key3\":1998, \"key4\":-1.1, \"key5\":-100}");
+  JSON test = JSON::parseFromString("{key1:\"string value\", \"key2\":.125, \"key3\":1998, \"key4\":-1.1, \"key5\":-100, \"key6\":[1,2,3,4, 5]}");
 
   ASSERT_EQ(test.get<std::string>("key1"), (std::string)"string value");
   ASSERT_EQ(test.get<float>("key2"), (float)0.125);
   ASSERT_EQ(test.get<int>("key3"), (int)1998);
   ASSERT_EQ(test.get<float>("key4"), (float)-1.1);
   ASSERT_EQ(test.get<int>("key5"), (int)-100);
+
+  JSON::List list = test.get<JSON::List>("key6");
+  int it = 1;
+  for (const auto& l : list) {
+    ASSERT_EQ(std::get<int>(l), it);
+    ++it;
+  }
 }
 
 TEST(JsonTest, file_parse) {
@@ -27,6 +34,13 @@ TEST(JsonTest, file_parse) {
   ASSERT_EQ(test.get<std::string>("key6"), (std::string)"value");
   ASSERT_EQ(test.get<float>("key7"), (float)-0.5);
   ASSERT_EQ(test.get<float>("key8"), (float)3.14);
+
+  JSON::List list = test.get<JSON::List>("key9");
+  int it = 1;
+  for (const auto& l : list) {
+    ASSERT_EQ(std::get<int>(l), it);
+    ++it;
+  }
 }
 
 TEST(JsonTest, stream_parse) {
@@ -41,6 +55,13 @@ TEST(JsonTest, stream_parse) {
   ASSERT_EQ(test.get<std::string>("key6"), (std::string)"value");
   ASSERT_EQ(test.get<float>("key7"), (float)-0.5);
   ASSERT_EQ(test.get<float>("key8"), (float)3.14);
+
+  JSON::List list = test.get<JSON::List>("key9");
+  int it = 1;
+  for (const auto& l : list) {
+    ASSERT_EQ(std::get<int>(l), it);
+    ++it;
+  }
 }
 
 TEST(JsonTest, flexibility_test) {
@@ -64,6 +85,31 @@ TEST(JsonTest, flexibility_test) {
   for (int i = 0; i < 2; ++i) {
     std::string key = "key" + std::to_string(ints[i]);
     ASSERT_EQ(test1.get<int>(key), test2.get<int>(key));
+  }
+
+  int arr1[9];
+  int arr2[9];
+
+  JSON::List list = test1.get<JSON::List>("key9");
+  int it = 0;
+  for (const auto& l : list) {
+    arr1[it] = std::get<int>(l);
+    std::cerr << it << std::endl;
+    ++it;
+  }
+  std::cerr << "done" << std::endl;
+
+  list = test2.get<JSON::List>("key9");
+  it = 0;
+  for (const auto& l : list) {
+    arr2[it] = std::get<int>(l);
+    std::cerr << it << std::endl;
+    ++it;
+  }
+  std::cerr << "done" << std::endl;
+
+  for (int i = 0; i < 9; ++i) {
+    ASSERT_EQ(arr1[i], arr2[i]);
   }
 }
 

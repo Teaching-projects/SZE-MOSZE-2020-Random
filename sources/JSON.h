@@ -116,7 +116,7 @@ public:
       /// Moves the iterator to the next element.
       const Iterator& operator++();
 
-      /// Dereferences the value on the iterator's position.current
+      /// Dereferences the value on the iterator's position.
       const std::variant<std::string, float, int>& operator*() const;
     };
 

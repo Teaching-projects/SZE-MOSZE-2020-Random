@@ -5,6 +5,7 @@ JSON::List::List(const List& other) : front(nullptr), back(nullptr), nodes(0) {
 }
 
 JSON::List& JSON::List::operator=(const List& other) {
+  clear();
   for (const auto& o : other) {
     pushBack(o);
   }

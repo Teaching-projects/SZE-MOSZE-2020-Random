@@ -14,9 +14,13 @@ private:
   std::vector<std::vector<type>> mapData;
 
 public:
+  Map() {}
   Map(const std::string& filename);
 
   type get(const int& x, const int& y) const;
+
+  int getWidth() const { return width; }
+  int getHeight() const { return height; }
 };
 
 #endif

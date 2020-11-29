@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include <string>
-#include <list>
+#include <vector>
 
 #include "Map.h"
 #include "Monster.h"
@@ -22,7 +22,9 @@ class Game {
 
   Map gameMap;
   GameHero gameHero;
-  std::list<GameMonster> gameMonsters;
+  std::vector<GameMonster> gameMonsters;
+
+  bool running = false;
 
   void draw() const;
 

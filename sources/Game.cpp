@@ -61,5 +61,40 @@ void Game::putMonster(Monster monster, int x, int y) {
 }
 
 void Game::run() {
-  draw();
+  running = true;
+  while (running) {
+    int i = 0;
+    for (auto& m : gameMonsters) {
+      if ((m.x == gameHero.x) && (m.y == gameHero.y)) {
+        gameHero.hero.fightTilDeath(m.monster);
+
+        if (!m.monster.isAlive()) {
+          gameMonsters.erase(gameMonsters.begin() + i);
+        }
+        else { running = false; }
+      }
+
+      ++i;
+    }
+
+    if (running) {
+      draw();
+
+      std::string dir;
+      std::cin >> dir;
+
+      int xStep = 0;
+      int yStep = 0;
+      if (dir == "north") { yStep = -1; }
+      else if (dir == "south") { yStep = 1; }
+      else if (dir == "east") { xStep = 1; }
+      else if (dir == "west") { xStep = -1; }
+      else if (dir == "exit") { running = false; }
+
+      if (gameMap.get(gameHero.x + xStep, gameHero.y + yStep) == Map::Free) {
+        gameHero.y += yStep;
+        gameHero.x += xStep;
+      }
+    }
+  }
 }

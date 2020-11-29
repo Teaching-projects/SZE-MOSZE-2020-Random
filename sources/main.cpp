@@ -10,6 +10,8 @@
 #include "JSON.h"
 #include "Hero.h"
 #include "Monster.h"
+#include "Map.h"
+#include "Game.h"
 
 
 
@@ -44,6 +46,11 @@ int main(int argc, char** argv){
               monster_files.push_back(std::get<std::string>(monster_file));}
         }
     } catch (const JSON::ParseException& e) {std::cerr<<e.what()<<std::endl;bad_exit(4);}
+
+    Game game("../maps/map1");
+    game.putHero(Hero::parse(hero_file), 1, 1);
+    game.putMonster(Monster::parse(monster_files.front()), 1, 2);
+    game.run();
 
     try {
         Hero hero{Hero::parse(hero_file)};

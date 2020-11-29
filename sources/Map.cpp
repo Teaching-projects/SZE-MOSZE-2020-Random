@@ -32,5 +32,17 @@ Map::Map(const std::string& filename) {
 }
 
 Map::type Map::get(const int& x, const int& y) const {
-  return Wall;
+  if ((x >= 0) && (y >= 0) && (x < width) && (y < height)) {
+    if (x >= (int)mapData[y].size()) {
+      //std::cerr << "maybe out of bounds exception" << std::endl;
+      return Wall;
+    }
+    else {
+      return mapData[y][x];
+    }
+  }
+  else {
+    std::cerr << "out of bounds exception" << std::endl;
+    return Wall;
+  }
 }

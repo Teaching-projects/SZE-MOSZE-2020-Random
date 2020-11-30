@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['json_64',['JSON',['../classJSON.html',1,'']]]
+  ['hero_75',['Hero',['../classHero.html',1,'']]]
 ];

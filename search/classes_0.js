@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['game_59',['Game',['../classGame.html',1,'']]],
-  ['gamehero_60',['GameHero',['../structGame_1_1GameHero.html',1,'Game']]],
-  ['gamemonster_61',['GameMonster',['../structGame_1_1GameMonster.html',1,'Game']]]
+  ['alreadyhasheroexception_68',['AlreadyHasHeroException',['../classGame_1_1AlreadyHasHeroException.html',1,'Game']]],
+  ['alreadyhasunitsexception_69',['AlreadyHasUnitsException',['../classGame_1_1AlreadyHasUnitsException.html',1,'Game']]]
 ];

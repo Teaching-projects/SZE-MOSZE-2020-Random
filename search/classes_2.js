@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['iterator_63',['Iterator',['../classJSON_1_1List_1_1Iterator.html',1,'JSON::List']]]
+  ['game_71',['Game',['../classGame.html',1,'']]],
+  ['gamealreadystartedexception_72',['GameAlreadyStartedException',['../classGame_1_1GameAlreadyStartedException.html',1,'Game']]],
+  ['gamehero_73',['GameHero',['../structGame_1_1GameHero.html',1,'Game']]],
+  ['gamemonster_74',['GameMonster',['../structGame_1_1GameMonster.html',1,'Game']]]
 ];

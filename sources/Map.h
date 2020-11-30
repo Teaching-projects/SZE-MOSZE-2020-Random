@@ -8,6 +8,24 @@ class Map {
 public:
   enum type { Wall, Free };
 
+  class WrongIndexException : public std::exception {
+  public:
+    ~WrongIndexException() throw() {}
+    const char* what() const throw() { return "Wrong index."; }
+  };
+
+  class InvalidFileException : public std::exception {
+  public:
+    ~InvalidFileException() throw() {}
+    const char* what() const throw() { return "Invalid file."; }
+  };
+
+  class FileNotFoundException : public std::exception {
+  public:
+    ~FileNotFoundException() throw() {}
+    const char* what() const throw() { return "Requested file not found."; }
+  };
+
 private:
   int width = 0;
   int height = 0;

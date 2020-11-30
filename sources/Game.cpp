@@ -2,12 +2,28 @@
 
 #include "Game.h"
 
+/*
+╔════════════════════════════════════════╗
+║████████████████████████████████████████║
+║██░░░░░░░░MM░░░░░░░░░░░░░░M░░░████M░████║
+║██░░M░░░░░████████MM░░██████████░░MM████║
+║██░░░░░░M░██████████MM░░████░░░░░░MM████║
+║██░░┣┫░░░░████████████MM░░░░MM██████████║
+║████████████████████████████████████████║
+╚════════════════════════════════════════╝
+*/
+
 void Game::draw() const {
-  std::string text = "";
   int width = gameMap.getWidth();
   int height = gameMap.getHeight();
 
+  std::string text = "╔";
+  for (int i = 0; i < width * 2; ++i) { text += "═"; }
+  text += "╗\n";
+
   for (int y = 0; y < height; ++y) {
+    text += "║";
+
     for (int x = 0; x < width; ++x) {
 
       if (gameMap.get(x, y) == Map::Free) {
@@ -28,29 +44,52 @@ void Game::draw() const {
       }
       else { text += "██"; }
     }
-    text += "\n";
+    text += "║\n";
   }
 
-  std::cout << text;
+  text += "╚";
+  for (int i = 0; i < width * 2; ++i) { text += "═"; }
+  text += "╝";
+
+  std::cout << text << std::endl;
 }
 
 void Game::setMap(Map map) {
-  gameMap = map;
+  if (running) { throw GameAlreadyStartedException(); }
+
+  if ((gameHero.x < 0) && (gameHero.y < 0) && (gameMonsters.size() == 0)) {
+    gameMap = map;
+  }
+  else {
+    throw OccupiedException();
+  }
 }
 
 void Game::putHero(Hero hero, int x, int y) {
+  if (running) { throw GameAlreadyStartedException(); }
+
+  if ((gameMap.getWidth() <= 0) || (gameMap.getHeight() <= 0)) {
+    throw Map::WrongIndexException();
+  }
+
   if ((gameHero.x < 0) || (gameHero.y < 0)) {
     if (gameMap.get(x, y) == Map::Free) {
       gameHero.hero = hero;
       gameHero.x = x;
       gameHero.y = y;
     }
-    else { std::cerr << "putting on wall exception" << std::endl; }
+    else { throw PuttingOnWallException(); }
   }
-  else { std::cerr << "hero already defined exception" << std::endl; }
+  else { throw AlreadyHasHeroException(); }
 }
 
 void Game::putMonster(Monster monster, int x, int y) {
+  if (running) { throw GameAlreadyStartedException(); }
+
+  if ((gameMap.getWidth() <= 0) || (gameMap.getHeight() <= 0)) {
+    throw Map::WrongIndexException();
+  }
+
   if (gameMap.get(x, y) == Map::Free) {
     GameMonster temp;
     temp.monster = monster;
@@ -58,27 +97,46 @@ void Game::putMonster(Monster monster, int x, int y) {
     temp.y = y;
     gameMonsters.push_back(temp);
   }
+  else { throw PuttingOnWallException(); }
 }
 
 void Game::run() {
+  if (running) { throw GameAlreadyStartedException(); }
+
+  if ((gameHero.x < 0) && (gameHero.y < 0) && (gameMonsters.size() == 0)) {
+    throw NotInitializedException();
+  }
+
   running = true;
   while (running) {
-    int i = 0;
-    for (auto& m : gameMonsters) {
+    for (int i = 0; (i < (int)gameMonsters.size()) && running;) {
+      GameMonster m = gameMonsters[i];
+
       if ((m.x == gameHero.x) && (m.y == gameHero.y)) {
         gameHero.hero.fightTilDeath(m.monster);
+        std::cout << m.monster.getName() << std::endl;
 
         if (!m.monster.isAlive()) {
           gameMonsters.erase(gameMonsters.begin() + i);
         }
         else { running = false; }
       }
+      else { ++i; }
+    }
 
-      ++i;
+    draw();
+
+    if (running) {
+      if (gameMonsters.size() == 0) {
+        running = false;
+        std::cout << gameHero.hero.getName() << " cleared the map." << std::endl;
+      }
+    }
+    else {
+      std::cout << gameHero.hero.getName() << " died." << std::endl;
     }
 
     if (running) {
-      draw();
 
       std::string dir;
       std::cin >> dir;
@@ -95,6 +153,12 @@ void Game::run() {
         gameHero.y += yStep;
         gameHero.x += xStep;
       }
+    }
+    else {
+      std::cout << gameHero.hero.getName() << ": LVL" << gameHero.hero.getLevel() << std::endl
+                << "   HP: "<<gameHero.hero.getHealthPoints()<<"/"<<gameHero.hero.getMaxHealthPoints()<<std::endl
+                << "  DMG: "<<gameHero.hero.getDamage()<<std::endl
+                << "  ACD: "<<gameHero.hero.getAttackCooldown()<<std::endl;
     }
   }
 }

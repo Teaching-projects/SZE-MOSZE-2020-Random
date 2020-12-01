@@ -2,17 +2,6 @@
 
 #include "Game.h"
 
-/*
-╔════════════════════════════════════════╗
-║████████████████████████████████████████║
-║██░░░░░░░░MM░░░░░░░░░░░░░░M░░░████M░████║
-║██░░M░░░░░████████MM░░██████████░░MM████║
-║██░░░░░░M░██████████MM░░████░░░░░░MM████║
-║██░░┣┫░░░░████████████MM░░░░MM██████████║
-║████████████████████████████████████████║
-╚════════════════════════════════════════╝
-*/
-
 void Game::draw() const {
   int width = gameMap.getWidth();
   int height = gameMap.getHeight();
@@ -114,7 +103,6 @@ void Game::run() {
 
       if ((m.x == gameHero.x) && (m.y == gameHero.y)) {
         gameHero.hero.fightTilDeath(m.monster);
-        std::cout << m.monster.getName() << std::endl;
 
         if (!m.monster.isAlive()) {
           gameMonsters.erase(gameMonsters.begin() + i);

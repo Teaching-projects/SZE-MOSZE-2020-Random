@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stringmap_139',['stringMap',['../classJSON.html#aebdfb0b070a1975e09b21e1dc43f74cd',1,'JSON']]]
+  ['name_155',['name',['../classMonster.html#ad32633c349f44cfc07b868ed4c27acde',1,'Monster']]]
 ];

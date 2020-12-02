@@ -50,7 +50,7 @@ void Game::setMap(Map map) {
     gameMap = map;
   }
   else {
-    throw OccupiedException();
+    throw AlreadyHasUnitsException();
   }
 }
 
@@ -67,7 +67,7 @@ void Game::putHero(Hero hero, int x, int y) {
       gameHero.x = x;
       gameHero.y = y;
     }
-    else { throw PuttingOnWallException(); }
+    else { throw OccupiedException(); }
   }
   else { throw AlreadyHasHeroException(); }
 }
@@ -86,7 +86,7 @@ void Game::putMonster(Monster monster, int x, int y) {
     temp.y = y;
     gameMonsters.push_back(temp);
   }
-  else { throw PuttingOnWallException(); }
+  else { throw OccupiedException(); }
 }
 
 void Game::run() {

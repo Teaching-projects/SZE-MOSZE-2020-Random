@@ -73,14 +73,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Class for managing the game.  
+ <a href="classGame.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Game_8h_source.html">Game.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for Game:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGame__coll__graph.png" border="0" usemap="#Game_coll__map" alt="Collaboration graph"/></div>
 <map name="Game_coll__map" id="Game_coll__map">
-<area shape="rect" title=" " alt="" coords="55,260,116,287"/>
-<area shape="rect" href="classMap.html" title=" " alt="" coords="5,171,56,197"/>
+<area shape="rect" title="Class for managing the game." alt="" coords="55,260,116,287"/>
+<area shape="rect" href="classMap.html" title="Class for loading and using maps." alt="" coords="5,171,56,197"/>
 <area shape="rect" href="structGame_1_1GameHero.html" title=" " alt="" coords="80,171,219,197"/>
 <area shape="rect" href="classHero.html" title="Derived class from Monster." alt="" coords="123,81,176,108"/>
 <area shape="rect" href="classMonster.html" title="Main class for monsters." alt="" coords="112,5,187,32"/>
@@ -112,7 +115,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad59df6562a58a614fda24622d3715b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77dfcde1a12c4d13e6e6e38a149fdb2c"><td class="memItemLeft" align="right" valign="top"><a id="a77dfcde1a12c4d13e6e6e38a149fdb2c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a77dfcde1a12c4d13e6e6e38a149fdb2c">Game</a> (const std::string &amp;mapfilename)</td></tr>
-<tr class="memdesc:a77dfcde1a12c4d13e6e6e38a149fdb2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that loads the game with the given <a class="el" href="classMap.html">Map</a>. <br /></td></tr>
+<tr class="memdesc:a77dfcde1a12c4d13e6e6e38a149fdb2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that loads the game with the given <a class="el" href="classMap.html" title="Class for loading and using maps.">Map</a>. <br /></td></tr>
 <tr class="separator:a77dfcde1a12c4d13e6e6e38a149fdb2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab83e25f737717d7bb4ec95b22efc82d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ab83e25f737717d7bb4ec95b22efc82d9">setMap</a> (<a class="el" href="classMap.html">Map</a> map)</td></tr>
 <tr class="memdesc:ab83e25f737717d7bb4ec95b22efc82d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the map.  <a href="classGame.html#ab83e25f737717d7bb4ec95b22efc82d9">More...</a><br /></td></tr>
@@ -149,7 +152,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>running</b> = false</
 <tr class="separator:a8ca5b9f8a62990e6022de17785beac2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is a class that manages the main game loop and game functionalities.</p>
+<div class="textblock"><p>Class for managing the game. </p>
+<p>This is a class that manages the main game loop and game functionalities.</p>
 <dl class="section author"><dt>Author</dt><dd>LengyHELL </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020/12/02 14:39 </dd></dl>
@@ -307,13 +311,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>running</b> = false</
 <p>Sets the map. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">map</td><td>the <a class="el" href="classMap.html">Map</a> to be set for the <a class="el" href="classGame.html">Game</a> object </td></tr>
+    <tr><td class="paramname">map</td><td>the <a class="el" href="classMap.html" title="Class for loading and using maps.">Map</a> to be set for the <a class="el" href="classGame.html" title="Class for managing the game.">Game</a> object </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a></td><td>is thrown when the <a class="el" href="classMap.html">Map</a> is changed after the game has been started </td></tr>
+    <tr><td class="paramname"><a class="el" href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a></td><td>is thrown when the <a class="el" href="classMap.html" title="Class for loading and using maps.">Map</a> is changed after the game has been started </td></tr>
     <tr><td class="paramname"><a class="el" href="classGame_1_1OccupiedException.html">Game::OccupiedException</a></td><td>is thrown when the position of the <a class="el" href="classHero.html" title="Derived class from Monster.">Hero</a> is not valid</td></tr>
   </table>
   </dd>

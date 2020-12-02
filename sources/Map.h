@@ -6,6 +6,7 @@
 
 /**
  * \class Map
+ * \brief Class for loading and using maps.
  *
  * This is a class that represents a map, that is used by the game.
  *

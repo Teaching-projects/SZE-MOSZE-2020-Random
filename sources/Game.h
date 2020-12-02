@@ -10,6 +10,7 @@
 
 /**
  * \class Game
+ * \brief Class for managing the game.
  *
  * This is a class that manages the main game loop and game functionalities.
  *

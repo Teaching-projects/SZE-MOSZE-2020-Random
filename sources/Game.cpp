@@ -89,10 +89,10 @@ void Game::putMonster(Monster monster, int x, int y) {
   else { throw OccupiedException(); }
 }
 
-void Game::run() {
+void Game::run(std::istream& is) {
   if (running) { throw GameAlreadyStartedException(); }
 
-  if ((gameHero.x < 0) && (gameHero.y < 0) && (gameMonsters.size() == 0)) {
+  if (!gameHero.hero.isAlive() || (gameHero.x < 0) || (gameHero.y < 0) || (gameMonsters.size() == 0)) {
     throw NotInitializedException();
   }
 
@@ -121,13 +121,15 @@ void Game::run() {
       }
     }
     else {
+      gameHero.x = -1;
+      gameHero.y = -1;
       std::cout << gameHero.hero.getName() << " died." << std::endl;
     }
 
     if (running) {
 
       std::string dir;
-      std::cin >> dir;
+      is >> dir;
 
       int xStep = 0;
       int yStep = 0;

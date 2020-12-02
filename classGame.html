@@ -65,6 +65,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classGame-members.html">List of all members</a>  </div>
@@ -126,9 +127,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5fc59a7c9f21b26c9b6502217dc5aa5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a5fc59a7c9f21b26c9b6502217dc5aa5d">putMonster</a> (<a class="el" href="classMonster.html">Monster</a> monster, int x, int y)</td></tr>
 <tr class="memdesc:a5fc59a7c9f21b26c9b6502217dc5aa5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places a <a class="el" href="classMonster.html" title="Main class for monsters.">Monster</a>.  <a href="classGame.html#a5fc59a7c9f21b26c9b6502217dc5aa5d">More...</a><br /></td></tr>
 <tr class="separator:a5fc59a7c9f21b26c9b6502217dc5aa5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa">run</a> ()</td></tr>
-<tr class="memdesc:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Running the game.  <a href="classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa">More...</a><br /></td></tr>
-<tr class="separator:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58d35a12bbd2b44f01344e732b46536c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a58d35a12bbd2b44f01344e732b46536c">run</a> (std::istream &amp;is=std::cin)</td></tr>
+<tr class="memdesc:a58d35a12bbd2b44f01344e732b46536c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Running the game.  <a href="classGame.html#a58d35a12bbd2b44f01344e732b46536c">More...</a><br /></td></tr>
+<tr class="separator:a58d35a12bbd2b44f01344e732b46536c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3187477deace51f658c4d6599383de7"><td class="memItemLeft" align="right" valign="top"><a id="aa3187477deace51f658c4d6599383de7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#aa3187477deace51f658c4d6599383de7">hasHero</a> () const</td></tr>
+<tr class="memdesc:aa3187477deace51f658c4d6599383de7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the hero is set. <br /></td></tr>
+<tr class="separator:aa3187477deace51f658c4d6599383de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a8ca5b9f8a62990e6022de17785beac2c"><td class="memItemLeft" align="right" valign="top"><a id="a8ca5b9f8a62990e6022de17785beac2c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a8ca5b9f8a62990e6022de17785beac2c">running</a> = false</td></tr>
+<tr class="memdesc:a8ca5b9f8a62990e6022de17785beac2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the game is running. <br /></td></tr>
+<tr class="separator:a8ca5b9f8a62990e6022de17785beac2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -147,9 +159,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a89cea785cc2174e07396a78b3886ea80"><td class="memItemLeft" align="right" valign="top"><a id="a89cea785cc2174e07396a78b3886ea80"></a>
 std::vector&lt; <a class="el" href="structGame_1_1GameMonster.html">GameMonster</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>gameMonsters</b></td></tr>
 <tr class="separator:a89cea785cc2174e07396a78b3886ea80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ca5b9f8a62990e6022de17785beac2c"><td class="memItemLeft" align="right" valign="top"><a id="a8ca5b9f8a62990e6022de17785beac2c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>running</b> = false</td></tr>
-<tr class="separator:a8ca5b9f8a62990e6022de17785beac2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for managing the game. </p>
@@ -265,8 +274,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>running</b> = false</
 
 </div>
 </div>
-<a id="a1ab78f5ed0d5ea879157357cf2fb2afa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ab78f5ed0d5ea879157357cf2fb2afa">&#9670;&nbsp;</a></span>run()</h2>
+<a id="a58d35a12bbd2b44f01344e732b46536c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58d35a12bbd2b44f01344e732b46536c">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -274,13 +283,20 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>running</b> = false</
         <tr>
           <td class="memname">void Game::run </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>is</em> = <code>std::cin</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Running the game. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is</td><td>the std::istream that the game commands are read from </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a></td><td>is thrown when the function is run while the game is still running </td></tr>
@@ -288,7 +304,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>running</b> = false</
   </table>
   </dd>
 </dl>
-<p>This function starts the game process. </p>
+<p>This function starts and runs the game process. </p>
 
 </div>
 </div>
@@ -318,7 +334,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>running</b> = false</
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a></td><td>is thrown when the <a class="el" href="classMap.html" title="Class for loading and using maps.">Map</a> is changed after the game has been started </td></tr>
-    <tr><td class="paramname"><a class="el" href="classGame_1_1OccupiedException.html">Game::OccupiedException</a></td><td>is thrown when the position of the <a class="el" href="classHero.html" title="Derived class from Monster.">Hero</a> is not valid</td></tr>
+    <tr><td class="paramname"><a class="el" href="classGame_1_1AlreadyHasUnitsException.html">Game::AlreadyHasUnitsException</a></td><td>is thrown when units have been already placed on the map</td></tr>
   </table>
   </dd>
 </dl>

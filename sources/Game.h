@@ -96,6 +96,9 @@ public:
     const char* what() const throw() { return "The game already started."; }
   };
 
+protected:
+  bool running = false; ///< Indicates if the game is running.
+
 private:
   struct GameMonster {
     Monster monster;
@@ -112,7 +115,6 @@ private:
   GameHero gameHero;
   std::vector<GameMonster> gameMonsters;
 
-  bool running = false;
 
   void draw() const;
 
@@ -127,7 +129,7 @@ public:
    * \brief Sets the map.
    * \param map the Map to be set for the Game object
    * \exception Game::GameAlreadyStartedException is thrown when the Map is changed after the game has been started
-   * \exception Game::OccupiedException is thrown when the position of the Hero is not valid
+   * \exception Game::AlreadyHasUnitsException is thrown when units have been already placed on the map
    *
    * This function changes the current map to the one given as a parameter.
    */
@@ -162,12 +164,16 @@ public:
 
   /**
    * \brief Running the game.
+   * \param is the std::istream that the game commands are read from
    * \exception Game::GameAlreadyStartedException is thrown when the function is run while the game is still running
    * \exception Game::NotInitializedException is thrown when the game is not set up properly when it is started
    *
-   * This function starts the game process.
+   * This function starts and runs the game process.
    */
-  void run();
+  void run(std::istream& is = std::cin);
+
+  /// Checks if the hero is set.
+  bool hasHero() const { return (gameHero.x >= 0) && (gameHero.y >= 0); }
 };
 
 #endif

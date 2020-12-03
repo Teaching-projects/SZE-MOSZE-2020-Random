@@ -1,10 +1,15 @@
 #include "../sources/Monster.h"
 #include "../sources/Hero.h"
 #include "../sources/JSON.h"
+#include "../sources/Map.h"
+#include "../sources/Game.h"
+
 #include <gtest/gtest.h>
 
 #include <fstream>
 #include <string>
+#include <sstream>
+#include <thread>
 
 TEST(JsonTest, string_parse) {
   JSON test = JSON::parseFromString("{key1:\"string value\", \"key2\":.125, \"key3\":1998, \"key4\":-1.1, \"key5\":-100, \"key6\":[1,2,3,4, 5]}");
@@ -94,19 +99,15 @@ TEST(JsonTest, flexibility_test) {
   int it = 0;
   for (const auto& l : list) {
     arr1[it] = std::get<int>(l);
-    std::cerr << it << std::endl;
     ++it;
   }
-  std::cerr << "done" << std::endl;
 
   list = test2.get<JSON::List>("key9");
   it = 0;
   for (const auto& l : list) {
     arr2[it] = std::get<int>(l);
-    std::cerr << it << std::endl;
     ++it;
   }
-  std::cerr << "done" << std::endl;
 
   for (int i = 0; i < 9; ++i) {
     ASSERT_EQ(arr1[i], arr2[i]);
@@ -253,6 +254,97 @@ TEST(HeroTest, levelup_test) {
 
 TEST(HeroTest, exceptions) {
   ASSERT_THROW(Monster::parse("does_not_exist"), JSON::ParseException);
+}
+
+TEST(MapTest, function_test) {
+  Map map("test_map");
+  ASSERT_EQ(map.getWidth(), 3);
+  ASSERT_EQ(map.getHeight(), 4);
+  ASSERT_EQ(map.get(1, 1), Map::Free);
+  ASSERT_EQ(map.get(0, 2), Map::Wall);
+}
+
+TEST(MapTest, exceptions) {
+  Map map;
+  ASSERT_THROW(map.get(0, 2), Map::WrongIndexException);
+  ASSERT_THROW(Map("nonexistent"), Map::FileNotFoundException);
+  ASSERT_THROW(Map("test_hero1.json"), Map::InvalidFileException);
+}
+
+TEST(GameTest, functions) {
+  Game game("test_map");
+  game.setMap(Map("test_map"));
+
+  Hero hero = Hero::parse("test_hero2.json");
+  Monster monster = Monster::parse("test_monster3.json");
+  game.putHero(hero, 0, 1);
+  game.putMonster(monster, 1, 1);
+  std::stringstream ss1;
+  ss1.str("east");
+  game.run(ss1);
+  ASSERT_EQ(game.hasHero(), false);
+
+  hero = Hero::parse("test_hero1.json");
+  game.putHero(hero, 0, 1);
+  std::stringstream ss2;
+  ss2.str("east");
+  game.run(ss2);
+  ASSERT_EQ(game.hasHero(), true);
+}
+
+TEST(GameTest, exceptions) {
+  //OccupiedException
+  //AlreadyHasHeroException
+  //AlreadyHasUnitsException
+  //NotInitializedException
+  //GameAlreadyStartedException
+  class TestGame : public Game {
+  public:
+    void enableRunning() { running = true; }
+  };
+
+  Hero hero = Hero::parse("test_hero1.json");
+  Monster monster = Monster::parse("test_monster3.json");
+  std::stringstream ss;
+  TestGame game;
+
+  ASSERT_THROW(game.run(ss), Game::NotInitializedException);
+
+  game.setMap(Map("test_map"));
+
+  ASSERT_THROW(game.putHero(hero, -1, 0), Map::WrongIndexException);
+  ASSERT_THROW(game.putHero(hero, 100, 0), Map::WrongIndexException);
+  ASSERT_THROW(game.putHero(hero, 0, -1), Map::WrongIndexException);
+  ASSERT_THROW(game.putHero(hero, 0, 100), Map::WrongIndexException);
+  ASSERT_THROW(game.putHero(hero, -1, -1), Map::WrongIndexException);
+  ASSERT_THROW(game.putHero(hero, 100, 100), Map::WrongIndexException);
+
+  ASSERT_THROW(game.putMonster(monster, -1, 0), Map::WrongIndexException);
+  ASSERT_THROW(game.putMonster(monster, 100, 0), Map::WrongIndexException);
+  ASSERT_THROW(game.putMonster(monster, 0, -1), Map::WrongIndexException);
+  ASSERT_THROW(game.putMonster(monster, 0, 100), Map::WrongIndexException);
+  ASSERT_THROW(game.putMonster(monster, -1, -1), Map::WrongIndexException);
+  ASSERT_THROW(game.putMonster(monster, 100, 100), Map::WrongIndexException);
+
+  ASSERT_THROW(game.run(ss), Game::NotInitializedException);
+
+  ASSERT_THROW(game.putHero(hero, 0, 0), Game::OccupiedException);
+  game.putHero(hero, 0, 1);
+  ASSERT_THROW(game.putHero(hero, 0, 2), Game::AlreadyHasHeroException);
+
+  ASSERT_THROW(game.run(ss), Game::NotInitializedException);
+
+  ASSERT_THROW(game.putMonster(monster, 0, 0), Game::OccupiedException);
+  game.putMonster(monster, 1, 1);
+
+  ASSERT_THROW(game.setMap(Map("test_map")), Game::AlreadyHasUnitsException);
+
+  game.enableRunning();
+
+  ASSERT_THROW(game.setMap(Map("test_map")), Game::GameAlreadyStartedException);
+  ASSERT_THROW(game.putHero(hero, 0, 1), Game::GameAlreadyStartedException);
+  ASSERT_THROW(game.putMonster(monster, 0, 2), Game::GameAlreadyStartedException);
+  ASSERT_THROW(game.run(ss), Game::GameAlreadyStartedException);
 }
 
 int main(int argc, char **argv) {

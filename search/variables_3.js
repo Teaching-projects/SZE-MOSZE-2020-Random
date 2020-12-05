@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['damage_146',['damage',['../classMonster.html#a04a3818d48e570bca2021e4bd698bb53',1,'Monster']]],
-  ['damagebonusperlevel_147',['damageBonusPerLevel',['../classHero.html#a4c27aeb9008236968fd2039ceae61987',1,'Hero']]]
+  ['damage_147',['damage',['../classMonster.html#a6614cc11c092b94f39869576fb049b67',1,'Monster']]],
+  ['damagebonusperlevel_148',['damageBonusPerLevel',['../classHero.html#a79975570ed3facd7fdee46a5a8c0c77d',1,'Hero']]]
 ];

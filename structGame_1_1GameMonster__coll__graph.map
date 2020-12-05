@@ -1,4 +1,5 @@
 <map id="Game::GameMonster" name="Game::GameMonster">
-<area shape="rect" id="node1" title=" " alt="" coords="5,95,167,121"/>
-<area shape="rect" id="node2" href="$classMonster.html" title="Main class for monsters." alt="" coords="49,5,123,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,184,167,211"/>
+<area shape="rect" id="node2" href="$classMonster.html" title="Main class for monsters." alt="" coords="49,95,123,121"/>
+<area shape="rect" id="node3" href="$structMonster_1_1Damage.html" title=" " alt="" coords="17,5,155,32"/>
 </map>

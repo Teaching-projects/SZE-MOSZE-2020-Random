@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filenotfoundexception_80',['FileNotFoundException',['../classMap_1_1FileNotFoundException.html',1,'Map']]]
+  ['damage_80',['Damage',['../structMonster_1_1Damage.html',1,'Monster']]]
 ];

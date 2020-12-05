@@ -6,7 +6,7 @@ var searchData=
   ['gamemonster_24',['GameMonster',['../structGame_1_1GameMonster.html',1,'Game']]],
   ['get_25',['get',['../classJSON.html#ac742af6699122fa0d471570fb999c625',1,'JSON::get()'],['../classMap.html#aec74981544779c8cc1478a9a62de3fdb',1,'Map::get()']]],
   ['getattackcooldown_26',['getAttackCooldown',['../classMonster.html#a2ebe9fe1ba92d2c371227905b238564f',1,'Monster']]],
-  ['getdamage_27',['getDamage',['../classMonster.html#a87f462af986f54451487c526f6ee44b9',1,'Monster']]],
+  ['getdamage_27',['getDamage',['../classMonster.html#aefab409bb30d1fcf44ef0bf11962b4cc',1,'Monster']]],
   ['gethealthpoints_28',['getHealthPoints',['../classMonster.html#ab897eb9a4fc929bd1c9eaa14fb6e7cba',1,'Monster']]],
   ['getheight_29',['getHeight',['../classMap.html#a67113f1ffac80d9a20b15fa18a58edc2',1,'Map']]],
   ['getlevel_30',['getLevel',['../classHero.html#ad1998324218180f3c644ab90b2fa89d6',1,'Hero']]],

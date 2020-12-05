@@ -148,7 +148,8 @@ void Game::run(std::istream& is) {
       std::cout << gameHero.hero.getName() << ": LVL" << gameHero.hero.getLevel() << std::endl
                 << "   HP: "<<gameHero.hero.getHealthPoints()<<"/"<<gameHero.hero.getMaxHealthPoints()<<std::endl
                 << "  DMG: "<<gameHero.hero.getDamage().physical<<"/"<<gameHero.hero.getDamage().magical<<std::endl
-                << "  ACD: "<<gameHero.hero.getAttackCooldown()<<std::endl;
+                << "  ACD: "<<gameHero.hero.getAttackCooldown()<<std::endl
+                << "  DEF: "<<gameHero.hero.getDefense()<<std::endl;
     }
   }
 }

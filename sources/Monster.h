@@ -36,6 +36,7 @@ protected:
   Damage damage;              ///< Damage, that the monster deals to its opponents.
   float attackCooldown = 0;   ///< The time it takes to reload the attack.
   float cooldownState = 0;    ///< Current state of the attack reloading.
+  float defense = 0;
 
   /**
    * \brief Function for dealing damage.
@@ -60,8 +61,8 @@ public:
   Monster() {}
 
   /// Constructor with parameters for the class.
-  Monster(const std::string& name, const float& healthPoints, const Damage& damage, const float& attackCooldown) :
-    name(name), healthPoints(healthPoints), damage(damage), attackCooldown(attackCooldown), cooldownState(attackCooldown) {}
+  Monster(const std::string& name, const float& healthPoints, const Damage& damage, const float& attackCooldown, const float& defense) :
+    name(name), healthPoints(healthPoints), damage(damage), attackCooldown(attackCooldown), cooldownState(attackCooldown), defense(defense) {}
 
   //functions
 
@@ -120,6 +121,8 @@ public:
 
   /// Getter for the attackCooldown variable.
   float getAttackCooldown() const { return attackCooldown; }
+
+  float getDefense() const { return defense; }
 };
 
 #endif

@@ -2,7 +2,7 @@
 #include "JSON.h"
 
 void Monster::sufferDamage(Monster& monster, const Damage& damage) {
-  monster.healthPoints -= damage.total();
+  monster.healthPoints -= damage.total(monster.getDefense());
   if (monster.healthPoints < 0) { monster.healthPoints = 0; }
 }
 
@@ -41,6 +41,7 @@ Monster Monster::parse(const std::string& filename) {
     file.get<std::string>("name"),
     file.get<int>("health_points"),
     dmg,
-    file.get<float>("attack_cooldown")
+    file.get<float>("attack_cooldown"),
+    file.get<int>("defense")
   );
 }

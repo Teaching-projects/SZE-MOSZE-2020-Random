@@ -23,17 +23,19 @@ Hero Hero::parse(const std::string& filename) {
     file.get<int>("base_health_points"),
     dmg,
     file.get<float>("base_attack_cooldown"),
+    file.get<int>("base_defense"),
     file.get<int>("experience_per_level"),
     file.get<int>("health_point_bonus_per_level"),
     bonusDmg,
-    file.get<float>("cooldown_multiplier_per_level")
+    file.get<float>("cooldown_multiplier_per_level"),
+    file.get<int>("defense_bonus_per_level")
   );
 }
 
 void Hero::attack(Monster& other) {
   if (isAlive() && canHit()) {
-    if (other.getHealthPoints() >= damage.total()) {
-      experienceState += damage.total();
+    if (other.getHealthPoints() >= damage.total(other.getDefense())) {
+      experienceState += damage.total(other.getDefense());
     }
     else {
       experienceState += other.getHealthPoints();
@@ -46,6 +48,7 @@ void Hero::attack(Monster& other) {
       healthPoints = baseHealthPoints;
       damage += damageBonusPerLevel;
       attackCooldown *= cooldownMultiplierPerLevel;
+      defense += defenseBonusPerLevel;
     }
     resetCooldown();
   }

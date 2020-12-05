@@ -10,23 +10,67 @@
  * Defines the parameters and actions of the monsters.
  *
  * \author LengyHELL
- * \version 1.1
- * \date 2020/11/01 17:02
+ * \version 1.2
+ * \date 2020/12/05 16:35
  */
 class Monster {
 public:
+
+  /**
+   * \struct Damage
+   *
+   * Represents the amount damage that the monster can deal.
+   *
+   * \author LengyHELL
+   * \version 1.0
+   * \date 2020/12/05 18:02
+   */
   struct Damage {
+    
+    /// Default constructor.
     Damage() : physical(0), magical(0) {}
+
+    /// Constructor with parameters for each variable.
     Damage(const float& physical, const float& magical)
       : physical(physical), magical(magical) {}
 
-    float physical = 0;
-    float magical = 0;
+    float physical = 0;     ///< Physical damage, its affected by defense.
+    float magical = 0;      ///< Magical damage.
 
+    /**
+     * \brief Overloaded + operator.
+     * \param other
+     * \return Damage
+     *
+     * The values are added together by damage type and returned.
+     */
     Damage operator+(const Damage& other) const;
+
+    /**
+     * \brief Overloaded += operator.
+     * \param other the Damage that the values are increased by
+     * \return Damage&
+     *
+     * The other values are added to the current values and returned as a reference.
+     */
     Damage& operator+=(const Damage& other);
+
+    /**
+     * \brief Overloaded *= operator.
+     * \param other the float value that the values are multiplied by
+     * \return Damage&
+     *
+     * The values are multiplied by the other parameter and returned as a reference.
+     */
     Damage& operator*=(const float& other);
 
+    /**
+     * \brief Total damage.
+     * \param defense the amount of defense considered while calculating the total damage
+     * \return int
+     *
+     * Calculates the total damage with all damage types including the given defense.
+     */
     int total(const int& defense = 0) const;
   };
 
@@ -36,7 +80,7 @@ protected:
   Damage damage;              ///< Damage, that the monster deals to its opponents.
   float attackCooldown = 0;   ///< The time it takes to reload the attack.
   float cooldownState = 0;    ///< Current state of the attack reloading.
-  float defense = 0;
+  float defense = 0;          ///< The amount of physical damage that can be avoided.
 
   /**
    * \brief Function for dealing damage.
@@ -55,7 +99,6 @@ protected:
   void resetCooldown();
 
 public:
-  //constructor, destructor
 
   /// Default constructor.
   Monster() {}
@@ -63,8 +106,6 @@ public:
   /// Constructor with parameters for the class.
   Monster(const std::string& name, const float& healthPoints, const Damage& damage, const float& attackCooldown, const float& defense) :
     name(name), healthPoints(healthPoints), damage(damage), attackCooldown(attackCooldown), cooldownState(attackCooldown), defense(defense) {}
-
-  //functions
 
   /**
    * \brief Elapse time.
@@ -108,8 +149,6 @@ public:
    */
   virtual void attack(Monster& other);
 
-  //getters
-
   /// Getter for the name variable.
   std::string getName() const { return name; }
 
@@ -122,6 +161,7 @@ public:
   /// Getter for the attackCooldown variable.
   float getAttackCooldown() const { return attackCooldown; }
 
+  /// Getter for the defense variable.
   float getDefense() const { return defense; }
 };
 

@@ -80,7 +80,7 @@ public:
    *
    * This function loads a specific map file to the object.
    */
-  Map(const std::string& filename);
+  explicit Map(const std::string& filename);
 
   /**
    * \brief Position getter.

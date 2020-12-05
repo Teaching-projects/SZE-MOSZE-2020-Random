@@ -2,5 +2,6 @@
     "name" : "Monster3",
     "health_points" : 2000,
     "damage" : 100,
-    "attack_cooldown" : 4.5
+    "attack_cooldown" : 4.5,
+    "defense" : 2
 }

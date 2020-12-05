@@ -8,9 +8,9 @@
 
 
 
-    "health_point_bonus_per_level" : 5000,                        "name" : "Hero2",
+    "health_point_bonus_per_level" : 5000,           "defense_bonus_per_level" : 1,             "name" : "Hero2",
 
-"experience_per_level" : 50,
+"experience_per_level" : 50,"base_defense" : 25,
 
 
           "damage_bonus_per_level" : 5000

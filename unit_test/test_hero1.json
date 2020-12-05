@@ -2,9 +2,13 @@
     "name" : "Hero1",
     "base_health_points" : 100,
     "base_damage" : 50,
+    "base_magical_damage" : 25,
     "base_attack_cooldown" : 1.3,
     "experience_per_level" : 50,
     "health_point_bonus_per_level" : 50,
     "damage_bonus_per_level" : 50,
-    "cooldown_multiplier_per_level": 0.5
+    "magical_damage_bonus_per_level" : 5,
+    "cooldown_multiplier_per_level": 0.5,
+    "base_defense" : 5,
+    "defense_bonus_per_level" : 1
 }

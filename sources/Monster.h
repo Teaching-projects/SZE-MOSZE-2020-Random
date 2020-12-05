@@ -14,10 +14,26 @@
  * \date 2020/11/01 17:02
  */
 class Monster {
+public:
+  struct Damage {
+    Damage() : physical(0), magical(0) {}
+    Damage(const float& physical, const float& magical)
+      : physical(physical), magical(magical) {}
+
+    float physical = 0;
+    float magical = 0;
+
+    Damage operator+(const Damage& other) const;
+    Damage& operator+=(const Damage& other);
+    Damage& operator*=(const float& other);
+
+    int total(const int& defense = 0) const;
+  };
+
 protected:
   std::string name = "";      ///< Name of the monster.
   float healthPoints = 0;     ///< Current health of the monster.
-  float damage = 0;           ///< Damage, that the monster deals to its opponents.
+  Damage damage;              ///< Damage, that the monster deals to its opponents.
   float attackCooldown = 0;   ///< The time it takes to reload the attack.
   float cooldownState = 0;    ///< Current state of the attack reloading.
 
@@ -28,7 +44,7 @@ protected:
    *
    * Lowers the amount of health points of the given Monster with the amount of the damage parameter.
    */
-  void sufferDamage(Monster& monster, const float& damage);
+  void sufferDamage(Monster& monster, const Damage& damage);
 
   /**
    * \brief Cooldown reset.
@@ -44,7 +60,7 @@ public:
   Monster() {}
 
   /// Constructor with parameters for the class.
-  Monster(const std::string& name, const float& healthPoints, const float& damage, const float& attackCooldown) :
+  Monster(const std::string& name, const float& healthPoints, const Damage& damage, const float& attackCooldown) :
     name(name), healthPoints(healthPoints), damage(damage), attackCooldown(attackCooldown), cooldownState(attackCooldown) {}
 
   //functions
@@ -100,7 +116,7 @@ public:
   float getHealthPoints() const { return healthPoints; }
 
   /// Getter for the damage variable.
-  float getDamage() const { return damage; }
+  Damage getDamage() const { return damage; }
 
   /// Getter for the attackCooldown variable.
   float getAttackCooldown() const { return attackCooldown; }

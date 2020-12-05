@@ -73,5 +73,6 @@
 Prince Aidan of Khanduras died.
 Prince Aidan of Khanduras: LVL1
    HP: 0/30
-  DMG: 3
+  DMG: 3/1
   ACD: 1.1
+  DEF: 1

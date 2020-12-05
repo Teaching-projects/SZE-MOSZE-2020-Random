@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7elist_77',['~List',['../classJSON_1_1List.html#aa76ec577a5630248ae23dbc6e09edbba',1,'JSON::List']]]
+  ['width_83',['width',['../classMap.html#a9ecfe932ad2d2bc22492416033bdacfd',1,'Map']]],
+  ['wrongindexexception_84',['WrongIndexException',['../classMap_1_1WrongIndexException.html',1,'Map']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['isalive_119',['isAlive',['../classMonster.html#a77ad18c44b3fb2df92b30ece4dc7847b',1,'Monster']]],
-  ['iterator_120',['Iterator',['../classJSON_1_1List_1_1Iterator.html#aed5fba3c17a32d2ce279bbca7dd09ad9',1,'JSON::List::Iterator']]]
+  ['hashero_127',['hasHero',['../classGame.html#aa3187477deace51f658c4d6599383de7',1,'Game']]],
+  ['hero_128',['Hero',['../classHero.html#ab5920677a4b5cb59d6f513922d037dca',1,'Hero::Hero()'],['../classHero.html#a363b76373134d1012eab359dd1e6c722',1,'Hero::Hero(const std::string &amp;name, const float &amp;healthPoints, const Damage &amp;damage, const float &amp;attackCooldown, const float &amp;defense, const float &amp;experiencePerLevel, const float &amp;healthPointBonusPerLevel, const Damage &amp;damageBonusPerLevel, const float &amp;cooldownMultiplierPerLevel, const float &amp;defenseBonusPerLevel)']]]
 ];

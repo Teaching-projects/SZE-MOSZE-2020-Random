@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width_162',['width',['../classMap.html#a9ecfe932ad2d2bc22492416033bdacfd',1,'Map']]]
+  ['stringmap_178',['stringMap',['../classJSON.html#aebdfb0b070a1975e09b21e1dc43f74cd',1,'JSON']]]
 ];

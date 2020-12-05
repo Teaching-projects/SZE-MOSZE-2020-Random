@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['operator_21_3d_124',['operator!=',['../classJSON_1_1List_1_1Iterator.html#a32ea0f4a8c8e957cae412c0ffb5bae05',1,'JSON::List::Iterator']]],
-  ['operator_2a_125',['operator*',['../classJSON_1_1List_1_1Iterator.html#a2b486f85c09d29f848fc372efd2b55ab',1,'JSON::List::Iterator']]],
-  ['operator_2b_2b_126',['operator++',['../classJSON_1_1List_1_1Iterator.html#ab1bf68ce35489eb2016027c054ca68d6',1,'JSON::List::Iterator']]],
-  ['operator_3d_127',['operator=',['../classJSON_1_1List.html#a16df2c530914253470a3da8d66eb1e81',1,'JSON::List']]]
+  ['map_132',['Map',['../classMap.html#a0f5ad0fd4563497b4214038cbca8b582',1,'Map::Map()'],['../classMap.html#a871049c7b391e75039ccba5a4d757dae',1,'Map::Map(const std::string &amp;filename)']]],
+  ['monster_133',['Monster',['../classMonster.html#a3dfc253fbec8331d42ac13c20bf9425f',1,'Monster::Monster()'],['../classMonster.html#ad6e14c1d4285042b6120f52c3f583248',1,'Monster::Monster(const std::string &amp;name, const float &amp;healthPoints, const Damage &amp;damage, const float &amp;attackCooldown, const float &amp;defense)']]]
 ];

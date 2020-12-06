@@ -17,8 +17,12 @@ MarkedMap::MarkedMap(const std::string& filename) {
 
           if (line[i] == '#') { lineVector.push_back(Wall); }
           else if (line[i] == ' ') { lineVector.push_back(Free); }
-          else if (line[i] == 'H') { heroPosition = Position(i, height); }
+          else if (line[i] == 'H') {
+            lineVector.push_back(Free);
+            heroPosition = Position(i, height);
+          }
           else {
+            lineVector.push_back(Free);
             if (monsterPositions.count(line[i])) {
               monsterPositions[line[i]].push_back(Position(i, height));
             }
@@ -36,4 +40,12 @@ MarkedMap::MarkedMap(const std::string& filename) {
     }
   }
   else { throw FileNotFoundException(); }
+}
+
+std::list<char> MarkedMap::getMonsterIDs() const {
+  std::list<char> ret;
+  for (const auto& mp : monsterPositions) {
+    ret.push_back(mp.first);
+  }
+  return ret;
 }

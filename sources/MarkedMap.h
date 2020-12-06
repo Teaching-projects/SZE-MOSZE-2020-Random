@@ -14,6 +14,7 @@ public:
 
   Position getHeroPosition() const { return heroPosition; }
   std::list<Position> getMonsterPositions(const char& c) const { return monsterPositions.at(c); }
+  std::list<char> getMonsterIDs() const;
 };
 
 #endif

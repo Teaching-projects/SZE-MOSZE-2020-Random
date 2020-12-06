@@ -9,7 +9,7 @@
  * \class MarkedMap
  * \brief Class for advanced maps, derived from Map.
  *
- * This is a class represents a map, and its layout.
+ * This class represents a map, and its layout.
  *
  * \author LengyHELL
  * \version 1.0

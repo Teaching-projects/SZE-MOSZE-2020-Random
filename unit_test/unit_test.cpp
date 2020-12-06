@@ -141,8 +141,10 @@ TEST(MonsterTest, parse_test) {
   ASSERT_EQ(m2.getName(), "Monster2");
 
   ASSERT_EQ(m1.getHealthPoints(), m2.getHealthPoints());
-  ASSERT_EQ(m1.getDamage(), m2.getDamage());
+  ASSERT_EQ(m1.getDamage().physical, m2.getDamage().physical);
+  ASSERT_EQ(m1.getDamage().magical, m2.getDamage().magical);
   ASSERT_EQ(m1.getAttackCooldown(), m2.getAttackCooldown());
+  ASSERT_EQ(m1.getDefense(), m2.getDefense());
 }
 
 TEST(MonsterTest, attack_test) {
@@ -157,7 +159,7 @@ TEST(MonsterTest, attack_test) {
 
   m1.attack(m2);
 
-  ASSERT_EQ(m1.getHealthPoints() - m1.getDamage(), m2.getHealthPoints());
+  ASSERT_EQ(m1.getHealthPoints() - m1.getDamage().total(m2.getDefense()), m2.getHealthPoints());
 
   while(m2.getHealthPoints() > 0) {
     m1.attack(m2);
@@ -181,8 +183,10 @@ TEST(HeroTest, parse_test) {
   ASSERT_EQ(h1.getHealthPoints(), 100);
   ASSERT_EQ(h2.getHealthPoints(), 50);
 
-  ASSERT_EQ(h1.getDamage(), 50);
-  ASSERT_EQ(h2.getDamage(), 10);
+  ASSERT_EQ(h1.getDamage().physical, 50);
+  ASSERT_EQ(h1.getDamage().magical, 25);
+  ASSERT_EQ(h2.getDamage().physical, 10);
+  ASSERT_EQ(h2.getDamage().magical, 0);
 
   ASSERT_EQ(h1.getAttackCooldown(), (float)1.3);
   ASSERT_EQ(h2.getAttackCooldown(), (float)1.5);
@@ -202,7 +206,7 @@ TEST(HeroTest, attack_test) {
 
   h1.elapseTime(h1.getAttackCooldown());
 
-  int dam = h1.getDamage();
+  int dam = h1.getDamage().total(h2.getDefense());
   ASSERT_EQ(h1.canHit(), true);
 
   h1.attack(h2);
@@ -224,7 +228,8 @@ TEST(HeroTest, levelup_test) {
   ASSERT_EQ(h2.getName(), "Hero2");
 
   ASSERT_EQ(h1.getHealthPoints(), h1c.getHealthPoints());
-  ASSERT_EQ(h1.getDamage(), h1c.getDamage());
+  ASSERT_EQ(h1.getDamage().physical, h1c.getDamage().physical);
+  ASSERT_EQ(h1.getDamage().magical, h1c.getDamage().magical);
   ASSERT_EQ(h1.getAttackCooldown(), h1c.getAttackCooldown());
   ASSERT_EQ(h1.getMaxHealthPoints(), h1c.getMaxHealthPoints());
   ASSERT_EQ(h1.getLevel(), h1c.getLevel());
@@ -234,7 +239,6 @@ TEST(HeroTest, levelup_test) {
   h1.elapseTime(h1.getAttackCooldown());
   h2.elapseTime(h2.getAttackCooldown());
 
-  int dam = h1.getDamage();
   ASSERT_EQ(h1.canHit(), true);
 
   h2.attack(h1);
@@ -246,10 +250,12 @@ TEST(HeroTest, levelup_test) {
   ASSERT_EQ(h2.getLevel(), 1);
 
   ASSERT_EQ(h1.getHealthPoints(), h1c.getHealthPoints() + 50);
-  ASSERT_EQ(h1.getDamage(), h1c.getDamage() + 50);
+  ASSERT_EQ(h1.getDamage().physical, h1c.getDamage().physical + 50);
+  ASSERT_EQ(h1.getDamage().magical, h1c.getDamage().magical + 5);
   ASSERT_EQ(h1.getAttackCooldown(), h1c.getAttackCooldown() * 0.5);
   ASSERT_EQ(h1.getMaxHealthPoints(), h1c.getMaxHealthPoints() + 50);
   ASSERT_EQ(h1.getLevel(), h1c.getLevel() + 1);
+  ASSERT_EQ(h1.getDefense(), h1c.getDefense() + 1);
 }
 
 TEST(HeroTest, exceptions) {

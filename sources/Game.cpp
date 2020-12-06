@@ -43,7 +43,7 @@ void Game::draw() const {
   std::cout << text << std::endl;
 }
 
-void Game::setMap(Map map) {
+void Game::setMap(const Map& map) {
   if (running) { throw GameAlreadyStartedException(); }
 
   if ((gameHero.x < 0) && (gameHero.y < 0) && (gameMonsters.size() == 0)) {
@@ -54,7 +54,7 @@ void Game::setMap(Map map) {
   }
 }
 
-void Game::putHero(Hero hero, int x, int y) {
+void Game::putHero(const Hero& hero, int x, int y) {
   if (running) { throw GameAlreadyStartedException(); }
 
   if ((gameMap.getWidth() <= 0) || (gameMap.getHeight() <= 0)) {
@@ -72,7 +72,7 @@ void Game::putHero(Hero hero, int x, int y) {
   else { throw AlreadyHasHeroException(); }
 }
 
-void Game::putMonster(Monster monster, int x, int y) {
+void Game::putMonster(const Monster& monster, int x, int y) {
   if (running) { throw GameAlreadyStartedException(); }
 
   if ((gameMap.getWidth() <= 0) || (gameMap.getHeight() <= 0)) {
@@ -147,8 +147,9 @@ void Game::run(std::istream& is) {
     else {
       std::cout << gameHero.hero.getName() << ": LVL" << gameHero.hero.getLevel() << std::endl
                 << "   HP: "<<gameHero.hero.getHealthPoints()<<"/"<<gameHero.hero.getMaxHealthPoints()<<std::endl
-                << "  DMG: "<<gameHero.hero.getDamage()<<std::endl
-                << "  ACD: "<<gameHero.hero.getAttackCooldown()<<std::endl;
+                << "  DMG: "<<gameHero.hero.getDamage().physical<<"/"<<gameHero.hero.getDamage().magical<<std::endl
+                << "  ACD: "<<gameHero.hero.getAttackCooldown()<<std::endl
+                << "  DEF: "<<gameHero.hero.getDefense()<<std::endl;
     }
   }
 }

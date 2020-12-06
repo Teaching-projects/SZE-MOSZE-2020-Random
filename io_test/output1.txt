@@ -90,6 +90,7 @@
 ╚════════════════════════════╝
 Prince Aidan of Khanduras cleared the map.
 Prince Aidan of Khanduras: LVL14
-   HP: 87/95
-  DMG: 16
+   HP: 95/95
+  DMG: 16/14
   ACD: 0.279605
+  DEF: 14

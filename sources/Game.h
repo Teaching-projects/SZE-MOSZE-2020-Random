@@ -123,7 +123,7 @@ public:
   Game() {}
 
   /// Constructor that loads the game with the given Map.
-  Game(const std::string& mapfilename) : gameMap(Map(mapfilename)) {}
+  explicit Game(const std::string& mapfilename) : gameMap(Map(mapfilename)) {}
 
   /**
    * \brief Sets the map.
@@ -133,7 +133,7 @@ public:
    *
    * This function changes the current map to the one given as a parameter.
    */
-  void setMap(Map map);
+  void setMap(const Map& map);
 
   /**
    * \brief Places a Hero.
@@ -147,7 +147,7 @@ public:
    *
    * This function places a Hero to the given position.
    */
-  void putHero(Hero hero, int x, int y);
+  void putHero(const Hero& hero, int x, int y);
 
   /**
    * \brief Places a Monster.
@@ -160,7 +160,7 @@ public:
    *
    * This function places a Monster to the given position.
    */
-  void putMonster(Monster monster, int x, int y);
+  void putMonster(const Monster& monster, int x, int y);
 
   /**
    * \brief Running the game.

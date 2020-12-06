@@ -19,9 +19,10 @@ class Hero : public Monster {
   float experiencePerLevel = 0;           ///< The amount of experience needed for reaching the next level.
   float experienceState = 0;              ///< The current amount of experience the hero has.
   float healthPointBonusPerLevel = 0;     ///< The extra health points the hero obtains from leveling up.
-  float damageBonusPerLevel = 0;          ///< The extra damage the hero obtains from leveling up.
+  Damage damageBonusPerLevel;             ///< The extra damage the hero obtains from leveling up.
   float cooldownMultiplierPerLevel = 0;   ///< Modifies the attack cooldown when leveling up.
   float level = 0;                        ///< The actual level of the hero.
+  float defenseBonusPerLevel = 0;
 
 public:
   //constructor, destructor
@@ -30,11 +31,12 @@ public:
   Hero() {}
 
   /// Constructor with parameters for the class.
-  Hero(const std::string& name, const float& healthPoints, const float& damage, const float& attackCooldown, const float& experiencePerLevel,
-    const float& healthPointBonusPerLevel, const float& damageBonusPerLevel, const float& cooldownMultiplierPerLevel) :
-    Monster(name, healthPoints, damage, attackCooldown), baseHealthPoints(healthPoints), experiencePerLevel(experiencePerLevel),
+  Hero(const std::string& name, const float& healthPoints, const Damage& damage, const float& attackCooldown, const float& defense,
+    const float& experiencePerLevel, const float& healthPointBonusPerLevel, const Damage& damageBonusPerLevel,
+    const float& cooldownMultiplierPerLevel, const float& defenseBonusPerLevel) :
+    Monster(name, healthPoints, damage, attackCooldown, defense), baseHealthPoints(healthPoints), experiencePerLevel(experiencePerLevel),
     experienceState(0), healthPointBonusPerLevel(healthPointBonusPerLevel), damageBonusPerLevel(damageBonusPerLevel),
-    cooldownMultiplierPerLevel(cooldownMultiplierPerLevel), level(1) {}
+    cooldownMultiplierPerLevel(cooldownMultiplierPerLevel), level(1), defenseBonusPerLevel(defenseBonusPerLevel) {}
 
 
   //functions

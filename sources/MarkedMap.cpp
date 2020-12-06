@@ -42,7 +42,7 @@ MarkedMap::MarkedMap(const std::string& filename) {
   else { throw FileNotFoundException(); }
 }
 
-std::list<Position> getMonsterPositions(const char& c) const {
+std::list<Position> MarkedMap::getMonsterPositions(const char& c) const {
   if (monsterPositions.count(c)) {
     return monsterPositions.at(c);
   }

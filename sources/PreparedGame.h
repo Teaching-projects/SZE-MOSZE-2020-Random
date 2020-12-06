@@ -14,6 +14,7 @@
  * \date 2020/12/06 16:36
  */
 class PreparedGame : public Game {
+  using Game::Game;
   using Game::setMap;
   using Game::putHero;
   using Game::putMonster;

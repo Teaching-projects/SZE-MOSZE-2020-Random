@@ -1,5 +1,5 @@
 {
-  "map"  : "../maps/map2",
+  "map"  : "../maps/map1",
   "hero" : "Dark_Wanderer.json",
   "monster-1" : "Fallen.json",
   "monster-2" : "Zombie.json",

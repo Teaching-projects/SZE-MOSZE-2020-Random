@@ -43,8 +43,8 @@ documentation:
 
 io-test: all
 	@cd $(JSON_FILE_DIR) && \
-	../$(EXE) scenario1.json < ../inputs.txt > ../$(IO_TEST_DIR)/current_output1.txt && \
-	../$(EXE) scenario2.json < ../inputs.txt > ../$(IO_TEST_DIR)/current_output2.txt
+	../$(EXE) gameconfig1.json < ../inputs.txt > ../$(IO_TEST_DIR)/current_output1.txt && \
+	../$(EXE) gameconfig2.json < ../inputs.txt > ../$(IO_TEST_DIR)/current_output2.txt
 	@cd $(IO_TEST_DIR) && \
 	diff output1.txt current_output1.txt && \
 	diff output2.txt current_output2.txt && \
@@ -62,5 +62,5 @@ static-code-analysis:
 
 memory-leak-test: all
 	cd $(JSON_FILE_DIR) && \
-	valgrind --leak-check=full --track-origins=yes --error-exitcode=1 ./../$(EXE) scenario1.json < ../inputs.txt && \
-	valgrind --leak-check=full --track-origins=yes --error-exitcode=1 ./../$(EXE) scenario2.json < ../inputs.txt
+	valgrind --leak-check=full --track-origins=yes --error-exitcode=1 ./../$(EXE) gameconfig1.json < ../inputs.txt && \
+	valgrind --leak-check=full --track-origins=yes --error-exitcode=1 ./../$(EXE) gameconfig2.json < ../inputs.txt

@@ -4,6 +4,14 @@
 #include <string>
 #include <vector>
 
+struct Position {
+  int x = 0;
+  int y = 0;
+
+  Position() {}
+  Position(const int& x, const int& y) : x(x), y(y) {}
+};
+
 /**
  * \class Map
  * \brief Class for loading and using maps.
@@ -63,7 +71,7 @@ public:
     const char* what() const throw() { return "Requested file not found."; }
   };
 
-private:
+protected:
   int width = 0;                            ///< The width of the map.
   int height = 0;                           ///< The height of the map.
   std::vector<std::vector<type>> mapData;   ///< Map values stored in a std::vector.
@@ -92,6 +100,8 @@ public:
    * This function returns the value of the position given as parameters.
    */
   type get(const int& x, const int& y) const;
+
+  type get(const Position& pos) const { return get(pos.x, pos.y); }
 
   /// Getter for the width of the map.
   int getWidth() const { return width; }

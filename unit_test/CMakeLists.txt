@@ -15,5 +15,7 @@ add_executable(runTests unit_test.cpp
   ../sources/Hero.cpp
   ../sources/JSON.cpp
   ../sources/JSONList.cpp
-  ../sources/Damage.cpp)
+  ../sources/Damage.cpp
+  ../sources/MarkedMap.cpp
+  ../sources/PreparedGame.cpp)
 target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)

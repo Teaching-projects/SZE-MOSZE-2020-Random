@@ -10,7 +10,7 @@ class PreparedGame : public Game {
   using Game::hasHero;
 
 public:
-  PreparedGame(const std::string& filename);
+  explicit PreparedGame(const std::string& filename);
 };
 
 #endif

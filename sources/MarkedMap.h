@@ -10,7 +10,7 @@ class MarkedMap : public Map {
   std::map<char, std::list<Position>> monsterPositions;
 
 public:
-  MarkedMap(const std::string& filename);
+  explicit MarkedMap(const std::string& filename);
 
   Position getHeroPosition() const { return heroPosition; }
   std::list<Position> getMonsterPositions(const char& c) const { return monsterPositions.at(c); }

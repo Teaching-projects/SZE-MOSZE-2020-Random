@@ -11,14 +11,16 @@
 #include "Hero.h"
 #include "Monster.h"
 #include "Map.h"
+#include "MarkedMap.h"
 #include "Game.h"
+#include "PreparedGame.h"
 
 
 
 
 const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided." },
-    { 2 , "The provided scenario file is not accessible." },
+    { 2 , "The provided config file is not accessible." },
     { 3 , "The provided scenario file is invalid." },
     { 4 , "JSON parsing error." }
 };
@@ -34,33 +36,11 @@ int main(int argc, char** argv){
     if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
-    std::string hero_file;
-    std::list<std::string> monster_files;
     try {
-        JSON scenario = JSON::parseFromFile(argv[1]);
-        if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
-        else {
-            hero_file=scenario.get<std::string>("hero");
-            JSON::List monster_file_list = scenario.get<JSON::List>("monsters");
-            for(auto monster_file : monster_file_list) {
-              monster_files.push_back(std::get<std::string>(monster_file));}
-        }
-    } catch (const JSON::ParseException& e) {std::cerr<<e.what()<<std::endl;bad_exit(4);}
-
-    try {
-      Hero hero{Hero::parse(hero_file)};
-      Game game("../maps/map1");
-
-      game.putHero(hero, 1, 1);
-
-      game.putMonster(Monster::parse(monster_files.back()), 2, 5);
-      for (const auto& m : monster_files) {
-        game.putMonster(Monster::parse(m), 4, 5);
-      }
-
+      PreparedGame game(argv[1]);
       game.run();
 
-    } catch (const JSON::ParseException& e) {bad_exit(4);}
+    } catch (const JSON::ParseException& e) {std::cerr << e.what() << std::endl; bad_exit(4);}
 
     return 0;
 }

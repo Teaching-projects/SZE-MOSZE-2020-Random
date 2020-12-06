@@ -4,11 +4,24 @@
 #include <string>
 #include <vector>
 
+/**
+ * \struct Position
+ * \brief Structure representing a position.
+ *
+ * This structure is used for easier management of unit positions.
+ *
+ * \author LengyHELL
+ * \version 1.0
+ * \date 2020/12/06 16:54
+ */
 struct Position {
-  int x = 0;
-  int y = 0;
+  int x = 0;  ///< Represents the x position on a given matrix.
+  int y = 0;  ///< Represents the y position on a given matrix.
 
+  /// Default constructor.
   Position() {}
+
+  /// Constructor with values for each attribute.
   Position(const int& x, const int& y) : x(x), y(y) {}
 };
 

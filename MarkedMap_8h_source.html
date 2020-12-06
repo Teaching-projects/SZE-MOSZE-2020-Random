@@ -77,23 +77,30 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classMarkedMap.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMarkedMap.html">MarkedMap</a> : <span class="keyword">public</span> <a class="code" href="classMap.html">Map</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <a class="code" href="structPosition.html">Position</a> heroPosition = <a class="code" href="structPosition.html">Position</a>(-1, -1);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  std::map&lt;char, std::list&lt;Position&gt;&gt; monsterPositions;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classMarkedMap.html">MarkedMap</a>(<span class="keyword">const</span> std::string&amp; filename);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="structPosition.html">Position</a> getHeroPosition()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> heroPosition; }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  std::list&lt;Position&gt; getMonsterPositions(<span class="keyword">const</span> <span class="keywordtype">char</span>&amp; c)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> monsterPositions.at(c); }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  std::list&lt;char&gt; getMonsterIDs() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classMarkedMap.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMarkedMap.html">MarkedMap</a> : <span class="keyword">public</span> <a class="code" href="classMap.html">Map</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="structPosition.html">Position</a> heroPosition = <a class="code" href="structPosition.html">Position</a>(-1, -1);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  std::map&lt;char, std::list&lt;Position&gt;&gt; monsterPositions;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classMarkedMap.html#a8c1bf67987fdcf0e89f7e6ecc5a6a7a2">MarkedMap</a>(<span class="keyword">const</span> std::string&amp; filename);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classMarkedMap.html#a0f331e47add1e0fd8c4f6eecbfb76f6d">   35</a></span>&#160;  <a class="code" href="structPosition.html">Position</a> <a class="code" href="classMarkedMap.html#a0f331e47add1e0fd8c4f6eecbfb76f6d">getHeroPosition</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> heroPosition; }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  std::list&lt;Position&gt; <a class="code" href="classMarkedMap.html#a232f9762179d230c884c1818ec0aa499">getMonsterPositions</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>&amp; c) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  std::list&lt;char&gt; <a class="code" href="classMarkedMap.html#a3ae48db310841f4d21a0656c0666ddb7">getMonsterIDs</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassMarkedMap_html"><div class="ttname"><a href="classMarkedMap.html">MarkedMap</a></div><div class="ttdef"><b>Definition:</b> MarkedMap.h:8</div></div>
-<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">Class for loading and using maps.</div><div class="ttdef"><b>Definition:</b> Map.h:25</div></div>
-<div class="ttc" id="astructPosition_html"><div class="ttname"><a href="structPosition.html">Position</a></div><div class="ttdef"><b>Definition:</b> Map.h:7</div></div>
+<div class="ttc" id="aclassMarkedMap_html_a0f331e47add1e0fd8c4f6eecbfb76f6d"><div class="ttname"><a href="classMarkedMap.html#a0f331e47add1e0fd8c4f6eecbfb76f6d">MarkedMap::getHeroPosition</a></div><div class="ttdeci">Position getHeroPosition() const</div><div class="ttdoc">Returns the position of the hero that is loaded from the map layout file.</div><div class="ttdef"><b>Definition:</b> MarkedMap.h:35</div></div>
+<div class="ttc" id="aclassMarkedMap_html_a8c1bf67987fdcf0e89f7e6ecc5a6a7a2"><div class="ttname"><a href="classMarkedMap.html#a8c1bf67987fdcf0e89f7e6ecc5a6a7a2">MarkedMap::MarkedMap</a></div><div class="ttdeci">MarkedMap(const std::string &amp;filename)</div><div class="ttdoc">Loading constructor.</div><div class="ttdef"><b>Definition:</b> MarkedMap.cpp:4</div></div>
+<div class="ttc" id="aclassMarkedMap_html"><div class="ttname"><a href="classMarkedMap.html">MarkedMap</a></div><div class="ttdoc">Class for advanced maps, derived from Map.</div><div class="ttdef"><b>Definition:</b> MarkedMap.h:18</div></div>
+<div class="ttc" id="aclassMarkedMap_html_a3ae48db310841f4d21a0656c0666ddb7"><div class="ttname"><a href="classMarkedMap.html#a3ae48db310841f4d21a0656c0666ddb7">MarkedMap::getMonsterIDs</a></div><div class="ttdeci">std::list&lt; char &gt; getMonsterIDs() const</div><div class="ttdoc">Getter that returns a list of the existing monster groups.</div><div class="ttdef"><b>Definition:</b> MarkedMap.cpp:54</div></div>
+<div class="ttc" id="aclassMarkedMap_html_a232f9762179d230c884c1818ec0aa499"><div class="ttname"><a href="classMarkedMap.html#a232f9762179d230c884c1818ec0aa499">MarkedMap::getMonsterPositions</a></div><div class="ttdeci">std::list&lt; Position &gt; getMonsterPositions(const char &amp;c) const</div><div class="ttdoc">Getter for monsters.</div><div class="ttdef"><b>Definition:</b> MarkedMap.cpp:45</div></div>
+<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">Class for loading and using maps.</div><div class="ttdef"><b>Definition:</b> Map.h:38</div></div>
+<div class="ttc" id="astructPosition_html"><div class="ttname"><a href="structPosition.html">Position</a></div><div class="ttdoc">Structure representing a position.</div><div class="ttdef"><b>Definition:</b> Map.h:17</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

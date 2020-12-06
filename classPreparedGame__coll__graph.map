@@ -1,5 +1,5 @@
 <map id="PreparedGame" name="PreparedGame">
-<area shape="rect" id="node1" title=" " alt="" coords="26,425,145,452"/>
+<area shape="rect" id="node1" title="Derived class from Game." alt="" coords="26,425,145,452"/>
 <area shape="rect" id="node2" href="$classGame.html" title="Class for managing the game." alt="" coords="55,349,116,376"/>
 <area shape="rect" id="node3" href="$classMap.html" title="Class for loading and using maps." alt="" coords="5,260,56,287"/>
 <area shape="rect" id="node4" href="$structGame_1_1GameHero.html" title=" " alt="" coords="80,260,219,287"/>

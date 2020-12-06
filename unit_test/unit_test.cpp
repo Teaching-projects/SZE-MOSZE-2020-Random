@@ -3,6 +3,8 @@
 #include "../sources/JSON.h"
 #include "../sources/Map.h"
 #include "../sources/Game.h"
+#include "../sources/MarkedMap.h"
+#include "../sources/PreparedGame.h"
 
 #include <gtest/gtest.h>
 
@@ -351,6 +353,36 @@ TEST(GameTest, exceptions) {
   ASSERT_THROW(game.putHero(hero, 0, 1), Game::GameAlreadyStartedException);
   ASSERT_THROW(game.putMonster(monster, 0, 2), Game::GameAlreadyStartedException);
   ASSERT_THROW(game.run(ss), Game::GameAlreadyStartedException);
+}
+
+TEST(MarkedMapTest, functions) {
+  MarkedMap map("test_map2");
+
+  ASSERT_EQ(map.getHeroPosition().x, 1);
+  ASSERT_EQ(map.getHeroPosition().y, 1);
+
+  ASSERT_EQ(map.getMonsterPositions('1').size(), 2);
+
+  ASSERT_EQ(map.getMonsterIDs().front(), '1');
+  ASSERT_EQ(map.getMonsterIDs().back(), '2');
+
+  ASSERT_EQ(map.getMonsterPositions('2').front().x, 0);
+  ASSERT_EQ(map.getMonsterPositions('2').front().y, 2);
+}
+
+TEST(MarkedMapTest, exceptions) {
+  MarkedMap map("test_map2");
+
+  ASSERT_THROW(map.getMonsterPositions('9'), Map::WrongIndexException);
+
+  ASSERT_THROW(MarkedMap("nonexistent"), Map::FileNotFoundException);
+  ASSERT_THROW(MarkedMap("test_map"), Map::InvalidFileException);
+}
+
+TEST(PreparedGameTest, exceptions) {
+  ASSERT_THROW(PreparedGame("no_game_no_life"), JSON::ParseException);
+  ASSERT_THROW(PreparedGame("test_monster1.json"), JSON::ParseException);
+  ASSERT_THROW(PreparedGame("test_bad_gameconfig.json"), JSON::ParseException);
 }
 
 int main(int argc, char **argv) {

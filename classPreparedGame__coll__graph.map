@@ -1,0 +1,9 @@
+<map id="PreparedGame" name="PreparedGame">
+<area shape="rect" id="node1" title=" " alt="" coords="26,425,145,452"/>
+<area shape="rect" id="node2" href="$classGame.html" title="Class for managing the game." alt="" coords="55,349,116,376"/>
+<area shape="rect" id="node3" href="$classMap.html" title="Class for loading and using maps." alt="" coords="5,260,56,287"/>
+<area shape="rect" id="node4" href="$structGame_1_1GameHero.html" title=" " alt="" coords="80,260,219,287"/>
+<area shape="rect" id="node5" href="$classHero.html" title="Derived class from Monster." alt="" coords="123,171,176,197"/>
+<area shape="rect" id="node6" href="$classMonster.html" title="Main class for monsters." alt="" coords="112,95,187,121"/>
+<area shape="rect" id="node7" href="$structMonster_1_1Damage.html" title=" " alt="" coords="80,5,219,32"/>
+</map>

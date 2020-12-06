@@ -66,7 +66,7 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classMap-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Map Class Reference</div>  </div>
@@ -77,6 +77,15 @@ $(function() {
  <a href="classMap.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Map_8h_source.html">Map.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Map:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMap__inherit__graph.png" border="0" usemap="#Map_inherit__map" alt="Inheritance graph"/></div>
+<map name="Map_inherit__map" id="Map_inherit__map">
+<area shape="rect" title="Class for loading and using maps." alt="" coords="29,5,80,32"/>
+<area shape="rect" href="classMarkedMap.html" title=" " alt="" coords="5,80,104,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -104,8 +113,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a871049c7b391e75039ccba5a4d757dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loading constructor.  <a href="classMap.html#a871049c7b391e75039ccba5a4d757dae">More...</a><br /></td></tr>
 <tr class="separator:a871049c7b391e75039ccba5a4d757dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec74981544779c8cc1478a9a62de3fdb"><td class="memItemLeft" align="right" valign="top">type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#aec74981544779c8cc1478a9a62de3fdb">get</a> (const int &amp;x, const int &amp;y) const</td></tr>
-<tr class="memdesc:aec74981544779c8cc1478a9a62de3fdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position getter.  <a href="classMap.html#aec74981544779c8cc1478a9a62de3fdb">More...</a><br /></td></tr>
+<tr class="memdesc:aec74981544779c8cc1478a9a62de3fdb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structPosition.html">Position</a> getter.  <a href="classMap.html#aec74981544779c8cc1478a9a62de3fdb">More...</a><br /></td></tr>
 <tr class="separator:aec74981544779c8cc1478a9a62de3fdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef456f204617a79b56711cf73ed009d8"><td class="memItemLeft" align="right" valign="top"><a id="aef456f204617a79b56711cf73ed009d8"></a>
+type&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> (const <a class="el" href="structPosition.html">Position</a> &amp;pos) const</td></tr>
+<tr class="separator:aef456f204617a79b56711cf73ed009d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3181204ba96eb15b96ee1ced85e198e"><td class="memItemLeft" align="right" valign="top"><a id="ab3181204ba96eb15b96ee1ced85e198e"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#ab3181204ba96eb15b96ee1ced85e198e">getWidth</a> () const</td></tr>
 <tr class="memdesc:ab3181204ba96eb15b96ee1ced85e198e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the width of the map. <br /></td></tr>
@@ -115,8 +127,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <tr class="memdesc:a67113f1ffac80d9a20b15fa18a58edc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the height of the map. <br /></td></tr>
 <tr class="separator:a67113f1ffac80d9a20b15fa18a58edc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:a9ecfe932ad2d2bc22492416033bdacfd"><td class="memItemLeft" align="right" valign="top"><a id="a9ecfe932ad2d2bc22492416033bdacfd"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a9ecfe932ad2d2bc22492416033bdacfd">width</a> = 0</td></tr>
 <tr class="memdesc:a9ecfe932ad2d2bc22492416033bdacfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The width of the map. <br /></td></tr>
@@ -206,7 +218,7 @@ std::vector&lt; std::vector&lt; type &gt; &gt;&#160;</td><td class="memItemRight
       </table>
 </div><div class="memdoc">
 
-<p>Position getter. </p>
+<p><a class="el" href="structPosition.html">Position</a> getter. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>the x coordinate of the point to be read </td></tr>

@@ -22,24 +22,23 @@ class Hero : public Monster {
   Damage damageBonusPerLevel;             ///< The extra damage the hero obtains from leveling up.
   float cooldownMultiplierPerLevel = 0;   ///< Modifies the attack cooldown when leveling up.
   float level = 0;                        ///< The actual level of the hero.
-  float defenseBonusPerLevel = 0;
+  float defenseBonusPerLevel = 0;         ///< The extra defense the hero obtains from leveling up.
+  float lightRadius = 0;                  ///< Represents the area that the hero can see on the map.
+  float lightRadiusPerLevel = 1;          ///< The amount that the seen area increases by on each levelup.
 
 public:
-  //constructor, destructor
-
   /// Default constructor
   Hero() {}
 
   /// Constructor with parameters for the class.
   Hero(const std::string& name, const float& healthPoints, const Damage& damage, const float& attackCooldown, const float& defense,
     const float& experiencePerLevel, const float& healthPointBonusPerLevel, const Damage& damageBonusPerLevel,
-    const float& cooldownMultiplierPerLevel, const float& defenseBonusPerLevel) :
+    const float& cooldownMultiplierPerLevel, const float& defenseBonusPerLevel, const float& lightRadius, const float& lightRadiusPerLevel) :
     Monster(name, healthPoints, damage, attackCooldown, defense), baseHealthPoints(healthPoints), experiencePerLevel(experiencePerLevel),
     experienceState(0), healthPointBonusPerLevel(healthPointBonusPerLevel), damageBonusPerLevel(damageBonusPerLevel),
-    cooldownMultiplierPerLevel(cooldownMultiplierPerLevel), level(1), defenseBonusPerLevel(defenseBonusPerLevel) {}
+    cooldownMultiplierPerLevel(cooldownMultiplierPerLevel), level(1), defenseBonusPerLevel(defenseBonusPerLevel),
+    lightRadius(lightRadius), lightRadiusPerLevel(lightRadiusPerLevel) {}
 
-
-  //functions
 
   /**
    * \brief JSON parser.
@@ -72,6 +71,9 @@ public:
 
   /// Getter for the level variable.
   float getLevel() const { return level; }
+
+  /// Getter for the lightRadius variable.
+  float getLightRadius() const { return lightRadius; }
 };
 
 #endif

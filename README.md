@@ -4,9 +4,9 @@ This project is a game that can be played via user input from a console environm
 
 #### Operating the game:
 
-The user starts the game from the command line interface, giving an input parameter. I will refer to this file as ***game configuration file***.
+The user starts the game from the command line interface, giving an input parameter. This input parameter is a **JSON** file. I will refer to this file as ***game configuration file***.
 
-This input parameter is a **JSON** file formatted as follows:
+The file is formatted as follows:
 
     {
       "map"  : "../maps/map1",

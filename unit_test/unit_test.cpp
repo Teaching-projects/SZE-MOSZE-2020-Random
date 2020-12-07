@@ -190,6 +190,12 @@ TEST(HeroTest, parse_test) {
   ASSERT_EQ(h2.getDamage().physical, 10);
   ASSERT_EQ(h2.getDamage().magical, 0);
 
+  ASSERT_EQ(h1.getDefense(), 5);
+  ASSERT_EQ(h2.getDefense(), 25);
+
+  ASSERT_EQ(h1.getLightRadius(), 1);
+  ASSERT_EQ(h2.getLightRadius(), 2);
+
   ASSERT_EQ(h1.getAttackCooldown(), (float)1.3);
   ASSERT_EQ(h2.getAttackCooldown(), (float)1.5);
 
@@ -258,6 +264,7 @@ TEST(HeroTest, levelup_test) {
   ASSERT_EQ(h1.getMaxHealthPoints(), h1c.getMaxHealthPoints() + 50);
   ASSERT_EQ(h1.getLevel(), h1c.getLevel() + 1);
   ASSERT_EQ(h1.getDefense(), h1c.getDefense() + 1);
+  ASSERT_EQ(h1.getLightRadius(), h1c.getLightRadius() + 2);
 }
 
 TEST(HeroTest, exceptions) {

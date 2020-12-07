@@ -5,6 +5,7 @@
 Hero Hero::parse(const std::string& filename) {
   JSON file = JSON::parseFromFile(filename);
   Damage dmg, bonusDmg;
+  float lightPerLevel = 1;
   if (file.count("base_damage")) {
     dmg.physical = file.get<int>("base_damage");
     bonusDmg.physical = file.get<int>("damage_bonus_per_level");
@@ -18,6 +19,10 @@ Hero Hero::parse(const std::string& filename) {
     bonusDmg.magical = file.get<int>("magical_damage_bonus_per_level");
   }
 
+  if (file.count("light_radius_per_level")) {
+    lightPerLevel = file.get<int>("light_radius_per_level");
+  }
+
   return Hero(
     file.get<std::string>("name"),
     file.get<int>("base_health_points"),
@@ -28,7 +33,9 @@ Hero Hero::parse(const std::string& filename) {
     file.get<int>("health_point_bonus_per_level"),
     bonusDmg,
     file.get<float>("cooldown_multiplier_per_level"),
-    file.get<int>("defense_bonus_per_level")
+    file.get<int>("defense_bonus_per_level"),
+    file.get<int>("base_light_radius"),
+    lightPerLevel
   );
 }
 
@@ -49,6 +56,7 @@ void Hero::attack(Monster& other) {
       damage += damageBonusPerLevel;
       attackCooldown *= cooldownMultiplierPerLevel;
       defense += defenseBonusPerLevel;
+      lightRadius += lightRadiusPerLevel;
     }
     resetCooldown();
   }

@@ -1,5 +1,5 @@
-#ifndef MARKEDMAP_H
-#define MARKEDMAP_H
+#ifndef MARKED_MAP_H
+#define MARKED_MAP_H
 
 #include "Map.h"
 #include <map>

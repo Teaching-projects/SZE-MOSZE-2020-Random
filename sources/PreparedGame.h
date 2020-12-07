@@ -1,5 +1,5 @@
-#ifndef PREPAREDGAME_H
-#define PREPAREDGAME_H
+#ifndef PREPARED_GAME_H
+#define PREPARED_GAME_H
 
 #include "Game.h"
 

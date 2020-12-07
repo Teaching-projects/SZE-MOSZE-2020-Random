@@ -1,17 +1,30 @@
 #include "Game.h"
 
 void Game::draw() const {
+  int radius = (int)gameHero.hero.getLightRadius();
+
+  int xStart = gameHero.x - radius;
+  int xEnd = gameHero.x + radius;
+  int yStart = gameHero.y - radius;
+  int yEnd = gameHero.y + radius;
+
   int width = gameMap.getWidth();
   int height = gameMap.getHeight();
 
+  if (xStart < 0) { xStart = 0; }
+  if (xEnd >= width) { xEnd = width - 1; }
+
+  if (yStart < 0) { yStart = 0; }
+  if (yEnd >= height) { yEnd = height - 1; }
+
   std::string text = "╔";
-  for (int i = 0; i < width * 2; ++i) { text += "═"; }
+  for (int i = 0; i < ((xEnd + 1) - xStart) * 2; ++i) { text += "═"; }
   text += "╗\n";
 
-  for (int y = 0; y < height; ++y) {
+  for (int y = yStart; y <= yEnd; ++y) {
     text += "║";
 
-    for (int x = 0; x < width; ++x) {
+    for (int x = xStart; x <= xEnd; ++x) {
 
       if (gameMap.get(x, y) == Map::Free) {
         if ((x == gameHero.x) && (y == gameHero.y)) {
@@ -35,7 +48,7 @@ void Game::draw() const {
   }
 
   text += "╚";
-  for (int i = 0; i < width * 2; ++i) { text += "═"; }
+  for (int i = 0; i < ((xEnd + 1) - xStart) * 2; ++i) { text += "═"; }
   text += "╝";
 
   std::cout << text << std::endl;

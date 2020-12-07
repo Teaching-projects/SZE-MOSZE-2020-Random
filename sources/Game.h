@@ -97,21 +97,40 @@ public:
     const char* what() const throw() { return "The game already started."; }
   };
 
+  /**
+   * \struct Game::GameMonster
+   *
+   * This class represents a Monster with a specific positon on the map.
+   *
+   * \author LengyHELL
+   * \version 1.0
+   * \date 2020/12/07 14:16
+   */
+  struct GameMonster {
+    Monster monster;  ///< The represented Monster.
+    int x = -1;       ///< The Monster's x position.
+    int y = -1;       ///< The Monster's y position.
+  };
+
+  /**
+   * \struct Game::GameHero
+   *
+   * This class represents a Hero with a specific positon on the map.
+   *
+   * \author LengyHELL
+   * \version 1.0
+   * \date 2020/12/07 14:16
+   */
+  struct GameHero {
+    Hero hero;        ///< The represented Hero.
+    int x = -1;       ///< The Hero's x position.
+    int y = -1;       ///< The Hero's y position.
+  };
+
 protected:
   bool running = false; ///< Indicates if the game is running.
 
 private:
-  struct GameMonster {
-    Monster monster;
-    int x = -1;
-    int y = -1;
-  };
-  struct GameHero {
-    Hero hero;
-    int x = -1;
-    int y = -1;
-  };
-
   Map gameMap;
   GameHero gameHero;
   std::vector<GameMonster> gameMonsters;
@@ -175,6 +194,10 @@ public:
 
   /// Checks if the hero is set.
   bool hasHero() const { return (gameHero.x >= 0) && (gameHero.y >= 0); }
+
+  Map getMap() const { return gameMap; }
+  GameHero getHero() const { return gameHero; }
+  std::vector<GameMonster> getMonsters() const { return gameMonsters; }
 };
 
 #endif

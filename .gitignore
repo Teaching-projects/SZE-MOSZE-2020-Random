@@ -18,3 +18,5 @@ cppcheck_report.txt
 run.sh
 */svg_image.svg
 *.bmp
+
+README_dox.md

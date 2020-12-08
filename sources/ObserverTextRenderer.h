@@ -17,7 +17,7 @@ class ObserverTextRenderer : public TextRenderer {
 public:
 
   /// Constructor that sets the output stream.
-  ObserverTextRenderer(std::ostream& os = std::cout) : TextRenderer(os) {}
+  explicit ObserverTextRenderer(std::ostream& os = std::cout) : TextRenderer(os) {}
 
   void render(const Game& game) const override;
 };

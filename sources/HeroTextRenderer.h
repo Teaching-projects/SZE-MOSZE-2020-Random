@@ -17,7 +17,7 @@ class HeroTextRenderer : public TextRenderer {
 public:
 
   /// Constructor that sets the output stream.
-  HeroTextRenderer(std::ostream& os = std::cout) : TextRenderer(os) {}
+  explicit HeroTextRenderer(std::ostream& os = std::cout) : TextRenderer(os) {}
 
   void render(const Game& game) const override;
 };

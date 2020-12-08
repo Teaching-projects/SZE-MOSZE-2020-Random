@@ -16,7 +16,7 @@
 class HeroSVGRenderer : public SVGRenderer {
 public:
   /// Constructor that sets the filename.
-  HeroSVGRenderer(const std::string& filename) : SVGRenderer(filename) {}
+  explicit HeroSVGRenderer(const std::string& filename) : SVGRenderer(filename) {}
 
   void render(const Game& game) const override;
 };

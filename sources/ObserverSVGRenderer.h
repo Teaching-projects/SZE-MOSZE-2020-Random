@@ -17,7 +17,7 @@ class ObserverSVGRenderer : public SVGRenderer {
 public:
 
   /// Constructor that sets the filename.
-  ObserverSVGRenderer(const std::string& filename) : SVGRenderer(filename) {}
+  explicit ObserverSVGRenderer(const std::string& filename) : SVGRenderer(filename) {}
 
   void render(const Game& game) const override;
 };

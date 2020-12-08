@@ -42,6 +42,7 @@ Monster Monster::parse(const std::string& filename) {
     file.get<int>("health_points"),
     dmg,
     file.get<float>("attack_cooldown"),
-    file.get<int>("defense")
+    file.get<int>("defense"),
+    file.get<std::string>("texture")
   );
 }

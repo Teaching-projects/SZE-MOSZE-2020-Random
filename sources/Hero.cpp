@@ -29,6 +29,7 @@ Hero Hero::parse(const std::string& filename) {
     dmg,
     file.get<float>("base_attack_cooldown"),
     file.get<int>("base_defense"),
+    file.get<std::string>("texture"),
     file.get<int>("experience_per_level"),
     file.get<int>("health_point_bonus_per_level"),
     bonusDmg,

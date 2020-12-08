@@ -129,11 +129,14 @@ public:
 
 protected:
   bool running = false; ///< Indicates if the game is running.
+  std::string wallTexture = "";
+  std::string freeTexture = "";
 
 private:
   Map gameMap;
   GameHero gameHero;
   std::vector<GameMonster> gameMonsters;
+
 
 
   void draw() const;
@@ -198,6 +201,8 @@ public:
   Map getMap() const { return gameMap; }
   GameHero getHero() const { return gameHero; }
   std::vector<GameMonster> getMonsters() const { return gameMonsters; }
+  std::string getWallTexture() const { return wallTexture; }
+  std::string getFreeTexture() const { return freeTexture; }
 };
 
 #endif

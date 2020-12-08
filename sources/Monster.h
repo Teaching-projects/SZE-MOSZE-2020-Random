@@ -26,7 +26,7 @@ public:
    * \date 2020/12/05 18:02
    */
   struct Damage {
-    
+
     /// Default constructor.
     Damage() : physical(0), magical(0) {}
 
@@ -81,6 +81,7 @@ protected:
   float attackCooldown = 0;   ///< The time it takes to reload the attack.
   float cooldownState = 0;    ///< Current state of the attack reloading.
   float defense = 0;          ///< The amount of physical damage that can be avoided.
+  std::string texture = "";   ///< The texture used for SVG drawing.
 
   /**
    * \brief Function for dealing damage.
@@ -104,8 +105,10 @@ public:
   Monster() {}
 
   /// Constructor with parameters for the class.
-  Monster(const std::string& name, const float& healthPoints, const Damage& damage, const float& attackCooldown, const float& defense) :
-    name(name), healthPoints(healthPoints), damage(damage), attackCooldown(attackCooldown), cooldownState(attackCooldown), defense(defense) {}
+  Monster(const std::string& name, const float& healthPoints, const Damage& damage,
+    const float& attackCooldown, const float& defense, const std::string& texture) :
+    name(name), healthPoints(healthPoints), damage(damage), attackCooldown(attackCooldown),
+    cooldownState(attackCooldown), defense(defense), texture(texture) {}
 
   /**
    * \brief Elapse time.
@@ -163,6 +166,9 @@ public:
 
   /// Getter for the defense variable.
   float getDefense() const { return defense; }
+
+  /// Getter for the texture variable.
+  std::string getTexture() const { return texture; }
 };
 
 #endif

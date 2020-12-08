@@ -6,6 +6,9 @@ PreparedGame::PreparedGame(const std::string& filename) {
   JSON file = JSON::parseFromFile(filename);
   MarkedMap tempMap(file.get<std::string>("map"));
 
+  wallTexture = file.get<std::string>("wall_texture");
+  freeTexture = file.get<std::string>("free_texture");
+
   setMap(tempMap);
 
   putHero(Hero::parse(file.get<std::string>("hero")), tempMap.getHeroPosition().x, tempMap.getHeroPosition().y);

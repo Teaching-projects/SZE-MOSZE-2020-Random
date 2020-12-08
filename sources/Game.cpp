@@ -1,57 +1,9 @@
 #include "Game.h"
 
-void Game::draw() const {
-  int radius = (int)gameHero.hero.getLightRadius();
-
-  int xStart = gameHero.x - radius;
-  int xEnd = gameHero.x + radius;
-  int yStart = gameHero.y - radius;
-  int yEnd = gameHero.y + radius;
-
-  int width = gameMap.getWidth();
-  int height = gameMap.getHeight();
-
-  if (xStart < 0) { xStart = 0; }
-  if (xEnd >= width) { xEnd = width - 1; }
-
-  if (yStart < 0) { yStart = 0; }
-  if (yEnd >= height) { yEnd = height - 1; }
-
-  std::string text = "╔";
-  for (int i = 0; i < ((xEnd + 1) - xStart) * 2; ++i) { text += "═"; }
-  text += "╗\n";
-
-  for (int y = yStart; y <= yEnd; ++y) {
-    text += "║";
-
-    for (int x = xStart; x <= xEnd; ++x) {
-
-      if (gameMap.get(x, y) == Map::Free) {
-        if ((x == gameHero.x) && (y == gameHero.y)) {
-          text += "┣┫";
-        }
-        else {
-          int monsterCount = 0;
-          for (const auto& m : gameMonsters) {
-            if ((x == m.x) && (y == m.y)) { ++monsterCount; }
-            if (monsterCount >= 2) { break; }
-          }
-
-          if (monsterCount == 1) { text += "M "; }
-          else if (monsterCount > 1) { text += "MM"; }
-          else { text += "░░"; }
-        }
-      }
-      else { text += "██"; }
-    }
-    text += "║\n";
+Game::~Game() {
+  for (auto& r : renderers) {
+    delete r;
   }
-
-  text += "╚";
-  for (int i = 0; i < ((xEnd + 1) - xStart) * 2; ++i) { text += "═"; }
-  text += "╝";
-
-  std::cout << text << std::endl;
 }
 
 void Game::setMap(const Map& map) {
@@ -100,6 +52,10 @@ void Game::putMonster(const Monster& monster, int x, int y) {
   else { throw OccupiedException(); }
 }
 
+void Game::registerRenderer(Renderer* renderer) {
+  renderers.push_back(renderer);
+}
+
 void Game::run(std::istream& is) {
   if (running) { throw GameAlreadyStartedException(); }
 
@@ -123,7 +79,9 @@ void Game::run(std::istream& is) {
       else { ++i; }
     }
 
-    draw();
+    for (const auto& r : renderers) {
+      r->render(*this);
+    }
 
     if (running) {
       if (gameMonsters.size() == 0) {

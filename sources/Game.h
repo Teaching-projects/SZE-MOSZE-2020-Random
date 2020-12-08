@@ -2,12 +2,16 @@
 #define GAME_H
 
 #include <string>
+#include <list>
 #include <vector>
 #include <iostream>
 
 #include "Map.h"
 #include "Monster.h"
 #include "Hero.h"
+#include "Renderer.h"
+
+class Renderer;
 
 /**
  * \class Game
@@ -136,14 +140,13 @@ private:
   Map gameMap;
   GameHero gameHero;
   std::vector<GameMonster> gameMonsters;
-
-
-
-  void draw() const;
+  std::list<Renderer*> renderers;
 
 public:
   /// Default constructor, creates an empty game.
   Game() {}
+
+  ~Game();
 
   /// Constructor that loads the game with the given Map.
   explicit Game(const std::string& mapfilename) : gameMap(Map(mapfilename)) {}
@@ -184,6 +187,8 @@ public:
    * This function places a Monster to the given position.
    */
   void putMonster(const Monster& monster, int x, int y);
+
+  void registerRenderer(Renderer* renderer);
 
   /**
    * \brief Running the game.

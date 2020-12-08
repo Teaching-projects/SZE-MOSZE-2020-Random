@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Fighting game: Main Page</title>
+<title>Fighting game: About the project</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,11 +61,83 @@ $(function() {
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Fighting game Documentation</div>  </div>
+<div class="title">About the project </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p>This project is a game that can be played via user input from a console environment. The output from the app is also shown via the console, or drawn to an <b>SVG</b> file.</p>
+<h3><a class="anchor" id="autotoc_md1"></a>
+Setting up the game:</h3>
+<p>The user starts the game from the command line interface, giving an input parameter. This input parameter is a <b><a class="el" href="classJSON.html" title="Class for JSON files.">JSON</a></b> file. I will refer to this file as <em><b>game configuration file</b></em>.</p>
+<p>The file is formatted as follows: </p><pre class="fragment">{
+  "map"  : "../maps/map1",
+  "hero" : "Dark_Wanderer.json",
+  "monster-1" : "Fallen.json",
+  "monster-2" : "Zombie.json",
+  "monster-3" : "Blood_Raven.json",
+  "wall_texture" : "../textures/Wall.svg",
+  "free_texture" : "../textures/Free.svg"
+}
+</pre><p>Here the *"map"* value represents the <em><b>map</b></em> file, which is formatted like this: </p><pre class="fragment">##############
+# H #  ####  #
+#1####  ##  #
+#121#  ##  #
+###1# ##  #
+#  2133  #
+#########
+</pre><p>On the <em><b>map</b></em>, the <em><b>hero</b></em> is shown by the <em>H</em> character, and similarly the <em>1, 2, 3...</em> numbers give the position of different types of <em><b>monsters</b></em>. These <em><b>monsters</b></em> can be seen in the <em><b>game configuration file</b></em> described as *"monster-x"* where the x can be any simple character.</p>
+<p>The *"wall_texture"* and *"free_texture"* tags in the <em><b>game configuration file</b></em> specify the textures of the wall and free path drawn with the <b>SVG</b> renderer.</p>
+<p>Also in the <em><b>game configuration file</b></em> after the *"hero"* and *"monster"* tags, there is a specific <b><a class="el" href="classJSON.html" title="Class for JSON files.">JSON</a></b> file, which contains the parameters of <em><b>heroes</b></em> and <em><b>monsters</b></em>.</p>
+<p>Their format of the <em><b>hero</b></em>'s file is the following: </p><pre class="fragment">{
+    "name" : "Prince Aidan of Khanduras",
+    "base_health_points" : 30,
+    "base_damage" : 3,
+    "base_magical_damage" : 1,
+    "base_attack_cooldown" : 1.1,
+    "experience_per_level" : 20,
+    "health_point_bonus_per_level" : 5,
+    "damage_bonus_per_level" : 1,
+    "magical_damage_bonus_per_level" : 1,
+    "cooldown_multiplier_per_level": 0.9,
+    "base_defense" : 1,
+    "defense_bonus_per_level" : 1,
+    "base_light_radius" : 1,
+    "texture" : "../textures/Dark_Wanderer.svg"
+}
+</pre><p>In this file, the:</p><ul>
+<li>*"name"* tag shows the name of the <em><b>hero</b></em>,</li>
+<li>*"base_health_points"* tag shows the basic starting health of the <em><b>hero</b></em>,</li>
+<li>*"base_damage"* and</li>
+<li>*"base_magic_damage"* tags show the basic starting damage types of the <em><b>hero</b></em>,</li>
+<li>*"base_attack_cooldown"* tag shows the time it takes for the <em><b>hero</b></em> to reload its attack,</li>
+<li>*"experience_per_level"* tag shows the amount of experience the <em><b>hero</b></em> gets on each levelup,</li>
+<li>*"defense"* tag shows the amount of physical damage the <em><b>hero</b></em> can nullify and the</li>
+<li>*"base_light_radius"* tag shows the initial distance the <em><b>hero</b></em> can see the map while in game.</li>
+<li>*"texture"* tag specifies the texture used for the <em><b>hero</b></em> when rendering with the <b>SVG</b> renderer.</li>
+</ul>
+<p>I didn't specify some of the tags, however these tags mainly have a <code>per_level</code> in their name showing that they increase or multiply a given value of the <em><b>hero</b></em> when leveling up.</p>
+<p>The *.json* files for the <em><b>monsters</b></em> are very similar to the <em><b>heroes</b></em>, some of the tags are the same without the <code>base_</code> prefix, and some are not specified in them. This is mainly because the <em><b>monsters</b></em> are unable to level up, and the player mostly controls <em><b>heroes</b></em>.</p>
+<h3><a class="anchor" id="autotoc_md2"></a>
+Playing the game:</h3>
+<p>After the configuration files are in place, the player starts the game via the command line, giving the <em><b>game configuration file</b></em> as mentioned before. After it has been started, the game renders the game depending on the current setup. When the user decided to give its input after analyzing the map and <em><b>monster</b></em>, the following actions can be done by typing them in the command line interface:</p><ul>
+<li><b>north</b> to move the <em><b>hero</b></em> upwards,</li>
+<li><b>south</b> to move it down,</li>
+<li><b>west</b> to move it left,</li>
+<li><b>east</b> to move it right and</li>
+<li><b>exit</b> if the player wants to exit the game.</li>
+</ul>
+<p>When the game is running, the output is shown as: </p><pre class="fragment">╔══════════╗
+║░░████████║
+║░░░░░░██░░║
+║████┣┫██MM║
+║░░░░M M ░░║
+║██████████║
+╚══════════╝
+</pre><p> Here on the map, the big <b>H</b> letter indicates the position of the <em><b>hero</b></em> that the player can move, the <b>M</b> or <b>MM</b> letters show if one or more <em><b>monster</b></em> is standing on a tile. Walls are indicated by the <b>dark</b> tiles, which are obstacles that the player cant move through. The <em><b>hero</b></em> can move on the paths shown by the <b>lighter</b> colored tiles, or decide to fight with the <em><b>monster</b></em> or <em><b>monsters</b></em> by stepping on one of the <em><b>monster</b></em> tiles.</p>
+<p>If the <em><b>hero</b></em> defeats all the <em><b>monsters</b></em>, the player <b>wins</b> and if the <em><b>hero</b></em> is defeated while fighting some <em><b>monsters</b></em>, the player <b>loses</b>.</p>
+<p>When <b>SVG</b> rendering is used, the <b>SVG</b> image is saved at the specified directory. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

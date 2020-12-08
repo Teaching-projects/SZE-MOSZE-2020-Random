@@ -75,8 +75,8 @@ Inheritance diagram for ObserverTextRenderer:</div>
 <div class="center"><img src="classObserverTextRenderer__inherit__graph.png" border="0" usemap="#ObserverTextRenderer_inherit__map" alt="Inheritance graph"/></div>
 <map name="ObserverTextRenderer_inherit__map" id="ObserverTextRenderer_inherit__map">
 <area shape="rect" title=" " alt="" coords="5,155,172,181"/>
-<area shape="rect" href="classTextRenderer.html" title=" " alt="" coords="35,80,143,107"/>
-<area shape="rect" href="classRenderer.html" title=" " alt="" coords="48,5,129,32"/>
+<area shape="rect" href="classTextRenderer.html" title="Class for rendering game states to text." alt="" coords="35,80,143,107"/>
+<area shape="rect" href="classRenderer.html" title="Class for rendering game states." alt="" coords="48,5,129,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -85,8 +85,8 @@ Collaboration diagram for ObserverTextRenderer:</div>
 <div class="center"><img src="classObserverTextRenderer__coll__graph.png" border="0" usemap="#ObserverTextRenderer_coll__map" alt="Collaboration graph"/></div>
 <map name="ObserverTextRenderer_coll__map" id="ObserverTextRenderer_coll__map">
 <area shape="rect" title=" " alt="" coords="5,155,172,181"/>
-<area shape="rect" href="classTextRenderer.html" title=" " alt="" coords="35,80,143,107"/>
-<area shape="rect" href="classRenderer.html" title=" " alt="" coords="48,5,129,32"/>
+<area shape="rect" href="classTextRenderer.html" title="Class for rendering game states to text." alt="" coords="35,80,143,107"/>
+<area shape="rect" href="classRenderer.html" title="Class for rendering game states." alt="" coords="48,5,129,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -95,24 +95,78 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a481095e34583919358282824f4b53d0f"><td class="memItemLeft" align="right" valign="top"><a id="a481095e34583919358282824f4b53d0f"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ObserverTextRenderer</b> (std::ostream &amp;os=std::cout)</td></tr>
 <tr class="separator:a481095e34583919358282824f4b53d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54994a05c956a2e4828bec65b8ac821d"><td class="memItemLeft" align="right" valign="top"><a id="a54994a05c956a2e4828bec65b8ac821d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> (const <a class="el" href="classGame.html">Game</a> &amp;game) const override</td></tr>
+<tr class="memitem:a54994a05c956a2e4828bec65b8ac821d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObserverTextRenderer.html#a54994a05c956a2e4828bec65b8ac821d">render</a> (const <a class="el" href="classGame.html">Game</a> &amp;game) const override</td></tr>
+<tr class="memdesc:a54994a05c956a2e4828bec65b8ac821d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render function.  <a href="classObserverTextRenderer.html#a54994a05c956a2e4828bec65b8ac821d">More...</a><br /></td></tr>
 <tr class="separator:a54994a05c956a2e4828bec65b8ac821d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classTextRenderer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classTextRenderer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classTextRenderer.html">TextRenderer</a></td></tr>
 <tr class="memitem:a01928769c4b1b898027159a02f973aa7 inherit pub_methods_classTextRenderer"><td class="memItemLeft" align="right" valign="top"><a id="a01928769c4b1b898027159a02f973aa7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TextRenderer</b> (std::ostream &amp;os=std::cout)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTextRenderer.html#a01928769c4b1b898027159a02f973aa7">TextRenderer</a> (std::ostream &amp;os=std::cout)</td></tr>
+<tr class="memdesc:a01928769c4b1b898027159a02f973aa7 inherit pub_methods_classTextRenderer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that sets the output stream. <br /></td></tr>
 <tr class="separator:a01928769c4b1b898027159a02f973aa7 inherit pub_methods_classTextRenderer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ff10f2f2c04bbd2c70c493c1f89f57d inherit pub_methods_classTextRenderer"><td class="memItemLeft" align="right" valign="top"><a id="a0ff10f2f2c04bbd2c70c493c1f89f57d"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTextRenderer.html#a0ff10f2f2c04bbd2c70c493c1f89f57d">~TextRenderer</a> ()</td></tr>
+<tr class="memdesc:a0ff10f2f2c04bbd2c70c493c1f89f57d inherit pub_methods_classTextRenderer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
+<tr class="separator:a0ff10f2f2c04bbd2c70c493c1f89f57d inherit pub_methods_classTextRenderer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f5cba408d390b6de79456e246b27034 inherit pub_methods_classTextRenderer"><td class="memItemLeft" align="right" valign="top"><a id="a6f5cba408d390b6de79456e246b27034"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setOutputStream</b> (std::ostream &amp;os=std::cout)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTextRenderer.html#a6f5cba408d390b6de79456e246b27034">setOutputStream</a> (std::ostream &amp;os=std::cout)</td></tr>
+<tr class="memdesc:a6f5cba408d390b6de79456e246b27034 inherit pub_methods_classTextRenderer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that sets the output stream to the given parameter. <br /></td></tr>
 <tr class="separator:a6f5cba408d390b6de79456e246b27034 inherit pub_methods_classTextRenderer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classRenderer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classRenderer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classRenderer.html">Renderer</a></td></tr>
+<tr class="memitem:a7ebf46f54dab9905f79b80f7fddb76a6 inherit pub_methods_classRenderer"><td class="memItemLeft" align="right" valign="top"><a id="a7ebf46f54dab9905f79b80f7fddb76a6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRenderer.html#a7ebf46f54dab9905f79b80f7fddb76a6">Renderer</a> ()</td></tr>
+<tr class="memdesc:a7ebf46f54dab9905f79b80f7fddb76a6 inherit pub_methods_classRenderer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="separator:a7ebf46f54dab9905f79b80f7fddb76a6 inherit pub_methods_classRenderer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba42b60392775e4a492c4d14d4fff29f inherit pub_methods_classRenderer"><td class="memItemLeft" align="right" valign="top"><a id="aba42b60392775e4a492c4d14d4fff29f"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRenderer.html#aba42b60392775e4a492c4d14d4fff29f">~Renderer</a> ()</td></tr>
+<tr class="memdesc:aba42b60392775e4a492c4d14d4fff29f inherit pub_methods_classRenderer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
+<tr class="separator:aba42b60392775e4a492c4d14d4fff29f inherit pub_methods_classRenderer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classTextRenderer"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classTextRenderer')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classTextRenderer.html">TextRenderer</a></td></tr>
 <tr class="memitem:a08e203f1bfb78b01b3b368f4e0889950 inherit pro_attribs_classTextRenderer"><td class="memItemLeft" align="right" valign="top"><a id="a08e203f1bfb78b01b3b368f4e0889950"></a>
-std::ostream *&#160;</td><td class="memItemRight" valign="bottom"><b>outputStream</b></td></tr>
+std::ostream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTextRenderer.html#a08e203f1bfb78b01b3b368f4e0889950">outputStream</a></td></tr>
+<tr class="memdesc:a08e203f1bfb78b01b3b368f4e0889950 inherit pro_attribs_classTextRenderer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The output stream that the text is put into. <br /></td></tr>
 <tr class="separator:a08e203f1bfb78b01b3b368f4e0889950 inherit pro_attribs_classTextRenderer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a54994a05c956a2e4828bec65b8ac821d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54994a05c956a2e4828bec65b8ac821d">&#9670;&nbsp;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObserverTextRenderer::render </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classGame.html">Game</a> &amp;&#160;</td>
+          <td class="paramname"><em>game</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Render function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>the <a class="el" href="classGame.html" title="Class for managing the game.">Game</a> object to be rendered</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Renders a given <a class="el" href="classGame.html" title="Class for managing the game.">Game</a> object for the user in some visual format. </p>
+
+<p>Implements <a class="el" href="classTextRenderer.html#a5fe4949901cf21cede8c020dbcd43984">TextRenderer</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>sources/<a class="el" href="ObserverTextRenderer_8h_source.html">ObserverTextRenderer.h</a></li>
 <li>sources/ObserverTextRenderer.cpp</li>

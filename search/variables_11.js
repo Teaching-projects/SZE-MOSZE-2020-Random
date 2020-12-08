@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_226',['y',['../structGame_1_1GameMonster.html#ad86672f270c7af4f3699310bc0c6d887',1,'Game::GameMonster::y()'],['../structGame_1_1GameHero.html#a6273625742ffe6f60d6ea67b4f5e98a7',1,'Game::GameHero::y()'],['../structPosition.html#a3c08e9213d4726b21caba3073192c4a3',1,'Position::y()']]]
+  ['x_260',['x',['../structGame_1_1GameMonster.html#ae7527dc6c21cf0a967d6f245314e6e27',1,'Game::GameMonster::x()'],['../structGame_1_1GameHero.html#ab12ba39cdef81c9fa78ec7d83f66e093',1,'Game::GameHero::x()'],['../structPosition.html#aeda152ffeee17ae5be9c02327b2408d8',1,'Position::x()']]]
 ];

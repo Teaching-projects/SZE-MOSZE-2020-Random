@@ -76,21 +76,29 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Renderer.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classTextRenderer.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTextRenderer.html">TextRenderer</a> : <span class="keyword">public</span> <a class="code" href="classRenderer.html">Renderer</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  std::ostream* outputStream;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="classTextRenderer.html">TextRenderer</a>(std::ostream&amp; os = std::cout) { setOutputStream(os); }</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classTextRenderer.html">TextRenderer</a>() {}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> render(<span class="keyword">const</span> <a class="code" href="classGame.html">Game</a>&amp; game) <span class="keyword">const override</span> = 0;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">void</span> setOutputStream(std::ostream&amp; os = std::cout) { outputStream = &amp;os; }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classTextRenderer.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTextRenderer.html">TextRenderer</a> : <span class="keyword">public</span> <a class="code" href="classRenderer.html">Renderer</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classTextRenderer.html#a08e203f1bfb78b01b3b368f4e0889950">   19</a></span>&#160;  std::ostream* <a class="code" href="classTextRenderer.html#a08e203f1bfb78b01b3b368f4e0889950">outputStream</a>;   </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classTextRenderer.html#a01928769c4b1b898027159a02f973aa7">   23</a></span>&#160;  <a class="code" href="classTextRenderer.html#a01928769c4b1b898027159a02f973aa7">TextRenderer</a>(std::ostream&amp; os = std::cout) { <a class="code" href="classTextRenderer.html#a6f5cba408d390b6de79456e246b27034">setOutputStream</a>(os); }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classTextRenderer.html#a0ff10f2f2c04bbd2c70c493c1f89f57d">   26</a></span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classTextRenderer.html#a0ff10f2f2c04bbd2c70c493c1f89f57d">~TextRenderer</a>() {}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTextRenderer.html#a5fe4949901cf21cede8c020dbcd43984">render</a>(<span class="keyword">const</span> <a class="code" href="classGame.html">Game</a>&amp; game) <span class="keyword">const override</span> = 0;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classTextRenderer.html#a6f5cba408d390b6de79456e246b27034">   31</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTextRenderer.html#a6f5cba408d390b6de79456e246b27034">setOutputStream</a>(std::ostream&amp; os = std::cout) { <a class="code" href="classTextRenderer.html#a08e203f1bfb78b01b3b368f4e0889950">outputStream</a> = &amp;os; }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassTextRenderer_html"><div class="ttname"><a href="classTextRenderer.html">TextRenderer</a></div><div class="ttdef"><b>Definition:</b> TextRenderer.h:7</div></div>
-<div class="ttc" id="aclassRenderer_html"><div class="ttname"><a href="classRenderer.html">Renderer</a></div><div class="ttdef"><b>Definition:</b> Renderer.h:10</div></div>
+<div class="ttc" id="aclassTextRenderer_html_a01928769c4b1b898027159a02f973aa7"><div class="ttname"><a href="classTextRenderer.html#a01928769c4b1b898027159a02f973aa7">TextRenderer::TextRenderer</a></div><div class="ttdeci">TextRenderer(std::ostream &amp;os=std::cout)</div><div class="ttdoc">Constructor that sets the output stream.</div><div class="ttdef"><b>Definition:</b> TextRenderer.h:23</div></div>
+<div class="ttc" id="aclassTextRenderer_html_a6f5cba408d390b6de79456e246b27034"><div class="ttname"><a href="classTextRenderer.html#a6f5cba408d390b6de79456e246b27034">TextRenderer::setOutputStream</a></div><div class="ttdeci">void setOutputStream(std::ostream &amp;os=std::cout)</div><div class="ttdoc">Function that sets the output stream to the given parameter.</div><div class="ttdef"><b>Definition:</b> TextRenderer.h:31</div></div>
+<div class="ttc" id="aclassTextRenderer_html_a0ff10f2f2c04bbd2c70c493c1f89f57d"><div class="ttname"><a href="classTextRenderer.html#a0ff10f2f2c04bbd2c70c493c1f89f57d">TextRenderer::~TextRenderer</a></div><div class="ttdeci">virtual ~TextRenderer()</div><div class="ttdoc">Default destructor.</div><div class="ttdef"><b>Definition:</b> TextRenderer.h:26</div></div>
+<div class="ttc" id="aclassTextRenderer_html"><div class="ttname"><a href="classTextRenderer.html">TextRenderer</a></div><div class="ttdoc">Class for rendering game states to text.</div><div class="ttdef"><b>Definition:</b> TextRenderer.h:17</div></div>
+<div class="ttc" id="aclassTextRenderer_html_a5fe4949901cf21cede8c020dbcd43984"><div class="ttname"><a href="classTextRenderer.html#a5fe4949901cf21cede8c020dbcd43984">TextRenderer::render</a></div><div class="ttdeci">virtual void render(const Game &amp;game) const override=0</div><div class="ttdoc">Render function.</div></div>
+<div class="ttc" id="aclassTextRenderer_html_a08e203f1bfb78b01b3b368f4e0889950"><div class="ttname"><a href="classTextRenderer.html#a08e203f1bfb78b01b3b368f4e0889950">TextRenderer::outputStream</a></div><div class="ttdeci">std::ostream * outputStream</div><div class="ttdoc">The output stream that the text is put into.</div><div class="ttdef"><b>Definition:</b> TextRenderer.h:19</div></div>
+<div class="ttc" id="aclassRenderer_html"><div class="ttname"><a href="classRenderer.html">Renderer</a></div><div class="ttdoc">Class for rendering game states.</div><div class="ttdef"><b>Definition:</b> Renderer.h:20</div></div>
 <div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">Class for managing the game.</div><div class="ttdef"><b>Definition:</b> Game.h:26</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['physical_220',['physical',['../structMonster_1_1Damage.html#a8e5140668ad854edd9c7685e7f14a477',1,'Monster::Damage']]]
+  ['outputstream_253',['outputStream',['../classTextRenderer.html#a08e203f1bfb78b01b3b368f4e0889950',1,'TextRenderer']]]
 ];

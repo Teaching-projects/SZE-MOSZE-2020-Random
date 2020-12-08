@@ -69,14 +69,19 @@ $(function() {
 <div class="title">Renderer Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class for rendering game states.  
+ <a href="classRenderer.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Renderer_8h_source.html">Renderer.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Renderer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classRenderer__inherit__graph.png" border="0" usemap="#Renderer_inherit__map" alt="Inheritance graph"/></div>
 <map name="Renderer_inherit__map" id="Renderer_inherit__map">
-<area shape="rect" title=" " alt="" coords="299,5,381,32"/>
-<area shape="rect" href="classSVGRenderer.html" title=" " alt="" coords="198,80,306,107"/>
-<area shape="rect" href="classTextRenderer.html" title=" " alt="" coords="375,80,483,107"/>
+<area shape="rect" title="Class for rendering game states." alt="" coords="299,5,381,32"/>
+<area shape="rect" href="classSVGRenderer.html" title="Class for rendering game states to SVG images." alt="" coords="198,80,306,107"/>
+<area shape="rect" href="classTextRenderer.html" title="Class for rendering game states to text." alt="" coords="375,80,483,107"/>
 <area shape="rect" href="classHeroSVGRenderer.html" title=" " alt="" coords="5,155,144,181"/>
 <area shape="rect" href="classObserverSVGRenderer.html" title=" " alt="" coords="169,155,335,181"/>
 <area shape="rect" href="classHeroTextRenderer.html" title=" " alt="" coords="360,155,499,181"/>
@@ -86,10 +91,62 @@ Inheritance diagram for Renderer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7807be1ea11a875555010e7a8dc6ca65"><td class="memItemLeft" align="right" valign="top"><a id="a7807be1ea11a875555010e7a8dc6ca65"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> (const <a class="el" href="classGame.html">Game</a> &amp;game) const =0</td></tr>
+<tr class="memitem:a7ebf46f54dab9905f79b80f7fddb76a6"><td class="memItemLeft" align="right" valign="top"><a id="a7ebf46f54dab9905f79b80f7fddb76a6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRenderer.html#a7ebf46f54dab9905f79b80f7fddb76a6">Renderer</a> ()</td></tr>
+<tr class="memdesc:a7ebf46f54dab9905f79b80f7fddb76a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="separator:a7ebf46f54dab9905f79b80f7fddb76a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba42b60392775e4a492c4d14d4fff29f"><td class="memItemLeft" align="right" valign="top"><a id="aba42b60392775e4a492c4d14d4fff29f"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRenderer.html#aba42b60392775e4a492c4d14d4fff29f">~Renderer</a> ()</td></tr>
+<tr class="memdesc:aba42b60392775e4a492c4d14d4fff29f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
+<tr class="separator:aba42b60392775e4a492c4d14d4fff29f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7807be1ea11a875555010e7a8dc6ca65"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRenderer.html#a7807be1ea11a875555010e7a8dc6ca65">render</a> (const <a class="el" href="classGame.html">Game</a> &amp;game) const =0</td></tr>
+<tr class="memdesc:a7807be1ea11a875555010e7a8dc6ca65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render function.  <a href="classRenderer.html#a7807be1ea11a875555010e7a8dc6ca65">More...</a><br /></td></tr>
 <tr class="separator:a7807be1ea11a875555010e7a8dc6ca65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for rendering game states. </p>
+<p>Renders a game in some visual format for the user.</p>
+<dl class="section author"><dt>Author</dt><dd>LengyHELL </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020/12/08 15:47 </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7807be1ea11a875555010e7a8dc6ca65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7807be1ea11a875555010e7a8dc6ca65">&#9670;&nbsp;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Renderer::render </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classGame.html">Game</a> &amp;&#160;</td>
+          <td class="paramname"><em>game</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Render function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>the <a class="el" href="classGame.html" title="Class for managing the game.">Game</a> object to be rendered</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Renders a given <a class="el" href="classGame.html" title="Class for managing the game.">Game</a> object for the user in some visual format. </p>
+
+<p>Implemented in <a class="el" href="classTextRenderer.html#a5fe4949901cf21cede8c020dbcd43984">TextRenderer</a>, <a class="el" href="classSVGRenderer.html#a22d8359bd8ea442a51e2d761b92fd3bc">SVGRenderer</a>, <a class="el" href="classHeroSVGRenderer.html#a13e0bf532c4296f97a369fd66eb00c15">HeroSVGRenderer</a>, <a class="el" href="classHeroTextRenderer.html#ab9ddb1eddae8726ab75da4f63253d1b5">HeroTextRenderer</a>, <a class="el" href="classObserverSVGRenderer.html#af8bce6c8894d3378e31bfd735aaf8e79">ObserverSVGRenderer</a>, and <a class="el" href="classObserverTextRenderer.html#a54994a05c956a2e4828bec65b8ac821d">ObserverTextRenderer</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>sources/<a class="el" href="Renderer_8h_source.html">Renderer.h</a></li>
 </ul>

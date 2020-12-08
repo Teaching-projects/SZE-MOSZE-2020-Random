@@ -70,15 +70,20 @@ $(function() {
 <div class="title">SVGRenderer Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class for rendering game states to SVG images.  
+ <a href="classSVGRenderer.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="SVGRenderer_8h_source.html">SVGRenderer.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SVGRenderer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSVGRenderer__inherit__graph.png" border="0" usemap="#SVGRenderer_inherit__map" alt="Inheritance graph"/></div>
 <map name="SVGRenderer_inherit__map" id="SVGRenderer_inherit__map">
-<area shape="rect" title=" " alt="" coords="109,80,217,107"/>
+<area shape="rect" title="Class for rendering game states to SVG images." alt="" coords="109,80,217,107"/>
 <area shape="rect" href="classHeroSVGRenderer.html" title=" " alt="" coords="5,155,144,181"/>
 <area shape="rect" href="classObserverSVGRenderer.html" title=" " alt="" coords="169,155,335,181"/>
-<area shape="rect" href="classRenderer.html" title=" " alt="" coords="122,5,203,32"/>
+<area shape="rect" href="classRenderer.html" title="Class for rendering game states." alt="" coords="122,5,203,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -86,26 +91,87 @@ Collaboration diagram for SVGRenderer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSVGRenderer__coll__graph.png" border="0" usemap="#SVGRenderer_coll__map" alt="Collaboration graph"/></div>
 <map name="SVGRenderer_coll__map" id="SVGRenderer_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,113,107"/>
-<area shape="rect" href="classRenderer.html" title=" " alt="" coords="19,5,100,32"/>
+<area shape="rect" title="Class for rendering game states to SVG images." alt="" coords="5,80,113,107"/>
+<area shape="rect" href="classRenderer.html" title="Class for rendering game states." alt="" coords="19,5,100,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afac7bb63f154d381cb0a3b321cd88d4e"><td class="memItemLeft" align="right" valign="top"><a id="afac7bb63f154d381cb0a3b321cd88d4e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SVGRenderer</b> (const std::string &amp;filename)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSVGRenderer.html#afac7bb63f154d381cb0a3b321cd88d4e">SVGRenderer</a> (const std::string &amp;<a class="el" href="classSVGRenderer.html#afccd513231d5be7b153632e7cb46d812">filename</a>)</td></tr>
+<tr class="memdesc:afac7bb63f154d381cb0a3b321cd88d4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that sets the filename. <br /></td></tr>
 <tr class="separator:afac7bb63f154d381cb0a3b321cd88d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22d8359bd8ea442a51e2d761b92fd3bc"><td class="memItemLeft" align="right" valign="top"><a id="a22d8359bd8ea442a51e2d761b92fd3bc"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> (const <a class="el" href="classGame.html">Game</a> &amp;game) const override=0</td></tr>
+<tr class="memitem:a8f92d52b193af3a9f3c026b164bbe90a"><td class="memItemLeft" align="right" valign="top"><a id="a8f92d52b193af3a9f3c026b164bbe90a"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSVGRenderer.html#a8f92d52b193af3a9f3c026b164bbe90a">~SVGRenderer</a> ()</td></tr>
+<tr class="memdesc:a8f92d52b193af3a9f3c026b164bbe90a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
+<tr class="separator:a8f92d52b193af3a9f3c026b164bbe90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22d8359bd8ea442a51e2d761b92fd3bc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSVGRenderer.html#a22d8359bd8ea442a51e2d761b92fd3bc">render</a> (const <a class="el" href="classGame.html">Game</a> &amp;game) const override=0</td></tr>
+<tr class="memdesc:a22d8359bd8ea442a51e2d761b92fd3bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render function.  <a href="classSVGRenderer.html#a22d8359bd8ea442a51e2d761b92fd3bc">More...</a><br /></td></tr>
 <tr class="separator:a22d8359bd8ea442a51e2d761b92fd3bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classRenderer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classRenderer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classRenderer.html">Renderer</a></td></tr>
+<tr class="memitem:a7ebf46f54dab9905f79b80f7fddb76a6 inherit pub_methods_classRenderer"><td class="memItemLeft" align="right" valign="top"><a id="a7ebf46f54dab9905f79b80f7fddb76a6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRenderer.html#a7ebf46f54dab9905f79b80f7fddb76a6">Renderer</a> ()</td></tr>
+<tr class="memdesc:a7ebf46f54dab9905f79b80f7fddb76a6 inherit pub_methods_classRenderer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="separator:a7ebf46f54dab9905f79b80f7fddb76a6 inherit pub_methods_classRenderer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba42b60392775e4a492c4d14d4fff29f inherit pub_methods_classRenderer"><td class="memItemLeft" align="right" valign="top"><a id="aba42b60392775e4a492c4d14d4fff29f"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRenderer.html#aba42b60392775e4a492c4d14d4fff29f">~Renderer</a> ()</td></tr>
+<tr class="memdesc:aba42b60392775e4a492c4d14d4fff29f inherit pub_methods_classRenderer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
+<tr class="separator:aba42b60392775e4a492c4d14d4fff29f inherit pub_methods_classRenderer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:afccd513231d5be7b153632e7cb46d812"><td class="memItemLeft" align="right" valign="top"><a id="afccd513231d5be7b153632e7cb46d812"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>filename</b></td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSVGRenderer.html#afccd513231d5be7b153632e7cb46d812">filename</a></td></tr>
+<tr class="memdesc:afccd513231d5be7b153632e7cb46d812"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the SVG file to be rendered to. <br /></td></tr>
 <tr class="separator:afccd513231d5be7b153632e7cb46d812"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for rendering game states to SVG images. </p>
+<p>Renders a game in SVG format for the user.</p>
+<dl class="section author"><dt>Author</dt><dd>LengyHELL </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020/12/08 15:50 </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a22d8359bd8ea442a51e2d761b92fd3bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22d8359bd8ea442a51e2d761b92fd3bc">&#9670;&nbsp;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SVGRenderer::render </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classGame.html">Game</a> &amp;&#160;</td>
+          <td class="paramname"><em>game</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Render function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>the <a class="el" href="classGame.html" title="Class for managing the game.">Game</a> object to be rendered</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Renders a given <a class="el" href="classGame.html" title="Class for managing the game.">Game</a> object for the user in some visual format. </p>
+
+<p>Implements <a class="el" href="classRenderer.html#a7807be1ea11a875555010e7a8dc6ca65">Renderer</a>.</p>
+
+<p>Implemented in <a class="el" href="classHeroSVGRenderer.html#a13e0bf532c4296f97a369fd66eb00c15">HeroSVGRenderer</a>, and <a class="el" href="classObserverSVGRenderer.html#af8bce6c8894d3378e31bfd735aaf8e79">ObserverSVGRenderer</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>sources/<a class="el" href="SVGRenderer_8h_source.html">SVGRenderer.h</a></li>
 </ul>

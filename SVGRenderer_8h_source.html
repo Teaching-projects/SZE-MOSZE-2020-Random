@@ -75,20 +75,26 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Renderer.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classSVGRenderer.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSVGRenderer.html">SVGRenderer</a> : <span class="keyword">public</span> <a class="code" href="classRenderer.html">Renderer</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  std::string filename;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="classSVGRenderer.html">SVGRenderer</a>(<span class="keyword">const</span> std::string&amp; filename) : filename(filename) {}</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classSVGRenderer.html">SVGRenderer</a>() {}</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> render(<span class="keyword">const</span> <a class="code" href="classGame.html">Game</a>&amp; game) <span class="keyword">const override</span> = 0;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;};</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classSVGRenderer.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSVGRenderer.html">SVGRenderer</a> : <span class="keyword">public</span> <a class="code" href="classRenderer.html">Renderer</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classSVGRenderer.html#afccd513231d5be7b153632e7cb46d812">   18</a></span>&#160;  std::string <a class="code" href="classSVGRenderer.html#afccd513231d5be7b153632e7cb46d812">filename</a>;   </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classSVGRenderer.html#afac7bb63f154d381cb0a3b321cd88d4e">   22</a></span>&#160;  <a class="code" href="classSVGRenderer.html#afac7bb63f154d381cb0a3b321cd88d4e">SVGRenderer</a>(<span class="keyword">const</span> std::string&amp; <a class="code" href="classSVGRenderer.html#afccd513231d5be7b153632e7cb46d812">filename</a>) : <a class="code" href="classSVGRenderer.html#afccd513231d5be7b153632e7cb46d812">filename</a>(<a class="code" href="classSVGRenderer.html#afccd513231d5be7b153632e7cb46d812">filename</a>) {}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classSVGRenderer.html#a8f92d52b193af3a9f3c026b164bbe90a">   25</a></span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classSVGRenderer.html#a8f92d52b193af3a9f3c026b164bbe90a">~SVGRenderer</a>() {}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSVGRenderer.html#a22d8359bd8ea442a51e2d761b92fd3bc">render</a>(<span class="keyword">const</span> <a class="code" href="classGame.html">Game</a>&amp; game) <span class="keyword">const override</span> = 0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassRenderer_html"><div class="ttname"><a href="classRenderer.html">Renderer</a></div><div class="ttdef"><b>Definition:</b> Renderer.h:10</div></div>
-<div class="ttc" id="aclassSVGRenderer_html"><div class="ttname"><a href="classSVGRenderer.html">SVGRenderer</a></div><div class="ttdef"><b>Definition:</b> SVGRenderer.h:6</div></div>
+<div class="ttc" id="aclassSVGRenderer_html_afac7bb63f154d381cb0a3b321cd88d4e"><div class="ttname"><a href="classSVGRenderer.html#afac7bb63f154d381cb0a3b321cd88d4e">SVGRenderer::SVGRenderer</a></div><div class="ttdeci">SVGRenderer(const std::string &amp;filename)</div><div class="ttdoc">Constructor that sets the filename.</div><div class="ttdef"><b>Definition:</b> SVGRenderer.h:22</div></div>
+<div class="ttc" id="aclassSVGRenderer_html_afccd513231d5be7b153632e7cb46d812"><div class="ttname"><a href="classSVGRenderer.html#afccd513231d5be7b153632e7cb46d812">SVGRenderer::filename</a></div><div class="ttdeci">std::string filename</div><div class="ttdoc">The name of the SVG file to be rendered to.</div><div class="ttdef"><b>Definition:</b> SVGRenderer.h:18</div></div>
+<div class="ttc" id="aclassSVGRenderer_html_a22d8359bd8ea442a51e2d761b92fd3bc"><div class="ttname"><a href="classSVGRenderer.html#a22d8359bd8ea442a51e2d761b92fd3bc">SVGRenderer::render</a></div><div class="ttdeci">virtual void render(const Game &amp;game) const override=0</div><div class="ttdoc">Render function.</div></div>
+<div class="ttc" id="aclassRenderer_html"><div class="ttname"><a href="classRenderer.html">Renderer</a></div><div class="ttdoc">Class for rendering game states.</div><div class="ttdef"><b>Definition:</b> Renderer.h:20</div></div>
+<div class="ttc" id="aclassSVGRenderer_html"><div class="ttname"><a href="classSVGRenderer.html">SVGRenderer</a></div><div class="ttdoc">Class for rendering game states to SVG images.</div><div class="ttdef"><b>Definition:</b> SVGRenderer.h:16</div></div>
+<div class="ttc" id="aclassSVGRenderer_html_a8f92d52b193af3a9f3c026b164bbe90a"><div class="ttname"><a href="classSVGRenderer.html#a8f92d52b193af3a9f3c026b164bbe90a">SVGRenderer::~SVGRenderer</a></div><div class="ttdeci">virtual ~SVGRenderer()</div><div class="ttdoc">Default destructor.</div><div class="ttdef"><b>Definition:</b> SVGRenderer.h:25</div></div>
 <div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">Class for managing the game.</div><div class="ttdef"><b>Definition:</b> Game.h:26</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

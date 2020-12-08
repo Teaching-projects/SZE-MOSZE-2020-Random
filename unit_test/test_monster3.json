@@ -3,5 +3,6 @@
     "health_points" : 2000,
     "damage" : 100,
     "attack_cooldown" : 4.5,
-    "defense" : 2
+    "defense" : 2,
+    "texture" : ""
 }

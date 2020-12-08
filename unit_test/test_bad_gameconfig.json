@@ -2,4 +2,6 @@
   "map"  : "test_map2",
   "hero" : "test_hero1.json",
   "monster-1" : "test_monster1.json",
+  "wall_texture" : "",
+  "free_texture" : ""
 }

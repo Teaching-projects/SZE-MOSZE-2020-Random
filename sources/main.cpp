@@ -11,6 +11,10 @@
 #include "Game.h"
 #include "PreparedGame.h"
 
+#include "HeroTextRenderer.h"
+#include "ObserverTextRenderer.h"
+#include "HeroSVGRenderer.h"
+
 const std::map<int,std::string> error_messages = {
   { 1 , "Bad number of arguments. Only a single configuration file should be provided." },
   { 2 , "The provided configuration file is not accessible." },
@@ -37,6 +41,8 @@ int main(int argc, char** argv){
 
   try {
     PreparedGame game(argv[1]);
+    game.registerRenderer(new HeroTextRenderer());
+    game.registerRenderer(new HeroSVGRenderer("svg_image.svg"));
     game.run();
   }
   catch (const JSON::ParseException& e) {

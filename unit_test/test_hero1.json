@@ -12,5 +12,6 @@
     "base_defense" : 5,
     "defense_bonus_per_level" : 1,
     "base_light_radius" : 1,
-    "light_radius_per_level" : 2
+    "light_radius_per_level" : 2,
+    "texture" : ""
 }

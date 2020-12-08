@@ -1,4 +1,5 @@
 {
   "attack_cooldown" : 3.5, "defense" : 1,
     "health_points" : 20,
-  "damage" : 5,"name" : "Monster2"}
+  "damage" : 5,"name" : "Monster2",
+"texture" : ""}

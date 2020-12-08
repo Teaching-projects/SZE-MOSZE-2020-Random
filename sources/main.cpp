@@ -11,6 +11,10 @@
 #include "Game.h"
 #include "PreparedGame.h"
 
+#include "HeroTextRenderer.h"
+#include "ObserverTextRenderer.h"
+#include "HeroSVGRenderer.h"
+
 const std::map<int,std::string> error_messages = {
   { 1 , "Bad number of arguments. Only a single configuration file should be provided." },
   { 2 , "The provided configuration file is not accessible." },
@@ -36,8 +40,15 @@ int main(int argc, char** argv){
   if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
   try {
+    std::ofstream renderFile("../text_render.txt");
+
     PreparedGame game(argv[1]);
+    game.registerRenderer(new HeroTextRenderer());
+    game.registerRenderer(new HeroSVGRenderer("../svg_image.svg"));
+    game.registerRenderer(new ObserverTextRenderer(renderFile));
     game.run();
+
+    renderFile.close();
   }
   catch (const JSON::ParseException& e) {
     std::cerr << e.what() << std::endl;

@@ -91,9 +91,3 @@ Here on the map, the big **H** letter indicates the position of the ***hero*** t
 If the ***hero*** defeats all the ***monsters***, the player **wins** and if the ***hero*** is defeated while fighting some ***monsters***, the player **loses**.
 
 When **SVG** rendering is used, the **SVG** image is saved at the specified directory.
-
-The **SVG** output looks like this:
-
-<img src="./textures/readme_image.svg" alt="SVG rendered game state" width="150"><br/>
-
-More documentation available at https://teaching-projects.github.io/SZE-MOSZE-2020-Random/.

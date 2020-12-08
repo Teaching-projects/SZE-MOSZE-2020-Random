@@ -32,8 +32,8 @@ struct Position {
  * This is a class that represents a map, that is used by the game.
  *
  * \author LengyHELL
- * \version 1.0
- * \date 2020/12/02 14:04
+ * \version 1.1
+ * \date 2020/12/08 15:45
  */
 class Map {
 public:
@@ -104,7 +104,7 @@ public:
   explicit Map(const std::string& filename);
 
   /**
-   * \brief Position getter.
+   * \brief Getter for the position.
    * \param x the x coordinate of the point to be read
    * \param y the y coordinate of the point to be read
    * \exception Map::WrongIndexException is thrown when the given index is not valid
@@ -114,6 +114,14 @@ public:
    */
   type get(const int& x, const int& y) const;
 
+  /**
+   * \brief Position getter.
+   * \param pos the Position object of the point to be read
+   * \exception Map::WrongIndexException is thrown when the given Position is not valid
+   * \return type
+   *
+   * This function returns the value of the position given a Position object.
+   */
   type get(const Position& pos) const { return get(pos.x, pos.y); }
 
   /// Getter for the width of the map.

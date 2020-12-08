@@ -2,12 +2,16 @@
 #define GAME_H
 
 #include <string>
+#include <list>
 #include <vector>
 #include <iostream>
 
 #include "Map.h"
 #include "Monster.h"
 #include "Hero.h"
+#include "Renderer.h"
+
+class Renderer;
 
 /**
  * \class Game
@@ -16,8 +20,8 @@
  * This is a class that manages the main game loop and game functionalities.
  *
  * \author LengyHELL
- * \version 1.0
- * \date 2020/12/02 14:39
+ * \version 1.1
+ * \date 2020/12/08 15:45
  */
 class Game {
 public:
@@ -97,31 +101,53 @@ public:
     const char* what() const throw() { return "The game already started."; }
   };
 
+  /**
+   * \struct Game::GameMonster
+   *
+   * This class represents a Monster with a specific positon on the map.
+   *
+   * \author LengyHELL
+   * \version 1.0
+   * \date 2020/12/07 14:16
+   */
+  struct GameMonster {
+    Monster monster;  ///< The represented Monster.
+    int x = -1;       ///< The Monster's x position.
+    int y = -1;       ///< The Monster's y position.
+  };
+
+  /**
+   * \struct Game::GameHero
+   *
+   * This class represents a Hero with a specific positon on the map.
+   *
+   * \author LengyHELL
+   * \version 1.0
+   * \date 2020/12/07 14:16
+   */
+  struct GameHero {
+    Hero hero;        ///< The represented Hero.
+    int x = -1;       ///< The Hero's x position.
+    int y = -1;       ///< The Hero's y position.
+  };
+
 protected:
-  bool running = false; ///< Indicates if the game is running.
+  bool running = false;         ///< Indicates if the game is running.
+  std::string wallTexture = ""; ///< Stores the texture for the wall, used when drawing as an SVG file.
+  std::string freeTexture = ""; ///< Stores the texture fot the free path, used when drawing as an SVG file.
 
 private:
-  struct GameMonster {
-    Monster monster;
-    int x = -1;
-    int y = -1;
-  };
-  struct GameHero {
-    Hero hero;
-    int x = -1;
-    int y = -1;
-  };
-
   Map gameMap;
   GameHero gameHero;
   std::vector<GameMonster> gameMonsters;
-
-
-  void draw() const;
+  std::list<Renderer*> renderers;
 
 public:
   /// Default constructor, creates an empty game.
   Game() {}
+
+  /// Default destructor, clears the attached renderers.
+  ~Game();
 
   /// Constructor that loads the game with the given Map.
   explicit Game(const std::string& mapfilename) : gameMap(Map(mapfilename)) {}
@@ -164,6 +190,14 @@ public:
   void putMonster(const Monster& monster, int x, int y);
 
   /**
+   * \brief Attaching renderer.
+   * \param renderer the Renderer that is attached to the game
+   *
+   * This function registers one or more renderer to the game, and uses it to draw the game state in every game cycle.
+   */
+  void registerRenderer(Renderer* renderer);
+
+  /**
    * \brief Running the game.
    * \param is the std::istream that the game commands are read from
    * \exception Game::GameAlreadyStartedException is thrown when the function is run while the game is still running
@@ -175,6 +209,21 @@ public:
 
   /// Checks if the hero is set.
   bool hasHero() const { return (gameHero.x >= 0) && (gameHero.y >= 0); }
+
+  /// Returns the map that is set for the game value.
+  Map getMap() const { return gameMap; }
+
+  /// Returns the hero that is set for the game.
+  GameHero getHero() const { return gameHero; }
+
+  /// Returns the monsters that are set for the game.
+  std::vector<GameMonster> getMonsters() const { return gameMonsters; }
+
+  /// Returns the string of the wall texture.
+  std::string getWallTexture() const { return wallTexture; }
+
+  /// Returns the string of the free path texture.
+  std::string getFreeTexture() const { return freeTexture; }
 };
 
 #endif

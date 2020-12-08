@@ -31,10 +31,11 @@ public:
   Hero() {}
 
   /// Constructor with parameters for the class.
-  Hero(const std::string& name, const float& healthPoints, const Damage& damage, const float& attackCooldown, const float& defense,
-    const float& experiencePerLevel, const float& healthPointBonusPerLevel, const Damage& damageBonusPerLevel,
-    const float& cooldownMultiplierPerLevel, const float& defenseBonusPerLevel, const float& lightRadius, const float& lightRadiusPerLevel) :
-    Monster(name, healthPoints, damage, attackCooldown, defense), baseHealthPoints(healthPoints), experiencePerLevel(experiencePerLevel),
+  Hero(const std::string& name, const float& healthPoints, const Damage& damage, const float& attackCooldown,
+    const float& defense, const std::string& texture, const float& experiencePerLevel, const float& healthPointBonusPerLevel,
+    const Damage& damageBonusPerLevel, const float& cooldownMultiplierPerLevel, const float& defenseBonusPerLevel,
+    const float& lightRadius,const float& lightRadiusPerLevel) :
+    Monster(name, healthPoints, damage, attackCooldown, defense, texture), baseHealthPoints(healthPoints), experiencePerLevel(experiencePerLevel),
     experienceState(0), healthPointBonusPerLevel(healthPointBonusPerLevel), damageBonusPerLevel(damageBonusPerLevel),
     cooldownMultiplierPerLevel(cooldownMultiplierPerLevel), level(1), defenseBonusPerLevel(defenseBonusPerLevel),
     lightRadius(lightRadius), lightRadiusPerLevel(lightRadiusPerLevel) {}

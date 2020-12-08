@@ -1,6 +1,5 @@
 #include "ObserverSVGRenderer.h"
 
-#include <filesystem>
 #include <fstream>
 
 void ObserverSVGRenderer::render(const Game& game) const {
@@ -13,7 +12,8 @@ void ObserverSVGRenderer::render(const Game& game) const {
   int width = gameMap.getWidth();
   int height = gameMap.getHeight();
 
-  file << "<svg width=\"" << width * 10 << "\" height=\"" << height * 10 << "\">\n";
+  file  << "<svg width=\"" << width * 10 << "\" height=\"" << height * 10
+        << "\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n";
 
   for (int y = 0; y < height; ++y) {
     for (int x = 0; x < width; ++x) {

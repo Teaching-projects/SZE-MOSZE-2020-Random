@@ -74,105 +74,127 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define GAME_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;Map.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Monster.h&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;Hero.h&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classGame.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGame.html">Game</a> {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classGame_1_1OccupiedException.html">   34</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classGame_1_1OccupiedException.html">OccupiedException</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    ~<a class="code" href="classGame_1_1OccupiedException.html">OccupiedException</a>() <span class="keywordflow">throw</span>() {}</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Position is occupied.&quot;</span>; }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  };</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classGame_1_1AlreadyHasHeroException.html">   49</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classGame_1_1AlreadyHasHeroException.html">AlreadyHasHeroException</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    ~<a class="code" href="classGame_1_1AlreadyHasHeroException.html">AlreadyHasHeroException</a>() <span class="keywordflow">throw</span>() {}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Hero already defined.&quot;</span>; }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  };</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classGame_1_1AlreadyHasUnitsException.html">   64</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classGame_1_1AlreadyHasUnitsException.html">AlreadyHasUnitsException</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    ~<a class="code" href="classGame_1_1AlreadyHasUnitsException.html">AlreadyHasUnitsException</a>() <span class="keywordflow">throw</span>() {}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Units already defined.&quot;</span>; }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  };</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classGame_1_1NotInitializedException.html">   79</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classGame_1_1NotInitializedException.html">NotInitializedException</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    ~<a class="code" href="classGame_1_1NotInitializedException.html">NotInitializedException</a>() <span class="keywordflow">throw</span>() {}</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Game elements are not initialized.&quot;</span>; }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  };</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classGame_1_1GameAlreadyStartedException.html">   94</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classGame_1_1GameAlreadyStartedException.html">GameAlreadyStartedException</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    ~<a class="code" href="classGame_1_1GameAlreadyStartedException.html">GameAlreadyStartedException</a>() <span class="keywordflow">throw</span>() {}</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;The game already started.&quot;</span>; }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  };</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classGame.html#a8ca5b9f8a62990e6022de17785beac2c">  101</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classGame.html#a8ca5b9f8a62990e6022de17785beac2c">running</a> = <span class="keyword">false</span>; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="structGame_1_1GameMonster.html">  104</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structGame_1_1GameMonster.html">GameMonster</a> {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="classMonster.html">Monster</a> monster;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">int</span> x = -1;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">int</span> y = -1;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  };</div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="structGame_1_1GameHero.html">  109</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structGame_1_1GameHero.html">GameHero</a> {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="classHero.html">Hero</a> hero;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">int</span> x = -1;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">int</span> y = -1;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  };</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <a class="code" href="classMap.html">Map</a> gameMap;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <a class="code" href="structGame_1_1GameHero.html">GameHero</a> gameHero;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  std::vector&lt;GameMonster&gt; gameMonsters;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Map.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;Monster.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;Hero.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;Renderer.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">class </span><a class="code" href="classRenderer.html">Renderer</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classGame.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGame.html">Game</a> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classGame_1_1OccupiedException.html">   38</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classGame_1_1OccupiedException.html">OccupiedException</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ~<a class="code" href="classGame_1_1OccupiedException.html">OccupiedException</a>() <span class="keywordflow">throw</span>() {}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Position is occupied.&quot;</span>; }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  };</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classGame_1_1AlreadyHasHeroException.html">   53</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classGame_1_1AlreadyHasHeroException.html">AlreadyHasHeroException</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    ~<a class="code" href="classGame_1_1AlreadyHasHeroException.html">AlreadyHasHeroException</a>() <span class="keywordflow">throw</span>() {}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Hero already defined.&quot;</span>; }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  };</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classGame_1_1AlreadyHasUnitsException.html">   68</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classGame_1_1AlreadyHasUnitsException.html">AlreadyHasUnitsException</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    ~<a class="code" href="classGame_1_1AlreadyHasUnitsException.html">AlreadyHasUnitsException</a>() <span class="keywordflow">throw</span>() {}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Units already defined.&quot;</span>; }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  };</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classGame_1_1NotInitializedException.html">   83</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classGame_1_1NotInitializedException.html">NotInitializedException</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    ~<a class="code" href="classGame_1_1NotInitializedException.html">NotInitializedException</a>() <span class="keywordflow">throw</span>() {}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Game elements are not initialized.&quot;</span>; }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  };</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classGame_1_1GameAlreadyStartedException.html">   98</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classGame_1_1GameAlreadyStartedException.html">GameAlreadyStartedException</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    ~<a class="code" href="classGame_1_1GameAlreadyStartedException.html">GameAlreadyStartedException</a>() <span class="keywordflow">throw</span>() {}</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;The game already started.&quot;</span>; }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  };</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="structGame_1_1GameMonster.html">  113</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structGame_1_1GameMonster.html">GameMonster</a> {</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="structGame_1_1GameMonster.html#a54c21dfaa70e6a9ed5169b32a2bc480e">  114</a></span>&#160;    <a class="code" href="classMonster.html">Monster</a> <a class="code" href="structGame_1_1GameMonster.html#a54c21dfaa70e6a9ed5169b32a2bc480e">monster</a>;  </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="structGame_1_1GameMonster.html#ae7527dc6c21cf0a967d6f245314e6e27">  115</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structGame_1_1GameMonster.html#ae7527dc6c21cf0a967d6f245314e6e27">x</a> = -1;       </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="structGame_1_1GameMonster.html#ad86672f270c7af4f3699310bc0c6d887">  116</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structGame_1_1GameMonster.html#ad86672f270c7af4f3699310bc0c6d887">y</a> = -1;       </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  };</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordtype">void</span> draw() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="classGame.html#ad59df6562a58a614fda24622d3715b65">  124</a></span>&#160;  <a class="code" href="classGame.html#ad59df6562a58a614fda24622d3715b65">Game</a>() {}</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classGame.html#a77dfcde1a12c4d13e6e6e38a149fdb2c">  127</a></span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classGame.html#a77dfcde1a12c4d13e6e6e38a149fdb2c">Game</a>(<span class="keyword">const</span> std::string&amp; mapfilename) : gameMap(<a class="code" href="classMap.html">Map</a>(mapfilename)) {}</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classGame.html#a2da2d4e53f7b25a9763b45ce3439628a">setMap</a>(<span class="keyword">const</span> <a class="code" href="classMap.html">Map</a>&amp; map);</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="structGame_1_1GameHero.html">  128</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structGame_1_1GameHero.html">GameHero</a> {</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="structGame_1_1GameHero.html#a87d066837b530950b18db044d6dfb7b6">  129</a></span>&#160;    <a class="code" href="classHero.html">Hero</a> <a class="code" href="structGame_1_1GameHero.html#a87d066837b530950b18db044d6dfb7b6">hero</a>;        </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="structGame_1_1GameHero.html#ab12ba39cdef81c9fa78ec7d83f66e093">  130</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structGame_1_1GameHero.html#ab12ba39cdef81c9fa78ec7d83f66e093">x</a> = -1;       </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="structGame_1_1GameHero.html#a6273625742ffe6f60d6ea67b4f5e98a7">  131</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structGame_1_1GameHero.html#a6273625742ffe6f60d6ea67b4f5e98a7">y</a> = -1;       </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  };</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="classGame.html#a8ca5b9f8a62990e6022de17785beac2c">  135</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classGame.html#a8ca5b9f8a62990e6022de17785beac2c">running</a> = <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  std::string wallTexture = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  std::string freeTexture = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classGame.html#a640718463807c369572cb47b41e723da">putHero</a>(<span class="keyword">const</span> <a class="code" href="classHero.html">Hero</a>&amp; hero, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classGame.html#a1d19c03c9f81d32489353236038e5204">putMonster</a>(<span class="keyword">const</span> <a class="code" href="classMonster.html">Monster</a>&amp; monster, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classGame.html#a58d35a12bbd2b44f01344e732b46536c">run</a>(std::istream&amp; is = std::cin);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="classGame.html#aa3187477deace51f658c4d6599383de7">  177</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classGame.html#aa3187477deace51f658c4d6599383de7">hasHero</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (gameHero.x &gt;= 0) &amp;&amp; (gameHero.y &gt;= 0); }</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;};</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <a class="code" href="classMap.html">Map</a> gameMap;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <a class="code" href="structGame_1_1GameHero.html">GameHero</a> gameHero;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  std::vector&lt;GameMonster&gt; gameMonsters;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  std::list&lt;Renderer*&gt; renderers;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="classGame.html#ad59df6562a58a614fda24622d3715b65">  147</a></span>&#160;  <a class="code" href="classGame.html#ad59df6562a58a614fda24622d3715b65">Game</a>() {}</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  ~<a class="code" href="classGame.html">Game</a>();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="classGame.html#a77dfcde1a12c4d13e6e6e38a149fdb2c">  152</a></span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classGame.html#a77dfcde1a12c4d13e6e6e38a149fdb2c">Game</a>(<span class="keyword">const</span> std::string&amp; mapfilename) : gameMap(<a class="code" href="classMap.html">Map</a>(mapfilename)) {}</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classGame.html#a2da2d4e53f7b25a9763b45ce3439628a">setMap</a>(<span class="keyword">const</span> <a class="code" href="classMap.html">Map</a>&amp; map);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classGame.html#a640718463807c369572cb47b41e723da">putHero</a>(<span class="keyword">const</span> <a class="code" href="classHero.html">Hero</a>&amp; hero, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classGame.html#a1d19c03c9f81d32489353236038e5204">putMonster</a>(<span class="keyword">const</span> <a class="code" href="classMonster.html">Monster</a>&amp; monster, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="keywordtype">void</span> registerRenderer(<a class="code" href="classRenderer.html">Renderer</a>* renderer);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classGame.html#a58d35a12bbd2b44f01344e732b46536c">run</a>(std::istream&amp; is = std::cin);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="classGame.html#aa3187477deace51f658c4d6599383de7">  204</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classGame.html#aa3187477deace51f658c4d6599383de7">hasHero</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (gameHero.<a class="code" href="structGame_1_1GameHero.html#ab12ba39cdef81c9fa78ec7d83f66e093">x</a> &gt;= 0) &amp;&amp; (gameHero.<a class="code" href="structGame_1_1GameHero.html#a6273625742ffe6f60d6ea67b4f5e98a7">y</a> &gt;= 0); }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <a class="code" href="classMap.html">Map</a> getMap()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> gameMap; }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  GameHero getHero()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> gameHero; }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  std::vector&lt;GameMonster&gt; getMonsters()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> gameMonsters; }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  std::string getWallTexture()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> wallTexture; }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  std::string getFreeTexture()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> freeTexture; }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;};</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassGame_1_1AlreadyHasHeroException_html"><div class="ttname"><a href="classGame_1_1AlreadyHasHeroException.html">Game::AlreadyHasHeroException</a></div><div class="ttdef"><b>Definition:</b> Game.h:49</div></div>
-<div class="ttc" id="aclassGame_html_ad59df6562a58a614fda24622d3715b65"><div class="ttname"><a href="classGame.html#ad59df6562a58a614fda24622d3715b65">Game::Game</a></div><div class="ttdeci">Game()</div><div class="ttdoc">Default constructor, creates an empty game.</div><div class="ttdef"><b>Definition:</b> Game.h:124</div></div>
-<div class="ttc" id="astructGame_1_1GameHero_html"><div class="ttname"><a href="structGame_1_1GameHero.html">Game::GameHero</a></div><div class="ttdef"><b>Definition:</b> Game.h:109</div></div>
-<div class="ttc" id="aclassGame_html_a58d35a12bbd2b44f01344e732b46536c"><div class="ttname"><a href="classGame.html#a58d35a12bbd2b44f01344e732b46536c">Game::run</a></div><div class="ttdeci">void run(std::istream &amp;is=std::cin)</div><div class="ttdoc">Running the game.</div><div class="ttdef"><b>Definition:</b> Game.cpp:103</div></div>
+<div class="ttc" id="aclassGame_1_1AlreadyHasHeroException_html"><div class="ttname"><a href="classGame_1_1AlreadyHasHeroException.html">Game::AlreadyHasHeroException</a></div><div class="ttdef"><b>Definition:</b> Game.h:53</div></div>
+<div class="ttc" id="astructGame_1_1GameHero_html_a6273625742ffe6f60d6ea67b4f5e98a7"><div class="ttname"><a href="structGame_1_1GameHero.html#a6273625742ffe6f60d6ea67b4f5e98a7">Game::GameHero::y</a></div><div class="ttdeci">int y</div><div class="ttdoc">The Hero's y position.</div><div class="ttdef"><b>Definition:</b> Game.h:131</div></div>
+<div class="ttc" id="aclassGame_html_ad59df6562a58a614fda24622d3715b65"><div class="ttname"><a href="classGame.html#ad59df6562a58a614fda24622d3715b65">Game::Game</a></div><div class="ttdeci">Game()</div><div class="ttdoc">Default constructor, creates an empty game.</div><div class="ttdef"><b>Definition:</b> Game.h:147</div></div>
+<div class="ttc" id="astructGame_1_1GameHero_html"><div class="ttname"><a href="structGame_1_1GameHero.html">Game::GameHero</a></div><div class="ttdef"><b>Definition:</b> Game.h:128</div></div>
+<div class="ttc" id="aclassGame_html_a58d35a12bbd2b44f01344e732b46536c"><div class="ttname"><a href="classGame.html#a58d35a12bbd2b44f01344e732b46536c">Game::run</a></div><div class="ttdeci">void run(std::istream &amp;is=std::cin)</div><div class="ttdoc">Running the game.</div><div class="ttdef"><b>Definition:</b> Game.cpp:59</div></div>
+<div class="ttc" id="astructGame_1_1GameMonster_html_ad86672f270c7af4f3699310bc0c6d887"><div class="ttname"><a href="structGame_1_1GameMonster.html#ad86672f270c7af4f3699310bc0c6d887">Game::GameMonster::y</a></div><div class="ttdeci">int y</div><div class="ttdoc">The Monster's y position.</div><div class="ttdef"><b>Definition:</b> Game.h:116</div></div>
 <div class="ttc" id="aclassHero_html"><div class="ttname"><a href="classHero.html">Hero</a></div><div class="ttdoc">Derived class from Monster.</div><div class="ttdef"><b>Definition:</b> Hero.h:16</div></div>
-<div class="ttc" id="aclassGame_html_a8ca5b9f8a62990e6022de17785beac2c"><div class="ttname"><a href="classGame.html#a8ca5b9f8a62990e6022de17785beac2c">Game::running</a></div><div class="ttdeci">bool running</div><div class="ttdoc">Indicates if the game is running.</div><div class="ttdef"><b>Definition:</b> Game.h:101</div></div>
-<div class="ttc" id="aclassGame_1_1GameAlreadyStartedException_html"><div class="ttname"><a href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a></div><div class="ttdef"><b>Definition:</b> Game.h:94</div></div>
-<div class="ttc" id="aclassGame_html_aa3187477deace51f658c4d6599383de7"><div class="ttname"><a href="classGame.html#aa3187477deace51f658c4d6599383de7">Game::hasHero</a></div><div class="ttdeci">bool hasHero() const</div><div class="ttdoc">Checks if the hero is set.</div><div class="ttdef"><b>Definition:</b> Game.h:177</div></div>
-<div class="ttc" id="aclassGame_1_1OccupiedException_html"><div class="ttname"><a href="classGame_1_1OccupiedException.html">Game::OccupiedException</a></div><div class="ttdef"><b>Definition:</b> Game.h:34</div></div>
-<div class="ttc" id="aclassGame_1_1AlreadyHasUnitsException_html"><div class="ttname"><a href="classGame_1_1AlreadyHasUnitsException.html">Game::AlreadyHasUnitsException</a></div><div class="ttdef"><b>Definition:</b> Game.h:64</div></div>
-<div class="ttc" id="aclassGame_html_a77dfcde1a12c4d13e6e6e38a149fdb2c"><div class="ttname"><a href="classGame.html#a77dfcde1a12c4d13e6e6e38a149fdb2c">Game::Game</a></div><div class="ttdeci">Game(const std::string &amp;mapfilename)</div><div class="ttdoc">Constructor that loads the game with the given Map.</div><div class="ttdef"><b>Definition:</b> Game.h:127</div></div>
-<div class="ttc" id="aclassGame_1_1NotInitializedException_html"><div class="ttname"><a href="classGame_1_1NotInitializedException.html">Game::NotInitializedException</a></div><div class="ttdef"><b>Definition:</b> Game.h:79</div></div>
+<div class="ttc" id="aclassGame_html_a8ca5b9f8a62990e6022de17785beac2c"><div class="ttname"><a href="classGame.html#a8ca5b9f8a62990e6022de17785beac2c">Game::running</a></div><div class="ttdeci">bool running</div><div class="ttdoc">Indicates if the game is running.</div><div class="ttdef"><b>Definition:</b> Game.h:135</div></div>
+<div class="ttc" id="aclassGame_1_1GameAlreadyStartedException_html"><div class="ttname"><a href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a></div><div class="ttdef"><b>Definition:</b> Game.h:98</div></div>
+<div class="ttc" id="aclassGame_html_aa3187477deace51f658c4d6599383de7"><div class="ttname"><a href="classGame.html#aa3187477deace51f658c4d6599383de7">Game::hasHero</a></div><div class="ttdeci">bool hasHero() const</div><div class="ttdoc">Checks if the hero is set.</div><div class="ttdef"><b>Definition:</b> Game.h:204</div></div>
+<div class="ttc" id="aclassGame_1_1OccupiedException_html"><div class="ttname"><a href="classGame_1_1OccupiedException.html">Game::OccupiedException</a></div><div class="ttdef"><b>Definition:</b> Game.h:38</div></div>
+<div class="ttc" id="aclassGame_1_1AlreadyHasUnitsException_html"><div class="ttname"><a href="classGame_1_1AlreadyHasUnitsException.html">Game::AlreadyHasUnitsException</a></div><div class="ttdef"><b>Definition:</b> Game.h:68</div></div>
+<div class="ttc" id="aclassGame_html_a77dfcde1a12c4d13e6e6e38a149fdb2c"><div class="ttname"><a href="classGame.html#a77dfcde1a12c4d13e6e6e38a149fdb2c">Game::Game</a></div><div class="ttdeci">Game(const std::string &amp;mapfilename)</div><div class="ttdoc">Constructor that loads the game with the given Map.</div><div class="ttdef"><b>Definition:</b> Game.h:152</div></div>
+<div class="ttc" id="aclassGame_1_1NotInitializedException_html"><div class="ttname"><a href="classGame_1_1NotInitializedException.html">Game::NotInitializedException</a></div><div class="ttdef"><b>Definition:</b> Game.h:83</div></div>
 <div class="ttc" id="aclassMonster_html"><div class="ttname"><a href="classMonster.html">Monster</a></div><div class="ttdoc">Main class for monsters.</div><div class="ttdef"><b>Definition:</b> Monster.h:16</div></div>
-<div class="ttc" id="aclassGame_html_a2da2d4e53f7b25a9763b45ce3439628a"><div class="ttname"><a href="classGame.html#a2da2d4e53f7b25a9763b45ce3439628a">Game::setMap</a></div><div class="ttdeci">void setMap(const Map &amp;map)</div><div class="ttdoc">Sets the map.</div><div class="ttdef"><b>Definition:</b> Game.cpp:57</div></div>
+<div class="ttc" id="astructGame_1_1GameHero_html_ab12ba39cdef81c9fa78ec7d83f66e093"><div class="ttname"><a href="structGame_1_1GameHero.html#ab12ba39cdef81c9fa78ec7d83f66e093">Game::GameHero::x</a></div><div class="ttdeci">int x</div><div class="ttdoc">The Hero's x position.</div><div class="ttdef"><b>Definition:</b> Game.h:130</div></div>
+<div class="ttc" id="astructGame_1_1GameMonster_html_a54c21dfaa70e6a9ed5169b32a2bc480e"><div class="ttname"><a href="structGame_1_1GameMonster.html#a54c21dfaa70e6a9ed5169b32a2bc480e">Game::GameMonster::monster</a></div><div class="ttdeci">Monster monster</div><div class="ttdoc">The represented Monster.</div><div class="ttdef"><b>Definition:</b> Game.h:114</div></div>
+<div class="ttc" id="astructGame_1_1GameHero_html_a87d066837b530950b18db044d6dfb7b6"><div class="ttname"><a href="structGame_1_1GameHero.html#a87d066837b530950b18db044d6dfb7b6">Game::GameHero::hero</a></div><div class="ttdeci">Hero hero</div><div class="ttdoc">The represented Hero.</div><div class="ttdef"><b>Definition:</b> Game.h:129</div></div>
+<div class="ttc" id="aclassRenderer_html"><div class="ttname"><a href="classRenderer.html">Renderer</a></div><div class="ttdef"><b>Definition:</b> Renderer.h:10</div></div>
+<div class="ttc" id="aclassGame_html_a2da2d4e53f7b25a9763b45ce3439628a"><div class="ttname"><a href="classGame.html#a2da2d4e53f7b25a9763b45ce3439628a">Game::setMap</a></div><div class="ttdeci">void setMap(const Map &amp;map)</div><div class="ttdoc">Sets the map.</div><div class="ttdef"><b>Definition:</b> Game.cpp:9</div></div>
+<div class="ttc" id="astructGame_1_1GameMonster_html_ae7527dc6c21cf0a967d6f245314e6e27"><div class="ttname"><a href="structGame_1_1GameMonster.html#ae7527dc6c21cf0a967d6f245314e6e27">Game::GameMonster::x</a></div><div class="ttdeci">int x</div><div class="ttdoc">The Monster's x position.</div><div class="ttdef"><b>Definition:</b> Game.h:115</div></div>
 <div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">Class for loading and using maps.</div><div class="ttdef"><b>Definition:</b> Map.h:38</div></div>
-<div class="ttc" id="aclassGame_html_a640718463807c369572cb47b41e723da"><div class="ttname"><a href="classGame.html#a640718463807c369572cb47b41e723da">Game::putHero</a></div><div class="ttdeci">void putHero(const Hero &amp;hero, int x, int y)</div><div class="ttdoc">Places a Hero.</div><div class="ttdef"><b>Definition:</b> Game.cpp:68</div></div>
-<div class="ttc" id="aclassGame_html_a1d19c03c9f81d32489353236038e5204"><div class="ttname"><a href="classGame.html#a1d19c03c9f81d32489353236038e5204">Game::putMonster</a></div><div class="ttdeci">void putMonster(const Monster &amp;monster, int x, int y)</div><div class="ttdoc">Places a Monster.</div><div class="ttdef"><b>Definition:</b> Game.cpp:86</div></div>
-<div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">Class for managing the game.</div><div class="ttdef"><b>Definition:</b> Game.h:22</div></div>
-<div class="ttc" id="astructGame_1_1GameMonster_html"><div class="ttname"><a href="structGame_1_1GameMonster.html">Game::GameMonster</a></div><div class="ttdef"><b>Definition:</b> Game.h:104</div></div>
+<div class="ttc" id="aclassGame_html_a640718463807c369572cb47b41e723da"><div class="ttname"><a href="classGame.html#a640718463807c369572cb47b41e723da">Game::putHero</a></div><div class="ttdeci">void putHero(const Hero &amp;hero, int x, int y)</div><div class="ttdoc">Places a Hero.</div><div class="ttdef"><b>Definition:</b> Game.cpp:20</div></div>
+<div class="ttc" id="aclassGame_html_a1d19c03c9f81d32489353236038e5204"><div class="ttname"><a href="classGame.html#a1d19c03c9f81d32489353236038e5204">Game::putMonster</a></div><div class="ttdeci">void putMonster(const Monster &amp;monster, int x, int y)</div><div class="ttdoc">Places a Monster.</div><div class="ttdef"><b>Definition:</b> Game.cpp:38</div></div>
+<div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">Class for managing the game.</div><div class="ttdef"><b>Definition:</b> Game.h:26</div></div>
+<div class="ttc" id="astructGame_1_1GameMonster_html"><div class="ttname"><a href="structGame_1_1GameMonster.html">Game::GameMonster</a></div><div class="ttdef"><b>Definition:</b> Game.h:113</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -17,5 +17,6 @@ var searchData=
   ['getmonsterids_37',['getMonsterIDs',['../classMarkedMap.html#a3ae48db310841f4d21a0656c0666ddb7',1,'MarkedMap']]],
   ['getmonsterpositions_38',['getMonsterPositions',['../classMarkedMap.html#a232f9762179d230c884c1818ec0aa499',1,'MarkedMap']]],
   ['getname_39',['getName',['../classMonster.html#a28ae1112e37262ce150e3c02465b3dd5',1,'Monster']]],
-  ['getwidth_40',['getWidth',['../classMap.html#ab3181204ba96eb15b96ee1ced85e198e',1,'Map']]]
+  ['gettexture_40',['getTexture',['../classMonster.html#a6d2ded9d50be9e307f69b08c5b9a611e',1,'Monster']]],
+  ['getwidth_41',['getWidth',['../classMap.html#ab3181204ba96eb15b96ee1ced85e198e',1,'Map']]]
 ];

@@ -66,7 +66,6 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classGame-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -137,6 +136,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d19c03c9f81d32489353236038e5204"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a1d19c03c9f81d32489353236038e5204">putMonster</a> (const <a class="el" href="classMonster.html">Monster</a> &amp;monster, int x, int y)</td></tr>
 <tr class="memdesc:a1d19c03c9f81d32489353236038e5204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places a <a class="el" href="classMonster.html" title="Main class for monsters.">Monster</a>.  <a href="classGame.html#a1d19c03c9f81d32489353236038e5204">More...</a><br /></td></tr>
 <tr class="separator:a1d19c03c9f81d32489353236038e5204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95dedd778de0fc02a5c045d8212129d0"><td class="memItemLeft" align="right" valign="top"><a id="a95dedd778de0fc02a5c045d8212129d0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>registerRenderer</b> (<a class="el" href="classRenderer.html">Renderer</a> *renderer)</td></tr>
+<tr class="separator:a95dedd778de0fc02a5c045d8212129d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d35a12bbd2b44f01344e732b46536c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a58d35a12bbd2b44f01344e732b46536c">run</a> (std::istream &amp;is=std::cin)</td></tr>
 <tr class="memdesc:a58d35a12bbd2b44f01344e732b46536c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Running the game.  <a href="classGame.html#a58d35a12bbd2b44f01344e732b46536c">More...</a><br /></td></tr>
 <tr class="separator:a58d35a12bbd2b44f01344e732b46536c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,6 +146,21 @@ Public Member Functions</h2></td></tr>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#aa3187477deace51f658c4d6599383de7">hasHero</a> () const</td></tr>
 <tr class="memdesc:aa3187477deace51f658c4d6599383de7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the hero is set. <br /></td></tr>
 <tr class="separator:aa3187477deace51f658c4d6599383de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae85fbbee31a858735355b7873e128af6"><td class="memItemLeft" align="right" valign="top"><a id="ae85fbbee31a858735355b7873e128af6"></a>
+<a class="el" href="classMap.html">Map</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getMap</b> () const</td></tr>
+<tr class="separator:ae85fbbee31a858735355b7873e128af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1560b15e5d9a64f6d065baefa1395e18"><td class="memItemLeft" align="right" valign="top"><a id="a1560b15e5d9a64f6d065baefa1395e18"></a>
+<a class="el" href="structGame_1_1GameHero.html">GameHero</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getHero</b> () const</td></tr>
+<tr class="separator:a1560b15e5d9a64f6d065baefa1395e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28e10bb01793b5f19170cb616d209223"><td class="memItemLeft" align="right" valign="top"><a id="a28e10bb01793b5f19170cb616d209223"></a>
+std::vector&lt; <a class="el" href="structGame_1_1GameMonster.html">GameMonster</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getMonsters</b> () const</td></tr>
+<tr class="separator:a28e10bb01793b5f19170cb616d209223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf9be6ef1c59a4c2a0c47db9da97dfd0"><td class="memItemLeft" align="right" valign="top"><a id="acf9be6ef1c59a4c2a0c47db9da97dfd0"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getWallTexture</b> () const</td></tr>
+<tr class="separator:acf9be6ef1c59a4c2a0c47db9da97dfd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a397d21f7880603af9a266f2c15b21c6c"><td class="memItemLeft" align="right" valign="top"><a id="a397d21f7880603af9a266f2c15b21c6c"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getFreeTexture</b> () const</td></tr>
+<tr class="separator:a397d21f7880603af9a266f2c15b21c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -151,12 +168,12 @@ Protected Attributes</h2></td></tr>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a8ca5b9f8a62990e6022de17785beac2c">running</a> = false</td></tr>
 <tr class="memdesc:a8ca5b9f8a62990e6022de17785beac2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the game is running. <br /></td></tr>
 <tr class="separator:a8ca5b9f8a62990e6022de17785beac2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a74f8b70e137b29b1f942357991ae5df3"><td class="memItemLeft" align="right" valign="top"><a id="a74f8b70e137b29b1f942357991ae5df3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> () const</td></tr>
-<tr class="separator:a74f8b70e137b29b1f942357991ae5df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ac31f4c667a16c4fe97d3be77616783"><td class="memItemLeft" align="right" valign="top"><a id="a2ac31f4c667a16c4fe97d3be77616783"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>wallTexture</b> = &quot;&quot;</td></tr>
+<tr class="separator:a2ac31f4c667a16c4fe97d3be77616783"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a491700652c5bc09e94cb108f929d20a7"><td class="memItemLeft" align="right" valign="top"><a id="a491700652c5bc09e94cb108f929d20a7"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>freeTexture</b> = &quot;&quot;</td></tr>
+<tr class="separator:a491700652c5bc09e94cb108f929d20a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -169,6 +186,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a89cea785cc2174e07396a78b3886ea80"><td class="memItemLeft" align="right" valign="top"><a id="a89cea785cc2174e07396a78b3886ea80"></a>
 std::vector&lt; <a class="el" href="structGame_1_1GameMonster.html">GameMonster</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>gameMonsters</b></td></tr>
 <tr class="separator:a89cea785cc2174e07396a78b3886ea80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31ae712e27347072b664c2c522f163a2"><td class="memItemLeft" align="right" valign="top"><a id="a31ae712e27347072b664c2c522f163a2"></a>
+std::list&lt; <a class="el" href="classRenderer.html">Renderer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>renderers</b></td></tr>
+<tr class="separator:a31ae712e27347072b664c2c522f163a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for managing the game. </p>

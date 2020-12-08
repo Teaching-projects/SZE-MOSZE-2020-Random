@@ -16,3 +16,5 @@ runTests
 cppcheck_report.txt
 
 run.sh
+*/svg_image.svg
+*.bmp

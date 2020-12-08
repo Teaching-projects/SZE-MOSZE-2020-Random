@@ -8,5 +8,5 @@
     "defense"         : 10,
     "attack_cooldown" : 1.2,
     "race" : "undead",
-    "texture" : "textures/Blood_Raven.png"
+    "texture" : "../textures/Blood_Raven.svg"
 }

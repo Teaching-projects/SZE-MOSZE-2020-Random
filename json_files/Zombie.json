@@ -7,5 +7,5 @@
     "damage" : 1, "attack_cooldown" : 2.8,
     "race" : "undead",
     "defense" : 2,
-    "texture" : "textures/Zombie.png"
+    "texture" : "../textures/Zombie.svg"
 }

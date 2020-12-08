@@ -9,6 +9,7 @@ protected:
 
 public:
   SVGRenderer(const std::string& filename) : filename(filename) {}
+  virtual ~SVGRenderer() {}
   virtual void render(const Game& game) const override = 0;
 };
 

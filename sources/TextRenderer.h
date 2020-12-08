@@ -10,6 +10,7 @@ protected:
 
 public:
   TextRenderer(std::ostream& os = std::cout) { setOutputStream(os); }
+  virtual ~TextRenderer() {}
   virtual void render(const Game& game) const override = 0;
   void setOutputStream(std::ostream& os = std::cout) { outputStream = &os; }
 };

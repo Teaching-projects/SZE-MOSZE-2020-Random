@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['observersvgrenderer_74',['ObserverSVGRenderer',['../classObserverSVGRenderer.html',1,'']]],
-  ['observertextrenderer_75',['ObserverTextRenderer',['../classObserverTextRenderer.html',1,'']]],
+  ['observersvgrenderer_74',['ObserverSVGRenderer',['../classObserverSVGRenderer.html',1,'ObserverSVGRenderer'],['../classObserverSVGRenderer.html#a42ada269e0a510bc8137f622e110a06b',1,'ObserverSVGRenderer::ObserverSVGRenderer()']]],
+  ['observertextrenderer_75',['ObserverTextRenderer',['../classObserverTextRenderer.html',1,'ObserverTextRenderer'],['../classObserverTextRenderer.html#a481095e34583919358282824f4b53d0f',1,'ObserverTextRenderer::ObserverTextRenderer()']]],
   ['occupiedexception_76',['OccupiedException',['../classGame_1_1OccupiedException.html',1,'Game']]],
   ['operator_21_3d_77',['operator!=',['../classJSON_1_1List_1_1Iterator.html#a32ea0f4a8c8e957cae412c0ffb5bae05',1,'JSON::List::Iterator']]],
   ['operator_2a_78',['operator*',['../classJSON_1_1List_1_1Iterator.html#a2b486f85c09d29f848fc372efd2b55ab',1,'JSON::List::Iterator']]],

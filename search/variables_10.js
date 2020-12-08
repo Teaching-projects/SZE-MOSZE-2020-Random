@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['walltexture_258',['wallTexture',['../classGame.html#a2ac31f4c667a16c4fe97d3be77616783',1,'Game']]],
-  ['width_259',['width',['../classMap.html#a9ecfe932ad2d2bc22492416033bdacfd',1,'Map']]]
+  ['walltexture_262',['wallTexture',['../classGame.html#a2ac31f4c667a16c4fe97d3be77616783',1,'Game']]],
+  ['width_263',['width',['../classMap.html#a9ecfe932ad2d2bc22492416033bdacfd',1,'Map']]]
 ];

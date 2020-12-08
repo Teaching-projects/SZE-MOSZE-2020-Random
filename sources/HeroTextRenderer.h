@@ -5,7 +5,7 @@
 
 class HeroTextRenderer : public TextRenderer {
 public:
-  HeroTextRenderer() {}
+  HeroTextRenderer(std::ostream& os = std::cout) : TextRenderer(os) {}
 
   void render(const Game& game) const override;
 };

@@ -9,8 +9,8 @@ protected:
   std::ostream* outputStream;
 
 public:
-  TextRenderer() : outputStream(&std::cout) {}
-  virtual void render(const Game& game) const = 0;
+  TextRenderer(std::ostream& os = std::cout) { setOutputStream(os); }
+  virtual void render(const Game& game) const override = 0;
   void setOutputStream(std::ostream& os = std::cout) { outputStream = &os; }
 };
 

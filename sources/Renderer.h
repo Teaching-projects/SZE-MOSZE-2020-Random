@@ -3,6 +3,8 @@
 
 #include "Game.h"
 
+#include <string>
+
 class Renderer {
 public:
   Renderer() {}

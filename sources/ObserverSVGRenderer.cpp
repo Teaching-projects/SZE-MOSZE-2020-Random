@@ -27,14 +27,14 @@ void ObserverSVGRenderer::render(const Game& game) const {
         else {
           int monsterCount = 0;
           for (const auto& m : gameMonsters) {
-            if ((x == m.x) && (y == m.y)) { ++monsterCount; }
+            if ((x == m.x) && (y == m.y)) {
+              texture = m.monster.getTexture();
+              ++monsterCount;
+            }
             if (monsterCount >= 2) { break; }
           }
 
-          if (monsterCount > 0) {
-            texture = gameMonsters.front().monster.getTexture();
-          }
-          else {
+          if (monsterCount == 0) {
             texture = game.getFreeTexture();
           }
         }
@@ -53,7 +53,7 @@ void ObserverSVGRenderer::render(const Game& game) const {
         file << "\n\t</g>";
 
       }
-      else if (false) {
+      else {
         file  << "<rect x=\"" << x * 10 << "\" y=\"" << y * 10
               << "\" width=\"10\" height=\"10\" style=\"fill:rgb(0,0,0)\"/>";
       }

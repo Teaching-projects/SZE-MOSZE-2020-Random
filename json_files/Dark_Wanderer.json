@@ -11,5 +11,6 @@
     "cooldown_multiplier_per_level": 0.9,
     "base_defense" : 1,
     "defense_bonus_per_level" : 1,
-    "base_light_radius" : 1
+    "base_light_radius" : 1,
+    "texture" : "../textures/Dark_Wanderer.svg"
 }

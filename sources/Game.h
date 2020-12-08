@@ -20,8 +20,8 @@ class Renderer;
  * This is a class that manages the main game loop and game functionalities.
  *
  * \author LengyHELL
- * \version 1.0
- * \date 2020/12/02 14:39
+ * \version 1.1
+ * \date 2020/12/08 15:45
  */
 class Game {
 public:
@@ -132,9 +132,9 @@ public:
   };
 
 protected:
-  bool running = false; ///< Indicates if the game is running.
-  std::string wallTexture = "";
-  std::string freeTexture = "";
+  bool running = false;         ///< Indicates if the game is running.
+  std::string wallTexture = ""; ///< Stores the texture for the wall, used when drawing as an SVG file.
+  std::string freeTexture = ""; ///< Stores the texture fot the free path, used when drawing as an SVG file.
 
 private:
   Map gameMap;
@@ -146,6 +146,7 @@ public:
   /// Default constructor, creates an empty game.
   Game() {}
 
+  /// Default destructor, clears the attached renderers.
   ~Game();
 
   /// Constructor that loads the game with the given Map.
@@ -188,6 +189,12 @@ public:
    */
   void putMonster(const Monster& monster, int x, int y);
 
+  /**
+   * \brief Attaching renderer.
+   * \param renderer the Renderer that is attached to the game
+   *
+   * This function registers one or more renderer to the game, and uses it to draw the game state in every game cycle.
+   */
   void registerRenderer(Renderer* renderer);
 
   /**
@@ -203,10 +210,19 @@ public:
   /// Checks if the hero is set.
   bool hasHero() const { return (gameHero.x >= 0) && (gameHero.y >= 0); }
 
+  /// Returns the map that is set for the game value.
   Map getMap() const { return gameMap; }
+
+  /// Returns the hero that is set for the game.
   GameHero getHero() const { return gameHero; }
+
+  /// Returns the monsters that are set for the game.
   std::vector<GameMonster> getMonsters() const { return gameMonsters; }
+
+  /// Returns the string of the wall texture.
   std::string getWallTexture() const { return wallTexture; }
+
+  /// Returns the string of the free path texture.
   std::string getFreeTexture() const { return freeTexture; }
 };
 

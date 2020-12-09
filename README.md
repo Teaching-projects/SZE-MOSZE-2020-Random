@@ -37,20 +37,20 @@ Also in the ***game configuration file*** after the *\"hero\"* and *\"monster\"*
 Their format of the ***hero***'s file is the following:
 
     {
-        "name" : "Prince Aidan of Khanduras",
-        "base_health_points" : 30,
-        "base_damage" : 3,
-        "base_magical_damage" : 1,
-        "base_attack_cooldown" : 1.1,
-        "experience_per_level" : 20,
-        "health_point_bonus_per_level" : 5,
-        "damage_bonus_per_level" : 1,
-        "magical_damage_bonus_per_level" : 1,
-        "cooldown_multiplier_per_level": 0.9,
-        "base_defense" : 1,
-        "defense_bonus_per_level" : 1,
-        "base_light_radius" : 1,
-        "texture" : "../textures/Dark_Wanderer.svg"
+      "name" : "Prince Aidan of Khanduras",
+      "base_health_points" : 30,
+      "base_damage" : 3,
+      "base_magical_damage" : 1,
+      "base_attack_cooldown" : 1.1,
+      "experience_per_level" : 20,
+      "health_point_bonus_per_level" : 5,
+      "damage_bonus_per_level" : 1,
+      "magical_damage_bonus_per_level" : 1,
+      "cooldown_multiplier_per_level": 0.9,
+      "base_defense" : 1,
+      "defense_bonus_per_level" : 1,
+      "base_light_radius" : 1,
+      "texture" : "../textures/Dark_Wanderer.svg"
     }
 
 In this file, the:
